@@ -1,8 +1,8 @@
-# RequestTracker
+# JobTracker
 ====
 
-**Created:** 5/23/2015
-**Language:** html, css, sass, compass, js, angular.js, php
+**Created:** 1/18/2016
+**Language:** html5, css3, sass, compass, bootstrap, js, angular.js, d3.js, php
 
 Web Developer
 ----------

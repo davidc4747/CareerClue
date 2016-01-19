@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-24 14:02:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-01-18 22:48:16
+* @Last Modified time: 2016-01-18 23:31:07
 */
 
 module.exports = function(grunt)
@@ -32,11 +32,11 @@ module.exports = function(grunt)
 					// 'webpage/app/min/Repository.min.js': ['webpage/app/modules/Repository.js'],
 
 					// //Minify contrlers and app.js into 1 file
-					// 'webpage/app/min/requestTracker.min.js': [
-					// 		'webpage/app/app.js',
-					// 		'webpage/app/views/**/*.js',
-					// 		'webpage/app/directives/**/*.js'
-					// 	]
+					'builds/js/jobTracker.min.js': [
+							'builds/js/app.js',
+							'builds/views/**/*.js',
+							'builds/directives/**/*.js'
+						]
 				}
 			}
 		},
