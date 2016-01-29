@@ -2,3 +2,4 @@
 node_modules
 .sublime-grunt.cache
 docs/
+src/php/DBAccess.php

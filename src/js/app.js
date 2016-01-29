@@ -2,13 +2,16 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-01-18 23:30:16
+* @Last Modified time: 2016-01-29 13:48:12
 */
 
 
-var jobTracker = angular.module('jobTracker', ['ngRoute', 'Repository']);
+var jobTrack = angular.module('jobTrack', ['ngRoute',
+                                            'SignIn',
+                                            'jobTrack.Dash'
+                                        ]);
 
-jobTracker.config(['$routeProvider', function($routeProvider)
+jobTrack.config(['$routeProvider', function($routeProvider)
 {
 
     /*====================================*\
@@ -38,22 +41,22 @@ jobTracker.config(['$routeProvider', function($routeProvider)
         templateUrl: 'views/SingleJob/singlejob.html',
         controller: 'SingleJobCtrl'
     })
-    .when('/AddJob',
+    .when('/EditJob',
     {
-        templateUrl: 'views/AddJob/addjob.html',
-        controller: 'AddJobCtrl'
+        templateUrl: 'views/EditJob/editjob.html',
+        controller: 'EditJobCtrl'
     })
 
 
 
     /*====================================*\
-        #Login Forms
+        #SignIn Forms
     \*====================================*/
 
-    .when('/Login',
+    .when('/SignIn',
     {
-        templateUrl: 'views/Login/login.html',
-        controller: 'LoginCtrl'
+        templateUrl: 'views/SignIn/signin.html',
+        controller: 'SignInCtrl'
     })
     .when('/SignUp',
     {
@@ -76,7 +79,7 @@ jobTracker.config(['$routeProvider', function($routeProvider)
 
     //fall back
     .otherwise({
-        redirectTo: '/Dash'
+        redirectTo: '/SignIn'
     });
 
 

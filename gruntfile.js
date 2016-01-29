@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-24 14:02:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-01-18 23:31:07
+* @Last Modified time: 2016-01-29 13:57:47
 */
 
 module.exports = function(grunt)
@@ -20,22 +20,22 @@ module.exports = function(grunt)
 				files:
 				{
 					//Minify database scripts
-					// 'webpage/app/min/CallStoredProcedure.min.js': ['webpage/app/modules/DataAccess/CallStoredProcedure.js'],
-					// 'webpage/app/min/DBConstants.min.js': ['webpage/app/modules/DataAccess/DBConstants.js'],
-					// 'webpage/app/min/BusinessRules.min.js': [
-					// 		'webpage/app/modules/BusinessRules/BusinessRules.js',
-					// 		'webpage/app/modules/BusinessRules/*.js'
-					// 	],
+					'src/js/CallStoredProcedure.min.js': ['src/modules/DataAccess/CallStoredProcedure.js'],
+					'src/js/DBConstants.min.js': ['src/modules/DataAccess/DBConstants.js'],
+					'src/js/BusinessRules.min.js': [
+							'src/modules/BusinessRules/BusinessRules.js',
+							'src/modules/BusinessRules/*.js'
+						],
 
-					// //Minify other modules
-					// 'webpage/app/min/Session.min.js': ['webpage/app/modules/Session.js'],
-					// 'webpage/app/min/Repository.min.js': ['webpage/app/modules/Repository.js'],
+					//Minify other modules
+					'src/js/Session.min.js': ['src/modules/Session.js'],
+					'src/js/Repository.min.js': ['src/modules/Repository.js'],
 
-					// //Minify contrlers and app.js into 1 file
-					'builds/js/jobTracker.min.js': [
-							'builds/js/app.js',
-							'builds/views/**/*.js',
-							'builds/directives/**/*.js'
+					//Minify contrlers and app.js into 1 file
+					'src/js/jobTracker.min.js': [
+							'src/js/app.js',
+							'src/views/**/*.js',
+							'src/directives/**/*.js'
 						]
 				}
 			}
@@ -53,19 +53,19 @@ module.exports = function(grunt)
 			scripts:
 			{
 				files: [
-					'builds/js/app.js',
-					'builds/modules/**/*.js',
-					'builds/directives/**/*.js',
-					'builds/views/**/*.js'
+					'src/js/app.js',
+					'src/modules/**/*.js',
+					'src/directives/**/*.js',
+					'src/views/**/*.js'
 				],
 				tasks: ['uglify']
 			},
 			sass:
 			{
 				files: [
-					'builds/sass/*.scss',
-					'builds/directives/**/*.scss',
-					'builds/views/**/*.scss'
+					'src/sass/*.scss',
+					'src/directives/**/*.scss',
+					'src/views/**/*.scss'
 				],
 				tasks: ['compass:dev']
 			}
