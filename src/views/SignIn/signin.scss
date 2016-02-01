@@ -1,0 +1,77 @@
+// @Author: David G Chung
+// @Date:   2016-02-01 11:58
+
+/*====================================*\
+    #Sign In
+\*====================================*/
+
+.sign-in
+{
+    margin-top: 8em;
+}
+
+.txt
+{
+    &--username, &--password
+    {
+        width: 100%;
+    }
+}
+
+.btn
+{
+    &--signup, &--signin
+    {
+        width: 49%;
+    }
+
+    &--signup
+    {
+        background-color: $darkGrey;
+    }
+    &--signin
+    {
+        background-color: $green;
+    }
+}
+
+
+
+
+
+/*====================================*\
+    #Forgot
+\*====================================*/
+
+.forgot
+{
+    text-align: right;
+    margin: 0.5em 0;
+
+    a
+    {
+        display: block;
+        margin: 0;
+    }
+}
+
+
+
+
+
+/*====================================*\
+    #Social Media
+\*====================================*/
+
+.social-media-signin
+{
+    .btn
+    {
+        display: block;
+        margin: 0.3em 0;
+
+        width: 100%;
+
+        background-color: $darkGrey;
+    }
+}

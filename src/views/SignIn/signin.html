@@ -1,3 +1,40 @@
-<section class="col-sm-4 col-sm-offset-4">
-    asd
+<section class="sign-in col-sm-4 col-sm-offset-4">
+
+
+    <h1>job<span class="highlight">Track</span></h1>
+
+
+    <form class="sign-in__form row" ng-submit="signIn()" novalidate>
+        <div class="field col-sm-12 clearfix">
+            <input id="username" class="txt txt--username" ng-model="user.name" type="text">
+            <label class="lbl lbl--username" for="username">Username</label>
+        </div>
+        <div class="field col-sm-12 clearfix">
+            <input id="password" class="txt txt--password" ng-model="user.password" type="password">
+            <label class="lbl lbl--password" for="password">Password</label>
+        </div>
+        <div class="field col-sm-12 clearfix">
+            <input id="remember" class="chk chk--remember" ng-model="user.remember" type="checkbox">
+            <label class="lbl lbl--remember" for="remember">Remember me</label>
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+            <input class="btn btn--signup" ng-click="signUp()" value="SignUp" type="button">
+            <input class="btn btn--signin" ng-click="signIn()" value="SignIn" type="button">
+        </div>
+    </form>
+
+
+    <nav class="forgot">
+        <a href="#/ForgotPassword">Forgot your password?</a>
+        <a href="#/ForgotUsername">Forgot your username?</a>
+    </nav>
+
+
+    <div class="social-media-signin">
+        <div class="btn btn--google">Sign in with G+</div>
+        <div class="btn btn--facebook">Sign in with Facebook</div>
+    </div>
+
+
 </section>

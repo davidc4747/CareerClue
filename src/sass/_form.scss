@@ -1,0 +1,94 @@
+// @Author: David G Chung
+// @Date:   2016-02-01 11:58
+
+/*====================================*\
+    #Form Elements
+\*====================================*/
+
+.txt
+{
+    border: none;
+    outline: none;
+
+    border-bottom: 2px solid $darkGrey;
+
+    background-color: $grey;
+}
+
+.lbl
+{
+    text-transform: uppercase;
+    font-size: 1.13em;
+    opacity: 0.8;
+    @include transition(all, 0.2s, ease-in);
+}
+
+.btn
+{
+    color: $white;
+    &:hover, &:active, &:focus { opacity: 1; color: $white;}
+    @include border-radius(0px);
+}
+
+.chk:checked + .lbl
+{
+    color: $green;
+}
+
+
+
+/*====================================*\
+    #Fields
+\*====================================*/
+
+.field
+{
+    position: relative;
+    margin: 0.3em 0;
+
+    .txt
+    {
+        margin: 1.3em 0 0;
+
+
+        //Styling for  Active .field
+        &:active, &:focus, &.ng-not-empty
+        {
+            border-bottom: 2px solid $green;
+
+            & ~ .lbl
+            {
+                color: $green;
+                top: 0;
+                font-size: 0.9em;
+                opacity: 1;
+            }
+        }
+
+
+        //Styling for Invalid field
+        &.ng-touched.ng-dirty.ng-invalid
+        {
+            border: none;
+            border-bottom: 2px solid red;
+
+            & ~ .lbl
+            {
+                color: darken(red, 15%);
+                top: 0;
+                font-size: 0.9em;
+                opacity: 1;
+            }
+
+        }
+    }
+
+
+    //Basic label postioning
+    .txt + .lbl
+    {
+        position: absolute;
+        top: 1em;
+        left: 15px;
+    }
+}
