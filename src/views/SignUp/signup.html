@@ -1,0 +1,41 @@
+<section class="sign-up col-sm-4 col-sm-offset-4">
+
+    <h1><span class="highlight">Career</span>Clue</h1>
+
+    <form class="sign-up__form row" ng-submit="signUp" novalidate>
+
+        <div class="field col-sm-12 clearfix">
+            <input id="username" class="txt txt--username" ng-model="user.name" type="text">
+            <label class="lbl lbl--username" for="username">Username</label>
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+            <input id="email" class="txt txt--email" ng-model="user.email" type="email">
+            <label class="lbl lbl--email" for="email">Email</label>
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+            <input id="password" class="txt txt--password" ng-model="user.password" type="password">
+            <label class="lbl lbl--password" for="password">Password</label>
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+            <input id="repass" class="txt txt--repass" ng-model="user.repass" type="password">
+            <label class="lbl lbl--repass" for="repass">Confirm Password</label>
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+            <input class="btn btn--submit" value="SignUp" type="submit">
+        </div>
+
+    </form>
+
+    <nav class="bottom-nav clearfix">
+        <a href="#/SignIn">Already have and accout?</a>
+    </nav>
+
+    <ul class="error-list" ng-show="errors.length > 0">
+        <li class="error" ng-repeat="error in errors">{{ error.mess }}</li>
+    </ul>
+
+</section>
