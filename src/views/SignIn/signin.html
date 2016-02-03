@@ -1,7 +1,7 @@
 <section class="sign-in col-sm-4 col-sm-offset-4">
 
 
-    <h1>job<span class="highlight">Track</span></h1>
+    <h1><span class="highlight">Career</span>Clue</h1>
 
 
     <form class="sign-in__form row" ng-submit="signIn()" novalidate>
@@ -19,13 +19,18 @@
         </div>
 
         <div class="field col-sm-12 clearfix">
-            <input class="btn btn--signup" ng-click="signUp()" value="SignUp" type="button">
-            <input class="btn btn--signin" ng-click="signIn()" value="SignIn" type="button">
+            <a  class="btn btn--signup" href="#/SignUp">SignUp</a>
+            <input class="btn btn--signin btn--submit" ng-click="signIn()" value="SignIn" type="button">
         </div>
     </form>
 
 
-    <nav class="forgot">
+    <ul class="error-list" ng-show="errors.length > 0">
+       <li class="error" ng-repeat="error in errors">{{ error.mess }}</li>
+    </ul>
+
+
+    <nav class="bottom-nav clearfix">
         <a href="#/ForgotPassword">Forgot your password?</a>
         <a href="#/ForgotUsername">Forgot your username?</a>
     </nav>

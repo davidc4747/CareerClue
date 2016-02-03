@@ -8,51 +8,25 @@
 .sign-in
 {
     margin-top: 8em;
-}
 
-.txt
-{
-    &--username, &--password
-    {
-        width: 100%;
-    }
-}
 
-.btn
-{
-    &--signup, &--signin
+
+    .txt
     {
-        width: 49%;
+        &--username, &--password
+        {
+            width: 100%;
+        }
     }
 
-    &--signup
+    .btn
     {
-        background-color: $darkGrey;
+        &--signup, &--signin
+        {
+            width: 49%;
+        }
     }
-    &--signin
-    {
-        background-color: $green;
-    }
-}
 
-
-
-
-
-/*====================================*\
-    #Forgot
-\*====================================*/
-
-.forgot
-{
-    text-align: right;
-    margin: 0.5em 0;
-
-    a
-    {
-        display: block;
-        margin: 0;
-    }
 }
 
 
@@ -71,7 +45,5 @@
         margin: 0.3em 0;
 
         width: 100%;
-
-        background-color: $darkGrey;
     }
 }

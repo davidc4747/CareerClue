@@ -10,9 +10,9 @@
     border: none;
     outline: none;
 
-    border-bottom: 2px solid $darkGrey;
+    border-bottom: 2px solid $secondary;
 
-    background-color: $grey;
+    background-color: transparent;
 }
 
 .lbl
@@ -25,14 +25,21 @@
 
 .btn
 {
+    padding: 0.4em 0;
+
     color: $white;
-    &:hover, &:active, &:focus { opacity: 1; color: $white;}
+    background-color: $secondary;
     @include border-radius(0px);
+
+
+    &:hover, &:active, &:focus { opacity: 1; color: $white;}
+
+    &--submit { background-color: $primary; }
 }
 
 .chk:checked + .lbl
 {
-    color: $green;
+    color: $primary;
 }
 
 
@@ -54,11 +61,11 @@
         //Styling for  Active .field
         &:active, &:focus, &.ng-not-empty
         {
-            border-bottom: 2px solid $green;
+            border-bottom: 2px solid $primary;
 
             & ~ .lbl
             {
-                color: $green;
+                color: $primary;
                 top: 0;
                 font-size: 0.9em;
                 opacity: 1;
@@ -74,7 +81,7 @@
 
             & ~ .lbl
             {
-                color: darken(red, 15%);
+                color: $error;
                 top: 0;
                 font-size: 0.9em;
                 opacity: 1;
@@ -91,4 +98,41 @@
         top: 1em;
         left: 15px;
     }
+}
+
+
+
+
+
+/*====================================*\
+    #Bottom Nav
+\*====================================*/
+
+.bottom-nav
+{
+    margin: 0.5em 0;
+
+    a
+    {
+        display: block;
+        margin: 0;
+
+        clear: right;
+        float: right;
+    }
+}
+
+
+
+
+
+/*====================================*\
+    #Error List
+\*====================================*/
+
+.error-list
+{
+    border: 2px solid $error;
+    color: $error;
+    background-color: rgba(255, 0, 0, 0.2);
 }
