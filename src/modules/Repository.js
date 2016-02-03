@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-03 09:55:29
+* @Last Modified time: 2016-02-03 12:38:03
 */
 
 angular.module('Repository', ['BusinessRules', 'Session'])
@@ -21,6 +21,18 @@ angular.module('Repository', ['BusinessRules', 'Session'])
                 callback(errors);
             });
         };
-        this.signUp = function (user, callback) { UserRules.signUp(user, callback); };
+
+        this.signUp = function (user, callback)
+        {
+            UserRules.signUp(user, function(errors)
+            {
+                //If no errors, signIn to session
+                // if(errors.length == 0)
+                //     Session.signIn(user);
+
+                //send results to callback
+                callback(errors);
+            });
+        };
 
     }]);

@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-02 11:18:11
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-03 10:58:55
+* @Last Modified time: 2016-02-03 12:28:45
 */
 
 describe('SignIn Module', function()
@@ -46,7 +46,7 @@ describe('SignIn Module', function()
 
 
 
-    it('should should switch screens', function()
+    it('should should switch the current view', function()
     {
         spyOn($location, 'path').and.callFake(function(){});
 
@@ -58,7 +58,7 @@ describe('SignIn Module', function()
         expect($location.path).toHaveBeenCalled();
     });
 
-    it('should should display errors from DB', function()
+    it('should should display errors', function()
     {
         //Call $scope.signin with invalid user
         $scope.user = { name: 'qwdqfgqw', password: '12qwfrdfqf34', remember: false };

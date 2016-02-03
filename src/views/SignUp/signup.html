@@ -2,7 +2,7 @@
 
     <h1><span class="highlight">Career</span>Clue</h1>
 
-    <form class="sign-up__form row" ng-submit="signUp" novalidate>
+    <form class="sign-up__form row" ng-submit="signUp()" novalidate>
 
         <div class="field col-sm-12 clearfix">
             <input id="username" class="txt txt--username" ng-model="user.name" type="text">
@@ -25,7 +25,7 @@
         </div>
 
         <div class="field col-sm-12 clearfix">
-            <input class="btn btn--submit" value="SignUp" type="submit">
+            <input class="btn btn--submit" ng-click="signUp()" value="SignUp" type="submit">
         </div>
 
     </form>

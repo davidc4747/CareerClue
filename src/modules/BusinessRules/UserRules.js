@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 10:37:33
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-03 09:15:13
+* @Last Modified time: 2016-02-03 12:40:21
 */
 
 angular.module('BusinessRules')
@@ -32,7 +32,7 @@ angular.module('BusinessRules')
             var postData =
             {
                 fName: dbConst.SP_USER_SIGNUP,
-                params: [user.name, user.password, user.repass],
+                params: [user.name, user.email, user.password, user.repass],
                 actionType: 'select',
                 loginRequired: false
             };
