@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-24 14:02:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-01-29 13:57:47
+* @Last Modified time: 2016-02-02 12:27:34
 */
 
 module.exports = function(grunt)
@@ -10,6 +10,7 @@ module.exports = function(grunt)
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-compass');
+	grunt.loadNpmTasks('grunt-karma');
 
 	//Configure all grunt tasks
 	grunt.initConfig({
@@ -34,7 +35,7 @@ module.exports = function(grunt)
 					//Minify contrlers and app.js into 1 file
 					'src/js/jobTracker.min.js': [
 							'src/js/app.js',
-							'src/views/**/*.js',
+							'src/views/**/*.ctrl.js',
 							'src/directives/**/*.js'
 						]
 				}
@@ -44,7 +45,17 @@ module.exports = function(grunt)
 		{
 			dev:
 			{
-				options: { config: 'config.rb'}
+				options: { config: 'config.rb' }
+			}
+		},
+		karma:
+		{
+			unit:
+			{
+				configFile: 'karma.conf.js',
+				background: true,
+				autoWatch: false,
+				singleRun: false,
 			}
 		},
 		watch:
@@ -58,7 +69,7 @@ module.exports = function(grunt)
 					'src/directives/**/*.js',
 					'src/views/**/*.js'
 				],
-				tasks: ['uglify']
+				tasks: ['uglify', 'karma:unit:run']
 			},
 			sass:
 			{
@@ -73,6 +84,6 @@ module.exports = function(grunt)
 	});
 
 	//Set default task to watch
-	grunt.registerTask('default', 'watch');
+	grunt.registerTask('default', ['karma:unit:start', 'watch']);
 
 };
