@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-01-29 13:52:42
+* @Last Modified time: 2016-02-03 09:55:29
 */
 
 angular.module('Repository', ['BusinessRules', 'Session'])
@@ -14,8 +14,8 @@ angular.module('Repository', ['BusinessRules', 'Session'])
             UserRules.signIn(user, function(errors)
             {
                 //If no errors, signIn to session
-                if(errors.length == 0)
-                    Session.signIn(user);
+                // if(errors.length == 0)
+                //     Session.signIn(user);
 
                 //send results to callback
                 callback(errors);

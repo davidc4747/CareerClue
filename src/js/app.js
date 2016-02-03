@@ -2,12 +2,13 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-01 11:58:22
+* @Last Modified time: 2016-02-03 11:39:22
 */
 
 
 var jobTrack = angular.module('jobTrack', ['ngRoute',
                                             'jobTrack.SignIn',
+                                            'jobTrack.SignUp',
                                             'jobTrack.Dash'
                                         ]);
 
@@ -61,7 +62,7 @@ jobTrack.config(['$routeProvider', function($routeProvider)
     .when('/SignUp',
     {
         templateUrl: 'views/SignUp/signup.html',
-        controller: 'RegisterCtrl'
+        controller: 'SignUpCtrl'
     })
     .when('/ForgotPassword',
     {

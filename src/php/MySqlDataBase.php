@@ -84,10 +84,6 @@ class MySqlDataBase
 
         $this->close();
         return $objs;
-        // if (count($objs) == 1)
-        //     return $objs[0];
-        // else
-        //     return $objs;
     }
 }
 
