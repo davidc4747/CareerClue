@@ -2,86 +2,87 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-03 11:39:22
+* @Last Modified time: 2016-02-04 08:54:17
 */
 
 
-var jobTrack = angular.module('jobTrack', ['ngRoute',
-                                            'jobTrack.SignIn',
-                                            'jobTrack.SignUp',
-                                            'jobTrack.Dash'
-                                        ]);
+angular.module('CareerClue', ['ngRoute',
+                                'CareerClue.SignIn',
+                                'CareerClue.SignUp',
+                                'CareerClue.Dash'
+                            ]);
 
-jobTrack.config(['$routeProvider', function($routeProvider)
-{
-
-    /*====================================*\
-        #Main Screens
-    \*====================================*/
-
-    $routeProvider
-    .when('/Dash',
+angular.module('CareerClue')
+    .config(['$routeProvider', function($routeProvider)
     {
-        templateUrl: 'views/Dash/dash.html',
-        controller: 'DashCtrl'
-    })
+
+        /*====================================*\
+            #Main Screens
+        \*====================================*/
+
+        $routeProvider
+        .when('/Dash',
+        {
+            templateUrl: 'views/Dash/dash.html',
+            controller: 'DashCtrl'
+        })
 
 
 
-    /*====================================*\
-        #Job Views
-    \*====================================*/
+        /*====================================*\
+            #Job Views
+        \*====================================*/
 
-    .when('/MultiJob',
-    {
-        templateUrl: 'views/MultiJob/multijob.html',
-        controller: 'MultiJobCtrl'
-    })
-    .when('/SingleJob',
-    {
-        templateUrl: 'views/SingleJob/singlejob.html',
-        controller: 'SingleJobCtrl'
-    })
-    .when('/EditJob',
-    {
-        templateUrl: 'views/EditJob/editjob.html',
-        controller: 'EditJobCtrl'
-    })
-
-
-
-    /*====================================*\
-        #SignIn Forms
-    \*====================================*/
-
-    .when('/SignIn',
-    {
-        templateUrl: 'views/SignIn/signin.html',
-        controller: 'SignInCtrl'
-    })
-    .when('/SignUp',
-    {
-        templateUrl: 'views/SignUp/signup.html',
-        controller: 'SignUpCtrl'
-    })
-    .when('/ForgotPassword',
-    {
-        templateUrl: 'views/ForgotPass/forgotPass.html',
-        controller: 'ForgotPassCtrl'
-    })
-    .when('/ForgotUsername',
-    {
-        templateUrl: 'views/ForgotUsername/forgotUsername.html',
-        controller: 'ForgotUserCtrl'
-    })
+        .when('/MultiJob',
+        {
+            templateUrl: 'views/MultiJob/multijob.html',
+            controller: 'MultiJobCtrl'
+        })
+        .when('/SingleJob',
+        {
+            templateUrl: 'views/SingleJob/singlejob.html',
+            controller: 'SingleJobCtrl'
+        })
+        .when('/EditJob',
+        {
+            templateUrl: 'views/EditJob/editjob.html',
+            controller: 'EditJobCtrl'
+        })
 
 
 
+        /*====================================*\
+            #SignIn Forms
+        \*====================================*/
 
-    //fall back
-    .otherwise({
-        redirectTo: '/SignIn'
-    });
+        .when('/SignIn',
+        {
+            templateUrl: 'views/SignIn/signin.html',
+            controller: 'SignInCtrl'
+        })
+        .when('/SignUp',
+        {
+            templateUrl: 'views/SignUp/signup.html',
+            controller: 'SignUpCtrl'
+        })
+        .when('/ForgotPassword',
+        {
+            templateUrl: 'views/ForgotPass/forgotPass.html',
+            controller: 'ForgotPassCtrl'
+        })
+        .when('/ForgotUsername',
+        {
+            templateUrl: 'views/ForgotUsername/forgotUsername.html',
+            controller: 'ForgotUserCtrl'
+        })
 
 
-}]);
+
+
+        //fall back
+        .otherwise({
+            redirectTo: '/SignIn'
+        });
+
+
+    }]);

@@ -3,7 +3,7 @@
  * @Author: David G Chung
  * @Date:   2015-06-26 09:42:04
  * @Last Modified by:   David
- * @Last Modified time: 2015-09-28 16:46:41
+ * @Last Modified time: 2016-02-04 08:38:43
  */
 
 require_once 'MySqlDataBase.php';
@@ -23,16 +23,6 @@ $request = json_decode($postdata);
 //Send Error if the user needs to login
 if($request->loginRequired && !$session->is_logged_in())
     die('ERROR: User not logged in --  ' . $request->fName);
-
-//Prepare parameters
-// foreach ($request->params as $param)
-// {
-//     echo is_string($param);
-//     if(is_string($param))
-//     {
-//         $param = "'" . $db->escale_value($param) . "'";
-//     }
-// }
 
 //Call the store procedure
 $result = $db->function_call($request->fName, $request->params, $request->actionType);

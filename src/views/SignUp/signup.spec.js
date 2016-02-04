@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-03 11:31:19
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-03 13:31:02
+* @Last Modified time: 2016-02-04 08:53:39
 */
 
 describe('SignUp Module', function()
@@ -33,7 +33,7 @@ describe('SignUp Module', function()
     // Set up vars for testing
     beforeEach(function()
     {
-        module('jobTrack.SignUp');
+        module('CareerClue.SignUp');
         inject(function(_$controller_, _$rootScope_, _$location_)
         {
             $controller = _$controller_;
@@ -49,7 +49,16 @@ describe('SignUp Module', function()
 
 
 
-    it('should display errors', function()
+    xit('should validate that ALL fields are filled in', function()
+    {
+        //Call $scope.signUp with a blank user
+        $scope.user =  { name: '', email: '', password: '', repass: '' };
+        $scope.signUp();
+
+        expect($scope.errors.length).toEqual(1);
+    });
+
+    it('should display errors from Repository', function()
     {
         //call $scope.signUp() with an invalid user
         $scope.user = { name: 'bob', email: 'test@email.com', password: '1234', repass: '12wefwe34'};

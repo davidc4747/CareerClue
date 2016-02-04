@@ -6,11 +6,13 @@
 
     <form class="sign-in__form row" ng-submit="signIn()" novalidate>
         <div class="field col-sm-12 clearfix">
-            <input id="username" class="txt txt--username" ng-model="user.name" type="text">
+            <input id="username" class="txt txt--username" type="text"
+                ng-model="user.name" ng-model-options="{allowInvalid: true}" ng-required="true">
             <label class="lbl lbl--username" for="username">Username</label>
         </div>
         <div class="field col-sm-12 clearfix">
-            <input id="password" class="txt txt--password" ng-model="user.password" type="password">
+            <input id="password" class="txt txt--password" type="password"
+                ng-model="user.password" ng-model-options="{allowInvalid: true}" ng-required="true">
             <label class="lbl lbl--password" for="password">Password</label>
         </div>
         <div class="field col-sm-12 clearfix">
