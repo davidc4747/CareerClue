@@ -2,14 +2,18 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-04 08:54:17
+* @Last Modified time: 2016-02-04 09:25:01
 */
 
 
 angular.module('CareerClue', ['ngRoute',
+                                'CareerClue.Directive',
+
+                                'CareerClue.Dash',
                                 'CareerClue.SignIn',
                                 'CareerClue.SignUp',
-                                'CareerClue.Dash'
+
+                                'CareerClue.MultiJob'
                             ]);
 
 angular.module('CareerClue')

@@ -10,8 +10,9 @@
 @import 'base';
 @import 'form';
 
-// @import '../directives/PageHeader/pageHeader';
+@import '../directives/SideBar/sidebar';
 
 // @import '../views/Dash/dash';
 @import '../views/SignIn/signin';
 @import '../views/SignUp/signup';
+@import '../views/MultiJob/multijob';
