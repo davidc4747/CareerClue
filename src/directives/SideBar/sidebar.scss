@@ -1,0 +1,60 @@
+// @Author: David G Chung
+// @Date:   2016-02-04 9:04
+
+/*====================================*\
+    #Sidebar
+\*====================================*/
+
+.sidebar
+{
+    margin-top: 6em;
+
+
+    &__head
+    {
+        border-bottom: 1px solid $secondary;
+    }
+
+
+    &-link
+    {
+        display: block;
+        padding: 0.5em 0.6em;
+        margin: 0.2em 0;
+        border-left: 5px solid transparent;
+
+        opacity: 0.8;
+        font-size: 1.1em;
+
+        color: $secondary;
+        @include transition(all, 0.35s, ease-in);
+
+
+        &:hover
+        {
+            border-left: 5px solid $secondary;
+
+            text-decoration: none;
+
+            color: $secondary;
+            background-color: lighten($background, 10%);
+        }
+
+        &:focus
+        {
+            text-decoration: none;
+            color: $secondary;
+        }
+
+        &--selected
+        {
+            border-left: 5px solid $secondary;
+
+            opacity: 1;
+            font-weight: bold;
+
+            color: $secondary;
+            background-color: lighten($background, 10%);
+        }
+    }
+}
