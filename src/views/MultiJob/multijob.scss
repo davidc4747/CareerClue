@@ -25,18 +25,93 @@
 
 .job
 {
-    margin-top: 2em;
-    padding-bottom: 2em;
+    margin-bottom: 1.5em;
+    padding-top: 1.5em;
 
 
     & + &
     {
-        border-bottom: 1px solid darken($white, 20%);
+        border-top: 1px solid darken($white, 20%);
     }
+
+
+
+
+    /*-------------------------------------*\
+        #Job Header
+    \*-------------------------------------*/
 
     &__head
     {
         color: $primary;
         margin: 0;
+    }
+
+    .company-name, .company-title
+    {
+        float: left;
+        margin: 0 0;
+    }
+
+    .company-title
+    {
+        margin: 0.22em 0 0 0.5em;
+        color: $secondary;
+        font-style: italic;
+    }
+
+    /*-------------------------------------*\
+        #Job Links
+    \*-------------------------------------*/
+
+    &__links a + a
+    {
+        border-left: 2px solid darken($white, 20%);
+        padding: 0 0.3em;
+    }
+
+
+
+
+
+    /*-------------------------------------*\
+        #Job Controls
+    \*-------------------------------------*/
+
+    .controls
+    {
+        margin-top: -0.6em;
+        text-align: center;
+        opacity: 0.8;
+        font-size: 1.4em;
+
+        .fa
+        {
+            display: inline-block;
+            margin: 0 1em;
+            cursor: pointer;
+            @include transition(all, 0.2s, linear);
+
+            &:hover
+            {
+                opacity: 1;
+                color: $primary;
+                text-shadow: 0 0 3px darken($primary, 20%);
+            }
+        }
+    }
+
+    /*-------------------------------------*\
+        #Job Rateing
+    \*-------------------------------------*/
+
+    &__rating
+    {
+        padding: 0.2em;
+        text-align: center;
+        font-size: 3em;
+        font-weight: bold;
+        background-color: $primary;
+        @include border-radius(4px);
     }
 }
