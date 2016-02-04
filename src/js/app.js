@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-04 09:25:01
+* @Last Modified time: 2016-02-04 13:38:58
 */
 
 
@@ -37,7 +37,7 @@ angular.module('CareerClue')
             #Job Views
         \*====================================*/
 
-        .when('/MultiJob',
+        .when('/MultiJob/:statusType',
         {
             templateUrl: 'views/MultiJob/multijob.html',
             controller: 'MultiJobCtrl'
@@ -47,7 +47,7 @@ angular.module('CareerClue')
             templateUrl: 'views/SingleJob/singlejob.html',
             controller: 'SingleJobCtrl'
         })
-        .when('/EditJob',
+        .when('/EditJob/:jobId',
         {
             templateUrl: 'views/EditJob/editjob.html',
             controller: 'EditJobCtrl'

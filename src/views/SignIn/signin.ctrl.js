@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-29 13:04:37
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-04 08:53:50
+* @Last Modified time: 2016-02-04 13:18:30
 */
 
 angular.module('CareerClue.SignIn', ['Repository'])
@@ -32,7 +32,7 @@ angular.module('CareerClue.SignIn', ['Repository'])
 
                 //If no errors, Go to CareerClue.MultiJob
                 if(errors.length == 0)
-                    $location.path('/MultiJob');
+                    $location.path('/MultiJob/applied');
 
             });
 
