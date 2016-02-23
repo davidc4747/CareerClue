@@ -2,11 +2,11 @@
 * @Author: David
 * @Date:   2016-02-04 08:58:14
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-04 13:42:28
+* @Last Modified time: 2016-02-23 11:11:10
 */
 
 angular.module('CareerClue.Directive', [])
-    .directive('sideBar', [ '$location', function($location)
+    .directive('sideBar', [ 'Repository', '$location', function(Repository, $location)
     {
 
         // init the nav items for ng-repeat
@@ -25,8 +25,16 @@ angular.module('CareerClue.Directive', [])
             templateUrl: 'directives/SideBar/sidebar.html',
             link: function(scope, element, attrs)
             {
+                scope.date = new Date();
                 scope.navItems = navItems
                 scope.path = $location.path();
+
+
+                Repository.userInfo(function(data)
+                {
+                    if(data.length > 0)
+                        scope.userInfo = data[0];
+                });
             },
         };
     }]);

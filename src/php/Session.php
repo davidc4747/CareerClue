@@ -32,12 +32,25 @@ class Session
         }
     }
 
-    public function login($user)
+    public function login($userData)
     {
-        if(!empty($user))
+
+        // Get User Id from DB
+        $result = $db->function_call("cc_sp_User_ByLogin", [$userData->name, $userData->password], "select");
+
+        if(sizeof($result) > 0)
         {
-            $this->user_id = $_SESSION['user_id'] = $user['User_Id'];
+            $user = $result[0];
+
+            // SEt session data
+            $this->user_id = $user["User_Id"];
             $this->logged_in = true;
+
+            // if they want to stay logged in
+            if($userData->remember)
+            {
+                $_SESSION['user_id'] = $user["User_Id"];
+            }
         }
     }
 

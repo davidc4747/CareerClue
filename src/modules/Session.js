@@ -2,73 +2,74 @@
 * @Author: David
 * @Date:   2015-10-27 11:46:21
 * @Last Modified by:   David
-* @Last Modified time: 2015-11-18 15:14:36
+* @Last Modified time: 2016-02-23 11:25:26
 */
 
 angular.module('Session', [])
     .service('Session', ['$http', function($http)
     {
-        var user = null;
-        var loggedin = false;
-
         //logs user into php session
         this.login = function(userData)
         {
-            //Get userId from db
-
-            //Store the user data
-
-            //if remember : create cookie
-
-
-
             //call php login script
             var request = $http({
                 method: 'post',
-                url: 'assets/php/login.php',
-                data: userData
+                url: 'php/SessionScript.php',
+                data: { method: 'login', user: userData }
             });
             request.success(function(data)
-            {
-                console.log('User login: ' + data);
-                user = data;
-                loggedin = true;
-            });
+            {});
             request.error(function(err)
             {
-                console.log('ERROR: Session.login()');
+                console.log('SessionScript ERROR: Session.login()');
             });
         };
 
         //logs user out of php session
         this.logout = function()
         {
-            //clear user data
-
-            //clear cookie
-
-
             //call php logout script
             var request = $http({
                 method: 'post',
-                url: 'assets/php/logout.php'
+                url: 'php/SessionScript.php',
+                data: { method: 'logout' }
             });
             request.success(function()
-            {
-                console.log('User logout: ' + user);
-                loggedin = false;
-                user = null;
-            });
+            {});
             request.error(function(err)
             {
-                console.log('ERROR: Session.logout()');
+                console.log('SessionScript ERROR: Session.logout()');
             });
         };
 
         //Gets the current session login status
         this.isLoggedin = function()
         {
-            return loggedin;
+            var request = $http({
+                method: 'post',
+                url: 'php/SessionScript.php',
+                data: { method: 'isLoggedin' }
+            });
+            request.success(function()
+            {});
+            request.error(function(err)
+            {
+                console.log('SessionScript ERROR: Session.isLoggedin()');
+            });
+        };
+
+        this.getId = function(callback)
+        {
+            var request = $http({
+                method: 'post',
+                url: 'php/SessionScript.php',
+                data: { method: 'getId' }
+            });
+            request.success(callback);
+            request.error(function(err)
+            {
+                console.log('SessionScript ERROR: Session.isLoggedin()');
+            });
         };
 
     }]);

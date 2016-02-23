@@ -2,14 +2,22 @@
 * @Author: David
 * @Date:   2016-01-29 13:04:37
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-04 13:18:30
+* @Last Modified time: 2016-02-23 10:31:33
 */
 
 angular.module('CareerClue.SignIn', ['Repository'])
     .controller('SignInCtrl', ['$scope', '$location', 'Repository', function($scope, $location, Repository)
     {
+
         $scope.user = { name: '', password: '', remember: false };
         $scope.errors = [];
+
+        Repository.getId(function(userId)
+        {
+            if(userId > 0)
+                $location.path('/MultiJob/applied');
+        });
+
 
         $scope.signIn = function()
         {

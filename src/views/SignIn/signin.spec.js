@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-02 11:18:11
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-04 08:53:34
+* @Last Modified time: 2016-02-23 10:34:34
 */
 
 describe('SignIn Module', function()
@@ -22,6 +22,10 @@ describe('SignIn Module', function()
             if(user.name != mockUser.name && user.password != mockUser.password)
                 errors.push({ mess: 'Invalid user'});
             callback(errors);
+        },
+        getId: function(callback)
+        {
+            callback(1);
         }
     }
 
@@ -39,6 +43,7 @@ describe('SignIn Module', function()
         });
 
         $scope = $rootScope.$new();
+        spyOn($location, 'path').and.callFake(function(){});
         $controller('SignInCtrl', { '$scope': $scope, 'Repository': mockRepo, '$location': $location });
     });
 
@@ -46,9 +51,15 @@ describe('SignIn Module', function()
 
 
 
+    it('should switch the screen if user is already logged in', function()
+    {
+        // SignInCtrl will call the function when it is constructed
+        expect($location.path).toHaveBeenCalled();
+    });
+
+
     it('should should switch the current view', function()
     {
-        spyOn($location, 'path').and.callFake(function(){});
 
         //Call $scope.signIn with valid user
         $scope.user = mockUser;
@@ -57,6 +68,8 @@ describe('SignIn Module', function()
         expect($scope.errors.length).toBe(0);
         expect($location.path).toHaveBeenCalled();
     });
+
+
 
     it('should validate that required fields are filled in', function()
     {

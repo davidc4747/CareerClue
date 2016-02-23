@@ -2,6 +2,11 @@
 
     <h1 class="sidebar__head"><span class="highlight">Career</span>Clue</h1>
 
+    <div class="user-info">
+        <span>{{userInfo.Username}}</span> |
+        <span>{{date | date: 'MM/dd/yy' }}</span>
+    </div>
+
     <nav class="sidebar__nav">
         <a class="sidebar-link" ng-class="{ 'sidebar-link--selected': path == item.href }" ng-repeat="item in navItems" href="#{{item.href}}">{{ item.text }}</a>
     </nav>

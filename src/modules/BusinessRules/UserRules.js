@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 10:37:33
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-03 12:40:21
+* @Last Modified time: 2016-02-23 10:50:59
 */
 
 angular.module('BusinessRules')
@@ -39,5 +39,23 @@ angular.module('BusinessRules')
 
             sp(postData, callback);
         };
+
+
+        this.userInfo = function(callback)
+        {
+            var postData =
+            {
+                fName: dbConst.SP_USER_BY_ID,
+                params: ["User_Id"],
+                actionType: 'select',
+                loginRequired: true
+            };
+
+            sp(postData, function(data)
+                {
+                    console.log(data);
+                    callback(data);
+                });
+        }
 
     }]);
