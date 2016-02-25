@@ -1,0 +1,70 @@
+<section class="edit-job">
+
+    <side-bar></side-bar>
+
+    <div class="edit-job__body body col-sm-offset-1 col-sm-7">
+
+        <section class="job row">
+
+
+
+            <header class="col-sm-9">
+
+                <div class="job__head clearfix">
+                    <h2 class="company-name"><input class="edit-control" type="text" placeholder="comapny Name" value="CompanyName"></h2>
+                    <h3 class="company-title"><input class="edit-control" type="text" placeholder="Job Title" value="CompanyTitle"></h3>
+                </div>
+
+                <!-- <div class="job__links">
+                    <a href="#">CompnanySite</a> |
+                    <a href="#">Source: indeed.com</a>
+                </div> -->
+
+                <div class="job__info">
+                    <div class="company-location">
+                        <input class="edit-control" type="text" placeholder="Company Address" value="Location">
+                        (<input class="edit-control travel-time" type="number" size="3" min="0" max="180" placeholder="0" value="0"> mins)
+                    </div>
+                    <div class="date-applied">
+                        <input class="edit-control" type="date" placeholder="YYYY-MM-DD" value="{{today()}}">
+                        (<span class="time-passed">3 weeks</span>)
+                    </div>
+                </div>
+
+
+                <select class="edit-control">
+                    <!-- ng-repeat this -->
+                    <option value="Applied">Applied</option>
+                    <option value="Interviewing">Interviewing</option>
+                    <option value="Offered">Offered</option>
+                </select>
+
+            </header>
+
+            <aside class="col-sm-3">
+                <div class="job__rating"><input class="edit-control" type="number" min="0" max="10" placeholder="5" value="8"></div>
+            </aside>
+
+
+
+            <div class="job__notes col-sm-12">
+
+                <section class="notes">
+                    <h4>Job Description Notes</h4>
+                    <textarea class="edit-control">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In vitae excepturi voluptas, consectetur numquam libero maiores similique! Quos vitae atque error, soluta beatae repellendus! Officia, ratione, necessitatibus. Illo, vitae, vero.</textarea>
+                </section>
+
+                <section class="notes">
+                    <h4>Company Notes</h4>
+                    <textarea class="edit-control">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur debitis commodi eius animi recusandae repudiandae non nostrum. Accusantium voluptatibus repudiandae a quaerat ipsam suscipit sequi dolorum maxime veniam deleniti.</textarea>
+                </section>
+
+            </div>
+
+
+
+        </section>
+
+    </div>
+
+</section>

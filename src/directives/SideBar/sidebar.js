@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-04 08:58:14
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-23 11:11:10
+* @Last Modified time: 2016-02-23 11:46:25
 */
 
 angular.module('CareerClue.Directive', [])
@@ -16,7 +16,7 @@ angular.module('CareerClue.Directive', [])
             { href: '/MultiJob/interviewing', text: 'Interviewing'},
             { href: '/MultiJob/offered', text: 'Offered'},
             { href: '/MultiJob/archived', text: 'Archive'},
-            { href: '/AddJob', text: 'Add Job'},
+            { href: '/EditJob/-1', text: 'Add Job'},
         ];
 
         return {
