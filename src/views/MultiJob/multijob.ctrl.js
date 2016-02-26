@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-04 09:03:26
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-26 12:51:08
+* @Last Modified time: 2016-02-26 13:49:22
 */
 
 angular.module('CareerClue.MultiJob', ['Repository'])
@@ -10,11 +10,5 @@ angular.module('CareerClue.MultiJob', ['Repository'])
     {
         var statusType = $routeParams.statusType;
 
-        $scope.isExpanded = false;
-
-        $scope.toggleExpand = function()
-        {
-            $scope.isExpanded = !$scope.isExpanded;
-        };
 
     }]);

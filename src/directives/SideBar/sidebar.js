@@ -2,10 +2,10 @@
 * @Author: David
 * @Date:   2016-02-04 08:58:14
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-23 11:46:25
+* @Last Modified time: 2016-02-26 13:50:36
 */
 
-angular.module('CareerClue.Directive', [])
+angular.module('CareerClue.SideBar', ['Repository'])
     .directive('sideBar', [ 'Repository', '$location', function(Repository, $location)
     {
 
