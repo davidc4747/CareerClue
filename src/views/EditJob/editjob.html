@@ -4,66 +4,108 @@
 
     <div class="edit-job__body body col-sm-offset-1 col-sm-7">
 
-        <section class="job row">
+            <form class="" ng-submit="" >
 
 
 
-            <header class="col-sm-9">
 
-                <div class="job__head clearfix">
-                    <h2 class="company-name"><input class="edit-control" type="text" placeholder="comapny Name" value="CompanyName"></h2>
-                    <h3 class="company-title"><input class="edit-control" type="text" placeholder="Job Title" value="CompanyTitle"></h3>
-                </div>
 
-                <!-- <div class="job__links">
-                    <a href="#">CompnanySite</a> |
-                    <a href="#">Source: indeed.com</a>
-                </div> -->
+                <section class="form-group row">
 
-                <div class="job__info">
-                    <div class="company-location">
-                        <input class="edit-control" type="text" placeholder="Company Address" value="Location">
-                        (<input class="edit-control travel-time" type="number" size="3" min="0" max="180" placeholder="0" value="0"> mins)
+                    <div class="field col-sm-6 clearfix">
+                        <label class="lbl lbl--company-name" for="company-name">Company Name</label>
+                        <input id="company-name" class="txt--edit-job txt--company-name" type="text"
+                            ng-model="job.name" ng-required="true">
                     </div>
-                    <div class="date-applied">
-                        <input class="edit-control" type="date" placeholder="YYYY-MM-DD" value="{{today()}}">
-                        (<span class="time-passed">3 weeks</span>)
+
+                    <div class="field col-sm-6 clearfix">
+                        <label class="lbl lbl--job-title" for="job-title">Job Title</label>
+                        <input id="job-title" class="txt--edit-job txt--job-title" type="text"
+                            ng-model="job.title" ng-required="true">
                     </div>
-                </div>
 
+                    <div class="field col-sm-12 clearfix">
+                        <label class="lbl lbl--company-site" for="company-site">Company Website</label>
+                        <input id="company-site" class="txt--edit-job txt--company-site" type="text"
+                            ng-model="job.site">
+                    </div>
 
-                <select class="edit-control">
-                    <!-- ng-repeat this -->
-                    <option value="Applied">Applied</option>
-                    <option value="Interviewing">Interviewing</option>
-                    <option value="Offered">Offered</option>
-                </select>
-
-            </header>
-
-            <aside class="col-sm-3">
-                <div class="job__rating"><input class="edit-control" type="number" min="0" max="10" placeholder="5" value="8"></div>
-            </aside>
-
-
-
-            <div class="job__notes col-sm-12">
-
-                <section class="notes">
-                    <h4>Job Description Notes</h4>
-                    <textarea class="edit-control">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In vitae excepturi voluptas, consectetur numquam libero maiores similique! Quos vitae atque error, soluta beatae repellendus! Officia, ratione, necessitatibus. Illo, vitae, vero.</textarea>
                 </section>
 
-                <section class="notes">
-                    <h4>Company Notes</h4>
-                    <textarea class="edit-control">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus consequuntur debitis commodi eius animi recusandae repudiandae non nostrum. Accusantium voluptatibus repudiandae a quaerat ipsam suscipit sequi dolorum maxime veniam deleniti.</textarea>
+
+
+                <section class="form-group row">
+
+                    <div class="field col-sm-4 clearfix">
+                        <label class="lbl lbl--company-address" for="company-address">Company address</label>
+                        <input id="company-address" class="txt--edit-job txt--company-address" type="text"
+                            ng-model="job.address">
+                    </div>
+
+                    <div class="field col-sm-4 clearfix">
+                        <label class="lbl lbl--travel-time" for="travel-time">Travel time</label>
+                        <input id="travel-time" class="txt--edit-job txt--travel-time" type="number"
+                            ng-model="job.travelTime">
+                    </div>
+
+                    <div class="field col-sm-4 clearfix">
+                        <label class="lbl lbl--date-applied" for="date-applied">Date applied</label>
+                        <input id="date-applied" class="txt--edit-job txt--date-applied" type="date" value="{{today()}}"
+                            ng-model="job.dateApplied">
+                    </div>
+
+
+
+                    <div class="field col-sm-6 clearfix">
+                        <label class="lbl lbl--job-rating" for="job-rating">Job rating</label>
+                        <input id="job-rating" class="txt--edit-job txt--job-rating" type="number"
+                            ng-model="job.rating">
+                    </div>
+
+                    <div class="field col-sm-6 clearfix">
+                        <label class="lbl lbl--status" for="status">Job Status</label>
+                        <select id="status" class="txt--edit-job txt--status" type="text"
+                            ng-model="job.status">
+                            <option value="Applied">Applied</option>
+                            <option value="Interviewing">Interviewing</option>
+                            <option value="Offered">Offered</option>
+                        </select>
+                    </div>
+
                 </section>
 
-            </div>
+
+
+                <section class="form-group row">
+
+                    <div class="notes col-sm-12">
+                        <div class="field clearfix">
+                            <label class="lbl lbl--descrip-notes" for="descrip-notes">Job Description Notes</label>
+                            <textarea id="descrip-notes" class="txt--edit-job txt--descrip-notes"
+                                ng-model="job.descripNotes"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="notes col-sm-12">
+                        <div class="field clearfix">
+                            <label class="lbl lbl--company-notes" for="company-notes">Company Notes</label>
+                            <textarea id="company-notes" class="txt--edit-job txt--company-notes"
+                                ng-model="job.companyNotes"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="field pull-right col-sm-5 row">
+                        <input class="[ btn btn--submit btn--save ]   [ col-sm-5 ]" type="submit" value="Save">
+                        <input class="[ btn btn--cancel ]   [ col-sm-offset-1 col-sm-5 ]" type="button" value="Cancel">
+                    </div>
+
+                </section>
 
 
 
-        </section>
+
+
+            </form>
 
     </div>
 

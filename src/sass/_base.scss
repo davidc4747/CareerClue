@@ -16,7 +16,12 @@ body
 
 
 
+/*-----------------------------------*\
+    #General Classes
+\*-----------------------------------*/
+
 .highlight { color: $primary; }
+
 
 .body
 {
@@ -26,6 +31,23 @@ body
     border-left: 5px solid $primary;
     border-right: 5px solid $primary;
 }
+
+
+.bottom-nav
+{
+    margin: 0.5em 0;
+
+    a
+    {
+        display: block;
+        margin: 0;
+
+        clear: right;
+        float: right;
+    }
+}
+
+
 
 
 
@@ -41,6 +63,8 @@ h4
 {
     font-weight: bold;
 }
+
+
 
 
 
@@ -73,38 +97,3 @@ h4
 
 
 
-
-input[type="number"]::-webkit-inner-spin-button
-{
-    -webkit-appearance: none;
-    cursor: pointer;
-
-    width: 20px;
-    position: relative;
-
-
-
-    &:before,
-    &:after
-    {
-        font-family: "fontAwesome";
-        position: absolute;
-        right: 4px;
-        line-height: 10px;
-
-        font-size: 19px;
-    }
-
-    &:before
-    {
-        content: "\f0d7";
-        top: 50%;
-    }
-
-    &:after
-    {
-        content: "\f0d8";
-        bottom: 50%;
-    }
-
-}

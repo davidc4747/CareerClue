@@ -5,10 +5,19 @@
     #Form Elements
 \*====================================*/
 
+textarea
+{
+    width: 100%;
+    max-width: 100%;
+    min-height: 200px;
+}
+
 .txt
 {
     border: none;
     outline: none;
+
+    width: 100%;
 
     border-bottom: 2px solid $secondary;
 
@@ -41,6 +50,8 @@
 {
     color: $primary;
 }
+
+
 
 
 
@@ -92,12 +103,13 @@
 
 
     //Basic label postioning
-    .txt + .lbl
+    .txt ~ .lbl
     {
         position: absolute;
         top: 1em;
         left: 15px;
     }
+
 }
 
 
@@ -105,22 +117,43 @@
 
 
 /*====================================*\
-    #Bottom Nav
+    #Number buttons
 \*====================================*/
 
-.bottom-nav
-{
-    margin: 0.5em 0;
+// input[type="number"]::-webkit-inner-spin-button
+// {
+//     -webkit-appearance: none;
+//     cursor: pointer;
 
-    a
-    {
-        display: block;
-        margin: 0;
+//     width: 20px;
+//     position: relative;
 
-        clear: right;
-        float: right;
-    }
-}
+
+
+//     &:before,
+//     &:after
+//     {
+//         font-family: "fontAwesome";
+//         position: absolute;
+//         right: 4px;
+//         line-height: 10px;
+
+//         font-size: 19px;
+//     }
+
+//     &:before
+//     {
+//         content: "\f0d7";
+//         top: 50%;
+//     }
+
+//     &:after
+//     {
+//         content: "\f0d8";
+//         bottom: 50%;
+//     }
+
+// }
 
 
 

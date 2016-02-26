@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-23 11:42:29
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-25 09:51:17
+* @Last Modified time: 2016-02-25 20:25:34
 */
 
 /*====================================*\
@@ -14,42 +14,49 @@
 
 
 
-
-.notes
-{
-    margin-top: 2.4em;
-}
-
-
-
-
 /*====================================*\
-    #Edit Controls
+    #Edit Form
 \*====================================*/
 
-.edit-control
+.form-group
 {
-    display: inline-block;
-    border: none;
-
-    max-width: 100%;
-    background-color: transparent;
+    margin-bottom: 1.4em;
+    padding-top:   1.4em;
 
 
-    &:hover, &:focus
+    & + &
     {
-        color: $secondary;
-        background-color: rgba($primary, 0.55);
-    }
-
-    &:focus
-    {
-        outline: none;
+        border-top: 1px dashed darken($white, 10%);
     }
 }
 
-textarea.edit-control
+
+// Field Vertical Spacing
+.edit-job .field
 {
+    padding-top:    0.6em;
+    padding-bottom: 0.6em;
+}
+
+
+
+// textbox styling
+.txt--edit-job
+{
+    display: block;
+    outline: none;
+
+    border: none;
+    border-bottom: 1px solid $primary;
+
     width: 100%;
-    min-height: 80px;
+    min-height: 26px;
+
+    background-color: darken($white, 5%);
+}
+
+
+.btn--save
+{
+    margin-right: 0.4em;
 }
