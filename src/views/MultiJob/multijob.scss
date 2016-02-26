@@ -9,21 +9,66 @@
 {}
 
 
+
+/*====================================*\
+    #Search Form
+\*====================================*/
+
+.frm--search
+{
+    margin-top: 0.3em;
+    margin-bottom: 1em;
+    position: relative;
+
+
+
+    .field:after
+    {
+        font-family: "fontAwesome";
+        content: "\f002";
+
+        opacity: 0.7;
+
+        position: absolute;
+        right: 1.5em;
+        top: 50%;
+
+        @include translate(0, -50%);
+    }
+}
+
+
+
+
 /*====================================*\
     #Job
 \*====================================*/
 
+.job-list
+{
+    padding: 0;
+}
+
 .job
 {
-    margin-bottom: 1.5em;
-    padding-top: 1.5em;
+    margin: 0;
+    padding: 1.5em 0;
+
+    cursor: pointer;
+    list-style-type: none;
 
 
-    & + &
+
+
+    &:hover
     {
-        border-top: 1px solid darken($white, 20%);
+        background-color: darken($white, 6%)
     }
 
+    &
+    {
+        border-top: 1px solid darken($white, 10%);
+    }
 
 
 
@@ -37,13 +82,13 @@
         margin: 0;
     }
 
-    .company-name, .company-title
+    &__name, &__title
     {
         float: left;
         margin: 0 0;
     }
 
-    .company-title
+    &__title
     {
         margin: 0.22em 0 0 0.5em;
         color: $secondary;
@@ -52,15 +97,12 @@
 
 
 
-
     /*-------------------------------------*\
         #Job Controls
     \*-------------------------------------*/
 
-    .controls
+    &__controls
     {
-        margin-top: -0.6em;
-        text-align: center;
         opacity: 0.8;
         font-size: 1.4em;
 
@@ -80,6 +122,8 @@
         }
     }
 
+
+
     /*-------------------------------------*\
         #Job Rateing
     \*-------------------------------------*/
@@ -92,5 +136,31 @@
         font-weight: bold;
         background-color: $primary;
         @include border-radius(4px);
+    }
+
+
+
+    /*-------------------------------------*\
+        #Job Notes
+    \*-------------------------------------*/
+
+    &__notes
+    {
+        overflow: hidden;
+        margin-top: 0;
+        max-height: 0;
+        @include transition(all, 0.7s, ease-in);
+    }
+
+}
+
+
+
+.job--expand
+{
+    .job__notes
+    {
+        margin-top: 2em;
+        max-height: 100vh;
     }
 }
