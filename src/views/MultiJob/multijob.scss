@@ -10,6 +10,8 @@
 
 
 
+
+
 /*====================================*\
     #Search Form
 \*====================================*/
@@ -20,6 +22,7 @@
     margin-bottom: 1em;
     position: relative;
 
+    vertical-align: bottom;
 
 
     .field:after
@@ -37,6 +40,27 @@
     }
 }
 
+    /*-----------------------------------*\
+        #Add button
+    \*-----------------------------------*/
+
+    .add-job
+    {
+        padding-left: 20px;
+        padding-right: 10px;
+
+        display: inline-block;
+        text-align: center;
+
+        opacity: 0.7;
+        cursor: pointer;
+
+        @include translate(0, 66%);
+
+        &:hover { color: $primary; }
+    }
+
+
 
 
 
@@ -48,119 +72,3 @@
 {
     padding: 0;
 }
-
-// .job
-// {
-//     margin: 0;
-//     padding: 1.5em 0;
-
-//     cursor: pointer;
-//     list-style-type: none;
-
-
-
-
-//     &:hover
-//     {
-//         background-color: darken($white, 6%)
-//     }
-
-//     &
-//     {
-//         border-top: 1px solid darken($white, 10%);
-//     }
-
-
-
-//     /*-------------------------------------*\
-//         #Job Header
-//     \*-------------------------------------*/
-
-//     &__head
-//     {
-//         color: $primary;
-//         margin: 0;
-//     }
-
-//     &__name, &__title
-//     {
-//         float: left;
-//         margin: 0 0;
-//     }
-
-//     &__title
-//     {
-//         margin: 0.22em 0 0 0.5em;
-//         color: $secondary;
-//         font-style: italic;
-//     }
-
-
-
-//     /*-------------------------------------*\
-//         #Job Controls
-//     \*-------------------------------------*/
-
-//     &__controls
-//     {
-//         opacity: 0.8;
-//         font-size: 1.4em;
-
-//         .fa
-//         {
-//             display: inline-block;
-//             margin: 0 0.6em;
-//             cursor: pointer;
-//             @include transition(all, 0.2s, linear);
-
-//             &:hover
-//             {
-//                 opacity: 1;
-//                 color: $primary;
-//                 // text-shadow: 0 0 3px darken($primary, 20%);
-//             }
-//         }
-//     }
-
-
-
-//     /*-------------------------------------*\
-//         #Job Rateing
-//     \*-------------------------------------*/
-
-//     &__rating
-//     {
-//         padding: 0.2em;
-//         text-align: center;
-//         font-size: 3em;
-//         font-weight: bold;
-//         background-color: $primary;
-//         @include border-radius(4px);
-//     }
-
-
-
-//     /*-------------------------------------*\
-//         #Job Notes
-//     \*-------------------------------------*/
-
-//     &__notes
-//     {
-//         overflow: hidden;
-//         margin-top: 0;
-//         max-height: 0;
-//         @include transition(all, 0.7s, ease-in);
-//     }
-
-// }
-
-
-
-// .job--expand
-// {
-//     .job__notes
-//     {
-//         margin-top: 2em;
-//         max-height: 100vh;
-//     }
-// }
