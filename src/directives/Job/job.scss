@@ -2,9 +2,108 @@
 * @Author: David
 * @Date:   2016-02-26 13:38:50
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-26 13:39:35
+* @Last Modified time: 2016-02-26 15:13:46
 */
 
 /*====================================*\
     #Job Directive
 \*====================================*/
+
+.job
+{
+    margin: 0;
+    padding: 1.5em 0;
+
+    list-style-type: none;
+
+    &--view
+    {
+        cursor: pointer;
+
+        &:hover
+        {
+            background-color: darken($white, 6%)
+        }
+    }
+
+    &--view-expand
+    {
+        @extend .job--view;
+
+        .job__notes
+        {
+            margin-top: 2em;
+            max-height: 100vh;
+        }
+    }
+
+    .job--edit
+    {
+
+    }
+
+
+
+
+
+    &
+    {
+        border-top: 1px solid darken($white, 10%);
+    }
+
+
+
+    /*-------------------------------------*\
+        #Job Header
+    \*-------------------------------------*/
+
+    &__head
+    {
+        color: $primary;
+        margin: 0;
+    }
+
+    &__name, &__title
+    {
+        float: left;
+        margin: 0 0;
+    }
+
+    &__title
+    {
+        margin: 0.22em 0 0 0.5em;
+        color: $secondary;
+        font-style: italic;
+    }
+
+
+
+    /*-------------------------------------*\
+        #Job Rating
+    \*-------------------------------------*/
+
+    &__rating
+    {
+        padding: 0.2em;
+        text-align: center;
+        font-size: 3em;
+        font-weight: bold;
+        background-color: $primary;
+        @include border-radius(4px);
+    }
+
+
+
+    /*-------------------------------------*\
+        #Job Notes
+    \*-------------------------------------*/
+
+    &__notes
+    {
+        overflow: hidden;
+        margin-top: 0;
+        max-height: 0;
+        @include transition(all, 0.7s, ease-in);
+    }
+
+}

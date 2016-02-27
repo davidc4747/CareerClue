@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-23 11:42:29
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-26 13:05:31
+* @Last Modified time: 2016-02-26 15:14:09
 */
 
 /*====================================*\
@@ -32,10 +32,13 @@
 
 
 // Field Vertical Spacing
-.edit-job .field
+.edit-job
 {
-    padding-top:    0.6em;
-    padding-bottom: 0.6em;
+    .field
+    {
+        padding-top:    0.6em;
+        padding-bottom: 0.6em;
+    }
 }
 
 
@@ -53,10 +56,4 @@
     min-height: 26px;
 
     background-color: darken($white, 5%);
-}
-
-
-.btn--save
-{
-    // margin-right: 0.4em;
 }
