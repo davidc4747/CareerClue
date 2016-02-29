@@ -87,7 +87,7 @@
             <div class="field clearfix">
                 <label class="lbl lbl--descrip-notes" for="descrip-notes">Job Description Notes</label>
                 <textarea id="descrip-notes" class="txt--edit-job txt--descrip-notes"
-                    ng-model="jobData.JobDescrip_Notes" ng-max-length="512"></textarea>
+                    ng-model="jobData.JobDescrip_Notes" ng-max-length="1024"></textarea>
             </div>
         </div>
 
@@ -95,13 +95,18 @@
             <div class="field clearfix">
                 <label class="lbl lbl--company-notes" for="company-notes">Company Notes</label>
                 <textarea id="company-notes" class="txt--edit-job txt--company-notes"
-                    ng-model="jobData.Company_Notes" ng-max-length="512"></textarea>
+                    ng-model="jobData.Company_Notes" ng-max-length="1024"></textarea>
             </div>
         </div>
 
         <div class="field col-sm-12 clearfix">
+
+            <input class="btn btn--delete [ pull-left col-sm-2 ]" type="button" value="Delete"
+                ng-click="delete(); $event.stopPropagation();">
+
             <input class="[ btn btn--cancel ]   [ pull-right col-sm-offset-1 col-sm-2 ]" type="button" value="Cancel"
                 ng-click="cancel(); $event.stopPropagation();">
+
             <input class="[ btn btn--submit btn--save ]   [ pull-right col-sm-2 ]" type="submit" value="Save"
                 ng-click="" ng-disabled="editForm.$invalid">
         </div>

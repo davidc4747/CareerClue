@@ -11,8 +11,8 @@
     </div>
 
     <div class="job__info">
-        <div class="job__address">{{jobData.Company_Address}} <span class="travel-time">({{jobData.TravelTime}} mins)</span></div>
-        <div class="date-applied">{{jobData.DateApplied | date: 'MM/dd/yyyy'}} <span class="time-passed">({{jobData.TimePassed}} weeks)</span></div>
+        <div class="job__address">{{jobData.Company_Address}} <span class="travel-time">({{jobData.TravelTime}} minute drive)</span></div>
+        <div class="date-applied">{{jobData.DateApplied | date: 'MM/dd/yyyy'}} <span class="time-passed">({{jobData.TimePassed + '' + jobData.TimePassedLabel}})</span></div>
     </div>
 </header>
 
@@ -24,13 +24,16 @@
 
     <div class="notes">
         <h4>Job Description Notes</h4>
-        <p>{{jobData.JobDescrip_Notes}}</p>
+        <p><pre>{{jobData.JobDescrip_Notes}}</pre></p>
     </div>
 
     <div class="notes">
         <h4>Company Notes</h4>
-        <p>{{jobData.Company_Notes}}</p>
+        <p><pre>{{jobData.Company_Notes}}</pre></p>
     </div>
+
+    <input class="btn btn--delete [ pull-left col-sm-2 ]" type="button" value="Delete"
+        ng-click="delete(); $event.stopPropagation();">
 
     <input class="btn btn--edit [ pull-right col-sm-2 ]" type="button" value="Edit"
         ng-click="switchMode('job--edit'); $event.stopPropagation();">

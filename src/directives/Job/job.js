@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 10:17:24
+* @Last Modified time: 2016-02-29 12:56:32
 */
 
 angular.module('CareerClue.Job', ['Repository'])
@@ -35,8 +35,7 @@ angular.module('CareerClue.Job', ['Repository'])
                     scope.statusTypes = types;
                 });
 
-                // Calc TimePassed
-                scope.jobData.TimePassed = 4;// TODO:
+
 
                 // Set Rating color
                 switch(scope.jobData.Job_Rating)
@@ -61,6 +60,39 @@ angular.module('CareerClue.Job', ['Repository'])
                         break;
                 };
 
+
+                // Calc TimePassed
+                var calcTimePassed = function()
+                {
+                    // init vars
+                    var daysAgo = new Date().getDate() - scope.jobData.DateApplied.getDate();
+
+                    if(daysAgo >= 365) // if more than a Year
+                    {
+                        // Calc how many years have passed
+                        scope.jobData.TimePassed = Math.floor(daysAgo / 365);
+                        scope.jobData.TimePassedLabel = ' Years ago';
+                    }
+                    else if(daysAgo >= 30) // if more than a Month
+                    {
+                        // Calc how many months have passed
+                        scope.jobData.TimePassed = Math.floor(daysAgo / 30);
+                        scope.jobData.TimePassedLabel = ' Months ago';
+                    }
+                    else if(daysAgo > 0) // if not today
+                    {
+                        scope.jobData.TimePassed = daysAgo;
+                        scope.jobData.TimePassedLabel = ' Days ago';
+                    }
+                    else // it's has to be today
+                    {
+                        scope.jobData.TimePassed = 'Today';
+                        scope.jobData.TimePassedLabel = '';
+                    }
+
+                };
+
+                scope.$watch('jobData.DateApplied', calcTimePassed);
 
 
 
@@ -124,6 +156,14 @@ angular.module('CareerClue.Job', ['Repository'])
                 scope.cancel = function()
                 {
                     scope.switchMode('job--view-expand');
+                };
+
+                scope.delete = function()
+                {
+                    var deleteYN = confirm("Are you sure you want to delete '" + scope.jobData.CompanyName + "'? \n your data can't be recoverd");
+
+                    if (deleteYN)
+                       Repository.deleteJob(scope.jobData);
                 };
 
 

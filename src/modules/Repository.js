@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 08:49:34
+* @Last Modified time: 2016-02-29 12:48:47
 */
 
 angular.module('Repository', ['BusinessRules', 'Session'])
@@ -66,6 +66,11 @@ angular.module('Repository', ['BusinessRules', 'Session'])
         this.saveJob = function(job, callback)
         {
             JobRules.saveJob(job, callback);
+        };
+
+        this.deleteJob = function(job)
+        {
+            JobRules.deleteJob(job);
         };
 
 

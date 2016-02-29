@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-28 08:07:43
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 09:06:20
+* @Last Modified time: 2016-02-29 12:55:04
 */
 
 angular.module('BusinessRules')
@@ -22,7 +22,6 @@ angular.module('BusinessRules')
 
             sp(postData, callback);
         };
-
 
         this.getUserJobs = function(callback)
         {
@@ -48,7 +47,6 @@ angular.module('BusinessRules')
                 callback(jobs);
             });
         };
-
 
         this.saveJob = function(job, callback)
         {
@@ -84,6 +82,22 @@ angular.module('BusinessRules')
 
                 callback(jobId);
             });
+        };
+
+        this.deleteJob = function(job)
+        {
+            // Setup Stored procedure data
+            var postData =
+            {
+                fName: dbConst.SP_JOB_DELETE,
+                params: [
+                    job.JobInfo_Id
+                ],
+                actionType: 'update',
+                loginRequired: true
+            };
+
+            sp(postData, function(){});
         };
 
 
