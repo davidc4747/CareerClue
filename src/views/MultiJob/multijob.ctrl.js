@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-04 09:03:26
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 14:54:06
+* @Last Modified time: 2016-02-29 15:16:46
 */
 
 angular.module('CareerClue.MultiJob', ['Repository'])
@@ -21,16 +21,11 @@ angular.module('CareerClue.MultiJob', ['Repository'])
 
         $scope.$on('removeJob', function(event, args)
         {
-            console.log('remove tiggered --');
             for (var i = $scope.jobs.length - 1; i >= 0; i--)
             {
                 // if the directive is flagged for removal
                 if($scope.jobs[i].JobInfo_Id == args.Id)
-                {
-                    console.log('     remove found -- ' + i);
-                    console.log($scope.jobs);
                     $scope.jobs.splice(i, 1);
-                }
             }
 
         });

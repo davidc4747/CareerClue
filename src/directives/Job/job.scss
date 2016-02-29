@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:38:50
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 13:36:10
+* @Last Modified time: 2016-02-29 15:09:06
 */
 
 /*====================================*\
@@ -16,6 +16,8 @@
 
     list-style-type: none;
     border-top: 1px solid darken($white, 10%);
+
+    @include transition(all 0.35s linear);
 
 
 
@@ -48,6 +50,22 @@
     {}
 
 
+
+    /*-------------------------------------*\
+        #Enter/Exit Animations
+    \*-------------------------------------*/
+
+    &.ng-enter,
+    &.ng-leave.ng-leave-active
+    {
+      opacity:0;
+    }
+
+    &.ng-leave,
+    &.ng-enter.ng-enter-active
+    {
+      opacity:1;
+    }
 
     /*-------------------------------------*\
         #Job Header
