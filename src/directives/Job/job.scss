@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:38:50
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 08:27:43
+* @Last Modified time: 2016-02-29 10:29:58
 */
 
 /*====================================*\
@@ -55,7 +55,7 @@
 
     &__head
     {
-        color: $primary;
+        a { color: $primary; }
         margin: 0;
     }
 
@@ -80,12 +80,35 @@
 
     &__rating
     {
-        padding: 0.2em;
+        padding: 0.3em 0 0.2em;
         text-align: center;
         font-size: 3em;
         font-weight: bold;
-        background-color: $primary;
-        @include border-radius(4px);
+        background-color: darken($white, 6%);
+        // @include border-radius(10px);
+
+        $border: 4px solid;
+        &--low
+        {
+            border-top: $border red;
+            border-bottom: $border red;
+
+            color: red;
+        }
+        &--mid
+        {
+            border-top: $border darken(yellow, 6%);
+            border-bottom: $border darken(yellow, 6%);
+
+            color: darken(yellow, 6%);
+        }
+        &--high
+        {
+            border-top: $border green;
+            border-bottom: $border green;
+
+            color: green;
+        }
     }
 
 
@@ -151,4 +174,11 @@
         min-height: 26px;
 
         background-color: darken($white, 5%);
+
+        &.ng-dirty.ng-invalid
+        {
+            background-color: rgba($error, 0.3);
+            border-bottom: 2px solid $error;
+        }
+
     }

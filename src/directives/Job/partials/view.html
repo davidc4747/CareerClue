@@ -1,23 +1,23 @@
 <header class="col-sm-9">
 
     <div class="job__head clearfix">
-        <h2 class="job__name">{{jobData.CompanyName}}</h2>
+        <h2 class="job__name"><a target="_blank" href="{{jobData.CompanySite}}">{{jobData.CompanyName}}</a></h2>
         <h3 class="job__title">{{jobData.Job_Title}}</h3>
     </div>
 
     <div class="job__links">
-        <a href="#">{{jobData.CompanySite}}</a> |
-        <a href="{{jobData.Source_Link}}">{{jobData.Source}}</a>
+
+        <a target="_blank" href="{{jobData.Source_Link}}">{{jobData.Source}}</a>
     </div>
 
     <div class="job__info">
-        <div class="job__address">{{jobData.Company_Address}} <span class="travel-time">({{jobData.TravelTime}})</span></div>
-        <div class="date-applied">{{jobData.DateApplied | date: 'MM/dd/yyyy'}} <span class="time-passed">(TimePassed weeks)</span></div>
+        <div class="job__address">{{jobData.Company_Address}} <span class="travel-time">({{jobData.TravelTime}} mins)</span></div>
+        <div class="date-applied">{{jobData.DateApplied | date: 'MM/dd/yyyy'}} <span class="time-passed">({{jobData.TimePassed}} weeks)</span></div>
     </div>
 </header>
 
 <aside class="col-sm-3">
-    <div class="job__rating">{{jobData.Job_Rating}}</div>
+    <div class="job__rating {{ratingClass}}">{{jobData.Job_Rating}}</div>
 </aside>
 
 <div class="job__notes col-sm-12">

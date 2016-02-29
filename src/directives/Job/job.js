@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 09:02:28
+* @Last Modified time: 2016-02-29 10:17:24
 */
 
 angular.module('CareerClue.Job', ['Repository'])
@@ -35,6 +35,34 @@ angular.module('CareerClue.Job', ['Repository'])
                     scope.statusTypes = types;
                 });
 
+                // Calc TimePassed
+                scope.jobData.TimePassed = 4;// TODO:
+
+                // Set Rating color
+                switch(scope.jobData.Job_Rating)
+                {
+                    default:
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                        scope.ratingClass = 'job__rating--low';
+                        break;
+                    case 4:
+                    case 5:
+                    case 6:
+                        scope.ratingClass = 'job__rating--mid';
+                        break;
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 10:
+                        scope.ratingClass = 'job__rating--high';
+                        break;
+                };
+
+
+
 
 
                 /*====================================*\
@@ -65,14 +93,6 @@ angular.module('CareerClue.Job', ['Repository'])
 
 
                 };
-
-                // Set Initial mode
-                if(scope.jobData.JobInfo_Id > 0)
-                    scope.switchMode('job--view');
-                else
-                    scope.switchMode('job--edit');
-
-
 
                 scope.toggleExpand = function()
                 {
@@ -109,6 +129,13 @@ angular.module('CareerClue.Job', ['Repository'])
 
 
 
+
+
+                /******** Set Initial mode **********/
+                if(scope.jobData.JobInfo_Id > 0)
+                    scope.switchMode('job--view');
+                else
+                    scope.switchMode('job--edit');
 
             }
         }
