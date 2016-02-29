@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 12:56:32
+* @Last Modified time: 2016-02-29 13:50:29
 */
 
 angular.module('CareerClue.Job', ['Repository'])
@@ -28,6 +28,8 @@ angular.module('CareerClue.Job', ['Repository'])
 
                 scope.isExpanded = false;
 
+
+
                 // Get the Status types from DB
                 scope.statusTypes = [];
                 Repository.getStatusTypes(function(types)
@@ -37,32 +39,8 @@ angular.module('CareerClue.Job', ['Repository'])
 
 
 
-                // Set Rating color
-                switch(scope.jobData.Job_Rating)
-                {
-                    default:
-                    case 0:
-                    case 1:
-                    case 2:
-                    case 3:
-                        scope.ratingClass = 'job__rating--low';
-                        break;
-                    case 4:
-                    case 5:
-                    case 6:
-                        scope.ratingClass = 'job__rating--mid';
-                        break;
-                    case 7:
-                    case 8:
-                    case 9:
-                    case 10:
-                        scope.ratingClass = 'job__rating--high';
-                        break;
-                };
-
-
                 // Calc TimePassed
-                var calcTimePassed = function()
+                scope.$watch('jobData.DateApplied', function()
                 {
                     // init vars
                     var daysAgo = new Date().getDate() - scope.jobData.DateApplied.getDate();
@@ -90,9 +68,8 @@ angular.module('CareerClue.Job', ['Repository'])
                         scope.jobData.TimePassedLabel = '';
                     }
 
-                };
+                });
 
-                scope.$watch('jobData.DateApplied', calcTimePassed);
 
 
 
@@ -132,6 +109,15 @@ angular.module('CareerClue.Job', ['Repository'])
                         return;
 
                     scope.switchMode((scope.mode == 'job--view') ? 'job--view-expand' : 'job--view');
+                };
+
+                scope.numArray = function(num)
+                {
+                    var nums = [];
+                    for (var i = 0; i < num; i++)
+                        nums.push(num);
+
+                    return nums;
                 };
 
 
