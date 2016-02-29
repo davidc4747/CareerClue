@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 13:50:29
+* @Last Modified time: 2016-02-29 14:47:39
 */
 
 angular.module('CareerClue.Job', ['Repository'])
@@ -27,6 +27,7 @@ angular.module('CareerClue.Job', ['Repository'])
                 scope.template = '';
 
                 scope.isExpanded = false;
+                scope.jobData.delete = false;
 
 
 
@@ -43,7 +44,9 @@ angular.module('CareerClue.Job', ['Repository'])
                 scope.$watch('jobData.DateApplied', function()
                 {
                     // init vars
-                    var daysAgo = new Date().getDate() - scope.jobData.DateApplied.getDate();
+                    var now = new Date();
+                    var applyDate = scope.jobData.DateApplied || now;
+                    var daysAgo = now.getDate() - applyDate.getDate();
 
                     if(daysAgo >= 365) // if more than a Year
                     {
@@ -141,7 +144,10 @@ angular.module('CareerClue.Job', ['Repository'])
 
                 scope.cancel = function()
                 {
-                    scope.switchMode('job--view-expand');
+                    if(scope.jobData.JobInfo_Id > 0)
+                        scope.switchMode('job--view-expand');
+                    else
+                        scope.$emit('removeJob', { Id: scope.jobData.JobInfo_Id });// remove from ng-repeat
                 };
 
                 scope.delete = function()
@@ -149,7 +155,14 @@ angular.module('CareerClue.Job', ['Repository'])
                     var deleteYN = confirm("Are you sure you want to delete '" + scope.jobData.CompanyName + "'? \n your data can't be recoverd");
 
                     if (deleteYN)
-                       Repository.deleteJob(scope.jobData);
+                    {
+                        // Remove from DB
+                        Repository.deleteJob(scope.jobData);
+
+                        // remove from ng-repeat
+                        scope.$emit('removeJob', { Id: scope.jobData.JobInfo_Id });
+                    }
+
                 };
 
 

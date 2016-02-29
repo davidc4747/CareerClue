@@ -102,7 +102,7 @@
         <div class="field col-sm-12 clearfix">
 
             <input class="btn btn--delete [ pull-left col-sm-2 ]" type="button" value="Delete"
-                ng-click="delete(); $event.stopPropagation();">
+                ng-show="jobData.JobInfo_Id > 0" ng-click="delete(); $event.stopPropagation();">
 
             <input class="[ btn btn--cancel ]   [ pull-right col-sm-offset-1 col-sm-2 ]" type="button" value="Cancel"
                 ng-click="cancel(); $event.stopPropagation();">
