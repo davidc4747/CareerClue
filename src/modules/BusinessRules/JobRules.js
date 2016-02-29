@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-28 08:07:43
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 07:48:30
+* @Last Modified time: 2016-02-29 08:35:46
 */
 
 angular.module('BusinessRules')
@@ -21,7 +21,18 @@ angular.module('BusinessRules')
                 loginRequired: true
             };
 
-            sp(postData, callback);
+            sp(postData, function(jobs)
+            {
+                // Convert to proper types
+                for(var i = 0; i < jobs.length; i++)
+                {
+                    jobs[i].Job_Rating = parseInt(jobs[i].Job_Rating);
+                    jobs[i].TravelTime = parseInt(jobs[i].TravelTime);
+                    jobs[i].DateApplied = new Date(jobs[i].DateApplied);
+                }
+
+                callback(jobs);
+            });
         };
 
 
@@ -51,9 +62,9 @@ angular.module('BusinessRules')
                 loginRequired: true
             };
 
+            // Convert to proper types
             sp(postData, function(data)
             {
-                console.log(data);
                 var jobId = data[0]["JobId"] || null;
 
                 callback(jobId);

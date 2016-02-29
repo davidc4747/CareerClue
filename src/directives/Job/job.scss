@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:38:50
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-26 15:13:46
+* @Last Modified time: 2016-02-29 08:27:43
 */
 
 /*====================================*\
@@ -15,6 +15,13 @@
     padding: 1.5em 0;
 
     list-style-type: none;
+    border-top: 1px solid darken($white, 10%);
+
+
+
+    /*-------------------------------------*\
+        #Job Modes
+    \*-------------------------------------*/
 
     &--view
     {
@@ -38,18 +45,7 @@
     }
 
     .job--edit
-    {
-
-    }
-
-
-
-
-
-    &
-    {
-        border-top: 1px solid darken($white, 10%);
-    }
+    {}
 
 
 
@@ -106,4 +102,53 @@
         @include transition(all, 0.7s, ease-in);
     }
 
+
+
+
+
+    /*-------------------------------------*\
+        #Edit Field spacing
+    \*-------------------------------------*/
+
+    .field
+    {
+        padding-top:    0.6em;
+        padding-bottom: 0.6em;
+    }
+
 }
+
+
+
+
+
+    /*========================================*\
+        #Edit Form
+    \*========================================*/
+
+    .form-group
+    {
+        margin-bottom: 1.4em;
+        padding-top:   1.4em;
+
+
+        & + &
+        {
+            border-top: 1px dashed darken($white, 10%);
+        }
+    }
+
+    .txt--edit-job
+    {
+        display: block;
+        outline: none;
+
+        padding: 0 0.4em;
+        border: none;
+        border-bottom: 1px solid $primary;
+
+        width: 100%;
+        min-height: 26px;
+
+        background-color: darken($white, 5%);
+    }

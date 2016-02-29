@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 07:33:01
+* @Last Modified time: 2016-02-29 08:39:18
 */
 
 angular.module('CareerClue.Job', ['Repository'])
@@ -86,8 +86,11 @@ angular.module('CareerClue.Job', ['Repository'])
                     // Save job to DB
                     Repository.saveJob(scope.jobData, function(jobId)
                     {
-                        console.log(jobId);
-                        scope.jobData.JobInfo_Id = jobId;
+                        if(jobId != null)
+                        {
+                            scope.jobData.JobInfo_Id = jobId;
+                            scope.switchMode('job--view-expand');
+                        }
                     });
                 };
 

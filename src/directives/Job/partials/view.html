@@ -1,35 +1,35 @@
 <header class="col-sm-9">
 
     <div class="job__head clearfix">
-        <h2 class="job__name">CompanyName</h2>
-        <h3 class="job__title">Company Title</h3>
+        <h2 class="job__name">{{jobData.CompanyName}}</h2>
+        <h3 class="job__title">{{jobData.Job_Title}}</h3>
     </div>
 
     <div class="job__links">
-        <a href="#">CompnanySite</a> |
-        <a href="#">Source: indeed.com</a>
+        <a href="#">{{jobData.CompanySite}}</a> |
+        <a href="{{jobData.Source_Link}}">{{jobData.Source}}</a>
     </div>
 
     <div class="job__info">
-        <div class="job__address">Company Address <span class="travel-time">(TravelTime)</span></div>
-        <div class="date-applied">2/4/2016 <span class="time-passed">(3 weeks)</span></div>
+        <div class="job__address">{{jobData.Company_Address}} <span class="travel-time">({{jobData.TravelTime}})</span></div>
+        <div class="date-applied">{{jobData.DateApplied | date: 'MM/dd/yyyy'}} <span class="time-passed">(TimePassed weeks)</span></div>
     </div>
 </header>
 
 <aside class="col-sm-3">
-    <div class="job__rating">8</div>
+    <div class="job__rating">{{jobData.Job_Rating}}</div>
 </aside>
 
 <div class="job__notes col-sm-12">
 
     <div class="notes">
         <h4>Job Description Notes</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias voluptas eum commodi explicabo id unde sed debitis doloremque recusandae soluta esse porro assumenda, eveniet magnam aperiam omnis laudantium laboriosam placeat.</p>
+        <p>{{jobData.JobDescrip_Notes}}</p>
     </div>
 
     <div class="notes">
         <h4>Company Notes</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam labore debitis ipsa quo quidem mollitia quis amet asperiores fugit magnam tenetur, voluptatibus ipsam nesciunt omnis delectus impedit, dignissimos, voluptatem veritatis.</p>
+        <p>{{jobData.Company_Notes}}</p>
     </div>
 
     <input class="btn btn--edit [ pull-right col-sm-2 ]" type="button" value="Edit"
