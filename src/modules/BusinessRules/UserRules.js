@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 10:37:33
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-23 10:50:59
+* @Last Modified time: 2016-02-28 08:25:56
 */
 
 angular.module('BusinessRules')
@@ -51,11 +51,7 @@ angular.module('BusinessRules')
                 loginRequired: true
             };
 
-            sp(postData, function(data)
-                {
-                    console.log(data);
-                    callback(data);
-                });
-        }
+            sp(postData, callback);
+        };
 
     }]);

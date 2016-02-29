@@ -2,11 +2,11 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-26 15:26:24
+* @Last Modified time: 2016-02-29 07:33:01
 */
 
 angular.module('CareerClue.Job', ['Repository'])
-    .directive('job', function()
+    .directive('job', ['Repository', function(Repository)
     {
 
 
@@ -14,6 +14,9 @@ angular.module('CareerClue.Job', ['Repository'])
         return {
             restrict: 'E',
             replace: true,
+            scope: {
+                jobData: '='
+            },
             templateUrl: 'directives/Job/job.html',
             link: function(scope, Element, attrs)
             {
@@ -55,7 +58,13 @@ angular.module('CareerClue.Job', ['Repository'])
 
 
                 };
-                scope.switchMode('job--view');
+
+                // Set Initial mode
+                if(scope.jobData.JobInfo_Id > 0)
+                    scope.switchMode('job--view');
+                else
+                    scope.switchMode('job--edit');
+
 
 
                 scope.toggleExpand = function()
@@ -74,7 +83,17 @@ angular.module('CareerClue.Job', ['Repository'])
 
                 scope.save = function()
                 {
-                    // Call Repo.saveJob();
+                    // Save job to DB
+                    Repository.saveJob(scope.jobData, function(jobId)
+                    {
+                        console.log(jobId);
+                        scope.jobData.JobInfo_Id = jobId;
+                    });
+                };
+
+                scope.cancel = function()
+                {
+                    scope.switchMode('job--view-expand');
                 };
 
 
@@ -83,4 +102,4 @@ angular.module('CareerClue.Job', ['Repository'])
 
             }
         }
-    })
+    }]);

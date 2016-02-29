@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-27 08:54:42
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-27 09:17:39
+* @Last Modified time: 2016-02-27 09:36:42
 */
 
 describe('MultiJob Module', function()
@@ -48,10 +48,21 @@ describe('MultiJob Module', function()
 
 
 
+
+
     xit('should create a new job directive when add button is clicked', function()
     {
 
     });
+
+    xit('should not create a new job directive if one is already open',function()
+    {
+
+    });
+
+
+
+
 
     xit('should filter jobs by Company name', function()
     {

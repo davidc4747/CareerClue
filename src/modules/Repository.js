@@ -2,13 +2,18 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-23 10:41:11
+* @Last Modified time: 2016-02-28 08:34:04
 */
 
 angular.module('Repository', ['BusinessRules', 'Session'])
-    .service('Repository', ['UserRules', 'Session', function(UserRules, Session)
+    .service('Repository', ['UserRules', 'JobRules', 'Session', function(UserRules, JobRules, Session)
     {
-        //UserRules
+
+
+        /*====================================*\
+            #User Rules
+        \*====================================*/
+
         this.signIn = function (user, callback)
         {
             UserRules.signIn(user, function(errors)
@@ -38,11 +43,34 @@ angular.module('Repository', ['BusinessRules', 'Session'])
         this.userInfo = function(callback)
         {
             UserRules.userInfo(callback);
-        }
+        };
 
 
 
-        //Session methods
+
+
+        /*====================================*\
+            #Job Rules
+        \*====================================*/
+
+        this.getUserJobs = function(callback)
+        {
+            JobRules.getUserJobs(callback);
+        };
+
+        this.saveJob = function(job, callback)
+        {
+            JobRules.saveJob(job, callback);
+        };
+
+
+
+
+
+        /*====================================*\
+            #Session Methods
+        \*====================================*/
+
         this.getId = function(callback)
         {
             Session.getId(callback);

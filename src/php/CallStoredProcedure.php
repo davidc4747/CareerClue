@@ -3,7 +3,7 @@
  * @Author: David G Chung
  * @Date:   2015-06-26 09:42:04
  * @Last Modified by:   David
- * @Last Modified time: 2016-02-23 11:06:16
+ * @Last Modified time: 2016-02-29 07:25:48
  */
 
 require_once 'MySqlDataBase.php';
@@ -28,7 +28,7 @@ if($request->loginRequired && !$session->is_logged_in())
 $max = sizeof($request->params);
 for($i = 0; $i < $max; $i++)
 {
-    if($request->params[$i] == "User_Id")
+    if($request->params[$i] === "User_Id")
         $request->params[$i] = $session->user_id;
 }
 

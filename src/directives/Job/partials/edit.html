@@ -1,25 +1,25 @@
-<form class="" ng-submit="" novalidate>
+<form class="" ng-submit="save()" novalidate>
 
 
 
     <section class="form-group clearfix">
 
         <div class="field col-sm-6 clearfix">
-            <label class="lbl lbl--company-name" for="company-name">Company Name</label>
+            <label class="lbl lbl--company-name" for="company-name">Company Name {{jobData.JobInfo_Id}}</label>
             <input id="company-name" class="txt--edit-job txt--company-name" type="text"
-                ng-model="job.name" ng-required="true">
+                ng-model="jobData.CompanyName" ng-required="true">
         </div>
 
         <div class="field col-sm-6 clearfix">
             <label class="lbl lbl--job-title" for="job-title">Job Title</label>
             <input id="job-title" class="txt--edit-job txt--job-title" type="text"
-                ng-model="job.title" ng-required="true">
+                ng-model="jobData.Job_Title" ng-required="true">
         </div>
 
         <div class="field col-sm-12 clearfix">
             <label class="lbl lbl--company-site" for="company-site">Company Website</label>
             <input id="company-site" class="txt--edit-job txt--company-site" type="text"
-                ng-model="job.site">
+                ng-model="jobData.CompanySite">
         </div>
 
     </section>
@@ -31,32 +31,33 @@
         <div class="field col-sm-4 clearfix">
             <label class="lbl lbl--company-address" for="company-address">Company address</label>
             <input id="company-address" class="txt--edit-job txt--company-address" type="text"
-                ng-model="job.address">
+                ng-model="jobData.Company_Address">
         </div>
 
         <div class="field col-sm-4 clearfix">
             <label class="lbl lbl--travel-time" for="travel-time">Travel time</label>
             <input id="travel-time" class="txt--edit-job txt--travel-time" type="number"
-                ng-model="job.travelTime">
+                ng-model="jobData.TravelTime">
         </div>
 
         <div class="field col-sm-4 clearfix">
             <label class="lbl lbl--date-applied" for="date-applied">Date applied</label>
-            <input id="date-applied" class="txt--edit-job txt--date-applied" type="date" value="{{today()}}"
-                ng-model="job.dateApplied">
+            <input id="date-applied" class="txt--edit-job txt--date-applied" type="date"
+                ng-model="jobData.DateApplied">
         </div>
 
 
         <div class="field col-sm-6 clearfix">
             <label class="lbl lbl--job-rating" for="job-rating">Job rating</label>
             <input id="job-rating" class="txt--edit-job txt--job-rating" type="number"
-                ng-model="job.rating">
+                ng-model="jobData.Job_Rating">
         </div>
 
         <div class="field col-sm-6 clearfix">
             <label class="lbl lbl--status" for="status">Job Status</label>
             <select id="status" class="txt--edit-job txt--status" type="text"
-                ng-model="job.status">
+                ng-model="jobData.JobStatus_Name">
+                <!-- ng-repeat this -->
                 <option value="Applied">Applied</option>
                 <option value="Interviewing">Interviewing</option>
                 <option value="Offered">Offered</option>
@@ -73,7 +74,7 @@
             <div class="field clearfix">
                 <label class="lbl lbl--descrip-notes" for="descrip-notes">Job Description Notes</label>
                 <textarea id="descrip-notes" class="txt--edit-job txt--descrip-notes"
-                    ng-model="job.descripNotes"></textarea>
+                    ng-model="jobData.descripNotes"></textarea>
             </div>
         </div>
 
@@ -81,15 +82,15 @@
             <div class="field clearfix">
                 <label class="lbl lbl--company-notes" for="company-notes">Company Notes</label>
                 <textarea id="company-notes" class="txt--edit-job txt--company-notes"
-                    ng-model="job.companyNotes"></textarea>
+                    ng-model="jobData.companyNotes"></textarea>
             </div>
         </div>
 
         <div class="field col-sm-12 clearfix">
             <input class="[ btn btn--cancel ]   [ pull-right col-sm-offset-1 col-sm-2 ]" type="button" value="Cancel"
-                ng-click="switchMode('job--view-expand'); $event.stopPropagation();">
+                ng-click="cancel(); $event.stopPropagation();">
             <input class="[ btn btn--submit btn--save ]   [ pull-right col-sm-2 ]" type="submit" value="Save"
-                ng-click="save(); $event.stopPropagation();">
+                ng-click="$event.stopPropagation();">
         </div>
 
     </section>
