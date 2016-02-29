@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 10:39:36
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-28 08:26:52
+* @Last Modified time: 2016-02-29 08:46:29
 */
 
 angular.module('DBConstants', [])
@@ -19,4 +19,6 @@ angular.module('DBConstants', [])
         // Job Stored Procedures
         SP_JOB_BY_USERID: 'cc_sp_Job_ByUserId',
         SP_JOB_SAVE: 'cc_sp_Job_Save',
+
+        SP_JOB_STATUS: 'cc_sp_Job_Status',
     });

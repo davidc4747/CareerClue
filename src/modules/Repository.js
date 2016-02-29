@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-28 08:34:04
+* @Last Modified time: 2016-02-29 08:49:34
 */
 
 angular.module('Repository', ['BusinessRules', 'Session'])
@@ -52,6 +52,11 @@ angular.module('Repository', ['BusinessRules', 'Session'])
         /*====================================*\
             #Job Rules
         \*====================================*/
+
+        this.getStatusTypes = function(callback)
+        {
+            JobRules.getStatusTypes(callback);
+        };
 
         this.getUserJobs = function(callback)
         {

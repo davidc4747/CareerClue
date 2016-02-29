@@ -2,12 +2,26 @@
 * @Author: David
 * @Date:   2016-02-28 08:07:43
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 08:35:46
+* @Last Modified time: 2016-02-29 09:06:20
 */
 
 angular.module('BusinessRules')
     .service('JobRules', ['CallStoredProcedure', 'DBConstants', function(sp, dbConst)
     {
+
+        this.getStatusTypes = function(callback)
+        {
+            // Setup Stored procedure data
+            var postData =
+            {
+                fName: dbConst.SP_JOB_STATUS,
+                params: [],
+                actionType: 'select',
+                loginRequired: false
+            };
+
+            sp(postData, callback);
+        };
 
 
         this.getUserJobs = function(callback)
@@ -56,7 +70,7 @@ angular.module('BusinessRules')
                     job.Job_Rating || 0,
                     job.JobDescrip_Notes || '',
                     job.Company_Notes || '',
-                    job.JobStatus_Name || 'applied',
+                    job.JobStatus_Id || 1,
                 ],
                 actionType: 'select',
                 loginRequired: true
@@ -65,6 +79,7 @@ angular.module('BusinessRules')
             // Convert to proper types
             sp(postData, function(data)
             {
+
                 var jobId = data[0]["JobId"] || null;
 
                 callback(jobId);

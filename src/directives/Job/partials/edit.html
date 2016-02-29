@@ -56,11 +56,9 @@
         <div class="field col-sm-6 clearfix">
             <label class="lbl lbl--status" for="status">Job Status</label>
             <select id="status" class="txt--edit-job txt--status" type="text"
-                ng-model="jobData.JobStatus_Name">
-                <!-- ng-repeat this -->
-                <option value="Applied">Applied</option>
-                <option value="Interviewing">Interviewing</option>
-                <option value="Offered">Offered</option>
+                ng-model="jobData.JobStatus_Id">
+
+                <option value="{{type.JobStatus_Id}}" ng-repeat="type in statusTypes">{{type.JobStatus_Name}}</option>
             </select>
         </div>
 
