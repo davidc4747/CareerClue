@@ -46,7 +46,7 @@
         }
     }
 
-    .job--edit
+    &--edit
     {}
 
 
@@ -68,6 +68,18 @@
     }
 
 
+
+
+
+    /*-------------------------------------*\
+        #Edit Field spacing
+    \*-------------------------------------*/
+
+    .field
+    {
+        padding-top:    0.6em;
+        padding-bottom: 0.6em;
+    }
 
 
 
@@ -94,8 +106,6 @@
         font-style: italic;
     }
 
-
-
     /*-------------------------------------*\
         #Job Rating
     \*-------------------------------------*/
@@ -115,8 +125,6 @@
         border: 1px solid $white;
     }
 
-
-
     /*-------------------------------------*\
         #Job Notes
     \*-------------------------------------*/
@@ -126,26 +134,10 @@
         overflow: hidden;
         margin-top: 0;
         max-height: 0;
-        @include transition(max-height, 0.7s, ease-in);
-    }
-
-
-
-
-
-    /*-------------------------------------*\
-        #Edit Field spacing
-    \*-------------------------------------*/
-
-    .field
-    {
-        padding-top:    0.6em;
-        padding-bottom: 0.6em;
+        @include transition(max-height, 0.6s, ease-in);
     }
 
 }
-
-
 
 
 
@@ -191,3 +183,29 @@
         {
             height: auto;
         }
+
+
+
+
+
+/*========================================*\
+    #NgInclude Container
+\*========================================*/
+
+.template
+{
+    @include transition(opacity 0.4s ease-in);
+
+
+    &.ng-enter,
+    &.ng-leave.ng-leave-active
+    {
+        opacity: 0.3;
+    }
+
+    &.ng-leave,
+    &.ng-enter.ng-enter-active
+    {
+        opacity: 1;
+    }
+}
