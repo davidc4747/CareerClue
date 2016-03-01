@@ -61,7 +61,9 @@
             <select id="status" class="txt--edit-job txt--status" type="text"
                 ng-model="jobData.JobStatus_Id">
 
-                <option value="{{type.JobStatus_Id}}" ng-repeat="type in statusTypes">{{type.JobStatus_Name}}</option>
+                <option value="{{type.JobStatus_Id}}" ng-selected="(type.JobStatus_Id == jobData.JobStatus_Id)"
+                    ng-repeat="type in statusTypes">{{type.JobStatus_Name}}</option>
+
             </select>
         </div>
 

@@ -36,7 +36,7 @@ module.exports = function(grunt)
 					'src/js/jobTracker.min.js': [
 							'src/js/app.js',
 							'src/views/**/*.ctrl.js',
-							'src/directives/**/*.js'
+							'src/directives/**/*.dirc.js'
 						]
 				}
 			}

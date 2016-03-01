@@ -27,7 +27,6 @@ angular.module('CareerClue.Job', ['Repository'])
                 scope.template = '';
 
                 scope.isExpanded = false;
-                scope.jobData.delete = false;
 
 
 
@@ -44,9 +43,12 @@ angular.module('CareerClue.Job', ['Repository'])
                 scope.$watch('jobData.DateApplied', function()
                 {
                     // init vars
+                    var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+
                     var now = new Date();
                     var applyDate = scope.jobData.DateApplied || now;
-                    var daysAgo = now.getDate() - applyDate.getDate();
+
+                    var daysAgo = Math.round((now.getTime() - applyDate.getTime()) / oneDay);
 
                     if(daysAgo >= 365) // if more than a Year
                     {
@@ -104,8 +106,6 @@ angular.module('CareerClue.Job', ['Repository'])
                             $("html, body").animate({ scrollTop: ele[0].offsetTop + "px" }, "slow", "swing");
                             break;
                     }
-
-
                 };
 
                 scope.toggleExpand = function()
@@ -133,6 +133,9 @@ angular.module('CareerClue.Job', ['Repository'])
 
                 scope.save = function()
                 {
+
+                    console.log(scope.jobData.JobDescrip_Notes);
+
                     // Save job to DB
                     Repository.saveJob(scope.jobData, function(jobId)
                     {

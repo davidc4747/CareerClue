@@ -19,16 +19,29 @@ module.exports = function(config)
             'src/libs/angular.js',
             'src/libs/angular-route.js',
             'src/libs/angular-mocks.js',
+            'src/libs/jquery-1.11.3.min.js',
             'src/libs/d3.js',
 
+            'src/directives/**/*.html',
+
             'src/js/app.js',
-            'src/directives/**/*.js',
             'src/modules/**/*.js',
+            'src/directives/**/*.js',
             'src/views/**/**.js',
 
             // { pattern: 'src/views/**/*.ctrl.js', include: true },
             // { pattern: 'src/views/**/*.spec.js', include: true },
         ],
+
+        preprocessors: {
+            'src/directives/**/*.html': 'ng-html2js'
+        },
+
+        ngHtml2JsPreprocessor: {
+            stripPrefix: 'src/',
+            // prependPrefix: '',
+        },
+
 
         // list of files to exlude
         exclude: [
@@ -39,7 +52,7 @@ module.exports = function(config)
         reporters: ['progress'],
 
         // web server port
-        pot: 9876,
+        port: 9876,
 
         // enable or disable colors in the output (reporters and logs)
         colors: true,

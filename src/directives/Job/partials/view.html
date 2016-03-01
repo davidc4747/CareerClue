@@ -27,12 +27,12 @@
 
     <div class="notes">
         <h4>Job Description Notes</h4>
-        <p><pre>{{jobData.JobDescrip_Notes}}</pre></p>
+        <pre ng-click="$event.stopPropagation()">{{jobData.JobDescrip_Notes}}</pre>
     </div>
 
     <div class="notes">
         <h4>Company Notes</h4>
-        <p><pre>{{jobData.Company_Notes}}</pre></p>
+        <pre ng-click="$event.stopPropagation()">{{jobData.Company_Notes}}</pre>
     </div>
 
     <input class="btn btn--delete [ pull-left col-sm-2 ]" type="button" value="Delete"

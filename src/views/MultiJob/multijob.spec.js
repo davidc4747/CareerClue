@@ -5,7 +5,7 @@
 * @Last Modified time: 2016-02-27 09:36:42
 */
 
-describe('MultiJob Module', function()
+xdescribe('MultiJob Module', function()
 {
     // angular vars
     var $rootScope,
@@ -29,7 +29,7 @@ describe('MultiJob Module', function()
 
         // setup controler
         $scope = $rootScope.$new();
-        $controller('SignInCtrl', { '$scope': $scope, 'Repository': mockRepo});
+        $controller('MultiJobCtrl', { '$scope': $scope, 'Repository': mockRepo});
     });
 
 
