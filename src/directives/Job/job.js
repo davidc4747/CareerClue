@@ -6,7 +6,7 @@
 */
 
 angular.module('CareerClue.Job', ['Repository'])
-    .directive('job', ['Repository', function(Repository)
+    .directive('job', ['Repository', '$window', function(Repository, $window)
     {
 
 
@@ -18,7 +18,7 @@ angular.module('CareerClue.Job', ['Repository'])
                 jobData: '='
             },
             templateUrl: 'directives/Job/job.html',
-            link: function(scope, Element, attrs)
+            link: function(scope, ele, attrs)
             {
 
                 // init vars
@@ -95,11 +95,13 @@ angular.module('CareerClue.Job', ['Repository'])
                             scope.mode = 'job--view-expand';
                             scope.ngClass = ['job--view-expand'];
                             scope.template = 'directives/Job/partials/view.html';
+                            $("html, body").animate({ scrollTop: ele[0].offsetTop + "px" }, "slow", "swing");
                             break;
                         case 'job--edit':
                             scope.mode = 'job--edit';
                             scope.ngClass = ['job--edit'];
                             scope.template = 'directives/Job/partials/edit.html';
+                            $("html, body").animate({ scrollTop: ele[0].offsetTop + "px" }, "slow", "swing");
                             break;
                     }
 
@@ -126,7 +128,7 @@ angular.module('CareerClue.Job', ['Repository'])
 
 
                 /*====================================*\
-                    #Edit Function
+                    #Edit Mode Function
                 \*====================================*/
 
                 scope.save = function()

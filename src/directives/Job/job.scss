@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:38:50
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 15:09:06
+* @Last Modified time: 2016-02-29 15:28:43
 */
 
 /*====================================*\
@@ -15,9 +15,9 @@
     padding: 1.5em 0;
 
     list-style-type: none;
-    border-top: 1px solid darken($white, 10%);
+    border-top: 1px solid darken($white, 15%);
 
-    @include transition(all 0.35s linear);
+    @include transition(opacity 0.35s ease-in);
 
 
 
@@ -58,14 +58,18 @@
     &.ng-enter,
     &.ng-leave.ng-leave-active
     {
-      opacity:0;
+        opacity: 0.3;
     }
 
     &.ng-leave,
     &.ng-enter.ng-enter-active
     {
-      opacity:1;
+        opacity: 1;
     }
+
+
+
+
 
     /*-------------------------------------*\
         #Job Header
@@ -122,7 +126,7 @@
         overflow: hidden;
         margin-top: 0;
         max-height: 0;
-        @include transition(all, 0.7s, ease-in);
+        @include transition(max-height, 0.7s, ease-in);
     }
 
 
