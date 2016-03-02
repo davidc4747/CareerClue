@@ -16,7 +16,7 @@ angular.module('CareerClue.SideBar', ['Repository'])
             { href: '/MultiJob/interviewing', text: 'Interviewing'},
             { href: '/MultiJob/offered', text: 'Offered'},
             { href: '/MultiJob/archived', text: 'Archive'},
-            { href: '/EditJob/-1', text: 'Add Job'},
+            // { href: '/EditJob/-1', text: 'Add Job'},
         ];
 
         return {

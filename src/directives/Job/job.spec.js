@@ -106,7 +106,10 @@ describe('Job Directive', function()
         {
             //setup
             var now = new Date();
-            $scope.job.DateApplied = new Date(now.getFullYear(), now.getMonth(), now.getDate()+7);
+            now.setDate(now.getDate()+7);
+
+            // create
+            $scope.job.DateApplied = now;
             var isoScope = create();
 
             //No days passed
@@ -118,7 +121,9 @@ describe('Job Directive', function()
         {
             //setup
             var now = new Date();
-            $scope.job.DateApplied = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+            // create
+            $scope.job.DateApplied = now;
             var isoScope = create();
 
             //No days passed
@@ -130,7 +135,10 @@ describe('Job Directive', function()
         {
             //setup
             var now = new Date();
-            $scope.job.DateApplied = new Date(now.getFullYear(), now.getMonth(), now.getDate()-3);
+            now.setDate(now.getDate()-3);
+
+            // create
+            $scope.job.DateApplied = now;
             var isoScope = create();
 
             //three days passed
@@ -142,7 +150,10 @@ describe('Job Directive', function()
         {
             //setup
             var now = new Date();
-            $scope.job.DateApplied = new Date(now.getFullYear(), now.getMonth()-3, now.getDate());
+            now.setMonth(now.getMonth()-3);
+
+            // create
+            $scope.job.DateApplied = now;
             var isoScope = create();
 
             //three days passed
@@ -155,7 +166,10 @@ describe('Job Directive', function()
         {
             //setup
             var now = new Date();
-            $scope.job.DateApplied = new Date(now.getFullYear()-3, now.getMonth(), now.getDate());
+            now.setFullYear(now.getFullYear()-3);
+
+            // create
+            $scope.job.DateApplied = now;
             var isoScope = create();
 
             //three days passed
