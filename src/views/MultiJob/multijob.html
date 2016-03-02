@@ -4,7 +4,29 @@
 
     <div class="multi-job__body body col-sm-offset-1 col-sm-7">
 
+
+
+
         <form class="frm frm--search row" ng-submit="">
+
+            <i class="add-job col-xs-1 fa fa-plus fa-2x" ng-click="createJob()"></i>
+
+            <div class="field col-xs-11">
+                <input class="txt txt--search" type="search" ng-model="search">
+                <label class="lbl lbl--search" for="">Search</label>
+            </div>
+
+        </form>
+
+
+
+        <ul class="job-list row">
+            <job job-data="job" ng-repeat="job in jobs | filter: { CompanyName: search, JobStatus_Name: statusFilter }"></job>
+        </ul>
+
+
+
+        <form class="frm frm--search row" ng-submit="" ng-show="jobs.length > 8">
 
             <i class="add-job col-xs-1 fa fa-plus fa-2x" ng-click="createJob()"></i>
 
@@ -16,10 +38,6 @@
         </form>
 
 
-
-        <ul class="job-list row">
-            <job job-data="job" ng-repeat="job in jobs"></job>
-        </ul>
 
 
 

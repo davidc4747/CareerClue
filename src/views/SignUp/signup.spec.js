@@ -49,7 +49,7 @@ describe('SignUp Module', function()
 
 
 
-    xit('should validate that ALL fields are filled in', function()
+    it('should validate that ALL fields are filled in', function()
     {
         //Call $scope.signUp with a blank user
         $scope.user =  { name: '', email: '', password: '', repass: '' };

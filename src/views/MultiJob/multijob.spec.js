@@ -5,15 +5,26 @@
 * @Last Modified time: 2016-02-27 09:36:42
 */
 
-xdescribe('MultiJob Module', function()
+describe('MultiJob Module', function()
 {
     // angular vars
     var $rootScope,
         $scope,
         $controller;
 
-    var mockJob = {},
-        mockRepo = {};
+    // mock Objectss
+    var newJob = { JobInfo_Id: -1, CompanyName:'', JobStatus_Name: 'applied' },
+        mockRepo = {
+            getUserJobs: function(callback)
+            {
+                var jobs = [];
+                for (var i=1; i<=13; i++)
+                {
+                    jobs.push({ JobInfo_Id: i});
+                }
+                callback(jobs);
+            },
+        };
 
 
     beforeEach(function()
@@ -29,50 +40,107 @@ xdescribe('MultiJob Module', function()
 
         // setup controler
         $scope = $rootScope.$new();
-        $controller('MultiJobCtrl', { '$scope': $scope, 'Repository': mockRepo});
+        spyOn($scope, '$on').and.callThrough();
+        $controller('MultiJobCtrl', { '$scope': $scope, 'Repository': mockRepo, '$routeParams': {statusType: 'applied'} });
     });
 
 
-    describe('OnLoad', function()
+
+    /*====================================*\
+        #On Load
+    \*====================================*/
+
+    it('should filter jobs based on $routeParams', function()
     {
-        xit('should get JobData from DB', function()
-        {
-
-        });
-
-        xit('should add a second search bar to bottom if more than X jobs are in the list', function()
-        {
-
-        });
+        expect($scope.statusFilter).not.toBe('');
+        expect($scope.statusFilter).toBeDefined();
     });
 
 
 
-
-
-    xit('should create a new job directive when add button is clicked', function()
+    it('should get JobData from DB', function()
     {
-
+        expect($scope.jobs.length).toBeGreaterThan(0);
     });
 
-    xit('should not create a new job directive if one is already open',function()
+
+
+    // xit('should add a second search bar to bottom if more than X jobs are in the list', function()
+    // {
+    //     // :p idk how to test this, or if i should
+    //     var x = 8;
+    //     // expect($scope.jobs.length).toBeGreaterThan(x);
+    //     // expect($scope.bottomSearch).toBe(true);
+    // });
+
+
+
+
+
+    /*====================================*\
+        #Create Job
+    \*====================================*/
+
+    it('should create a new job directive when add button is clicked', function()
     {
+        // Count jobs
+        var jobCount = $scope.jobs.length;
 
+        // add job
+        $scope.createJob();
+
+        //  Count again
+        expect($scope.jobs.length).toBe(jobCount+1);
     });
 
-
-
-
-
-    xit('should filter jobs by Company name', function()
+    it('should not create a new job directive if one is already open',function()
     {
+        // Count jobs
+        var jobCount = $scope.jobs.length;
+
+        // add job
+        $scope.createJob();
+        $scope.createJob();
+        $scope.createJob();
+        $scope.createJob();
+
+        //  Count again
+        expect($scope.jobs.length).toBe(jobCount+1);
 
     });
 
-    xit('should pass JobData to job directive', function()
+    it('should create a new job with specific default properties so it can be displayed', function()
     {
+        // add job
+        $scope.createJob();
+        var newJob = $scope.jobs[0];
 
+        // Check properties exit
+        expect(newJob.JobInfo_Id).toBe(-1);
+        expect(newJob.CompanyName).toBe('');
+        expect(newJob.JobStatus_Name).not.toBe('');
     });
 
 
+    /*====================================*\
+        #Remove Job
+    \*====================================*/
+
+    it('should remove job directive that trigger event', function()
+    {
+        var subScope = $scope.$new();
+        subScope.$emit('removeJob', { Id: 2 });
+
+        expect($scope.$on).toHaveBeenCalled();
+        expect($scope.jobs).not.toContain({ JobInfo_Id: 2});
+    });
+
+
+    /*====================================*\
+        #Drag Drop
+    \*====================================*/
+
+    it('should change jobStatus when dropped', function()
+    {
+    });
 });
