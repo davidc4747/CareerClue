@@ -65,6 +65,12 @@ describe('MultiJob Module', function()
 
 
 
+    xit('should display all jobs when all tab is selected', function()
+    {
+    });
+
+
+
     // xit('should add a second search bar to bottom if more than X jobs are in the list', function()
     // {
     //     // :p idk how to test this, or if i should

@@ -74,6 +74,12 @@ angular.module('Repository', ['BusinessRules', 'Session'])
         };
 
 
+        this.getjobStatusCount = function(callback)
+        {
+            JobRules.getjobStatusCount(callback);
+        };
+
+
 
 
 

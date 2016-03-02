@@ -22,4 +22,6 @@ angular.module('DBConstants', [])
         SP_JOB_DELETE: 'cc_sp_Job_Delete',
 
         SP_JOB_STATUS: 'cc_sp_Job_Status',
+
+        SP_JOB_STATUS_COUNT: 'cc_sp_JobStatus_Count',
     });

@@ -102,4 +102,22 @@ angular.module('BusinessRules')
 
 
 
+        this.getjobStatusCount = function(callback)
+        {
+            // Setup Stored procedure data
+            var postData =
+            {
+                fName: dbConst.SP_JOB_STATUS_COUNT,
+                params: [
+                    "User_Id"
+                ],
+                actionType: 'select',
+                loginRequired: true
+            };
+
+            sp(postData, callback);
+        };
+
+
+
     }]);

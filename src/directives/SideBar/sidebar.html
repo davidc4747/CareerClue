@@ -8,7 +8,8 @@
     </div>
 
     <nav class="sidebar__nav">
-        <a class="sidebar-link" ng-class="{ 'sidebar-link--selected': path == item.href }" ng-repeat="item in navItems" href="#{{item.href}}">{{ item.text }}</a>
+        <a class="sidebar-link" ng-class="{ 'sidebar-link--selected': path == item.href }"
+            ng-repeat="item in navItems | orderBy: 'Id'" href="#{{item.href}}">{{ item.text}} <span ng-show="item.count">({{ item.count }})</span></a>
     </nav>
 
 </aside>
