@@ -9,16 +9,20 @@ describe('Job Directive', function()
 {
     // angular vars
     var $scope,
-        element;
+        $compile;
 
     // mock vars
     var mockStatusTypes = [{ Id:-11, Name: 'mock type'}];
-    var mockJob = { JobInfoId: -1 };
     var mockRepo = {
         getStatusTypes: function(callback)
         {
             callback(mockStatusTypes);
         },
+        saveJob: function(data, callback)
+        {
+            callback(22);
+        },
+        deleteJob: function(data){},
     }
 
 
@@ -39,102 +43,213 @@ describe('Job Directive', function()
     }));
 
     // Compile the directive using a mock scope
-    beforeEach(inject(function($rootScope, $compile)
+    beforeEach(inject(function($rootScope, _$compile_)
     {
         $scope = $rootScope.$new();
-        $scope.job = mockJob;
+        $compile = _$compile_;
 
-        element = angular.element('<job job-data="job"></job>');
-
-        $compile(element)($scope);
-        $scope.$digest();
-
+        $scope.job = { JobInfo_Id: 22 };
     }));
 
 
 
+    var create = function()
+    {
+        var element, compiledElem;
+
+        element = angular.element('<job job-data="job"></job>');
+        compiledElem = $compile(element)($scope);
+
+        $scope.$digest();
+
+        return compiledElem.isolateScope();
+    };
+
+
+
     /*====================================*\
-        #Start Testss
+        #OnLoad
     \*====================================*/
 
     describe('OnLoad', function()
     {
         it('should get StatusTypes', function()
         {
-            // console.log(element);
-            expect(element.isolateScope().statusTypes).toBe(mockStatusTypes);
+            var isoScope = create();
+            expect(isoScope.statusTypes).toBe(mockStatusTypes);
         });
 
-        xit('should set default mode to job--edit for objects with an id of -1', function()
+        it('should set default mode to job--edit for objects with an id of -1', function()
         {
-
+            $scope.job = { JobInfo_Id: -1 };
+            var isoScope = create();
+            expect(isoScope.mode).toBe('job--edit');
         });
 
-        xit('should set default mode to job--view for objects with an id greater than -1', function()
+        it('should set default mode to job--view for objects with an id greater than -1', function()
         {
-
+            var isoScope = create();
+            expect(isoScope.mode).toBe('job--view');
         });
     });
 
 
 
-    xdescribe('TimePassed', function()
+    /*====================================*\
+        #Time Passed
+    \*====================================*/
+
+    describe('TimePassed', function()
     {
+
+        it('should display future dates as today', function()
+        {
+            //setup
+            var now = new Date();
+            $scope.job.DateApplied = new Date(now.getFullYear(), now.getMonth(), now.getDate()+7);
+            var isoScope = create();
+
+            //No days passed
+            expect(isoScope.jobData.TimePassed).toBe('Today');
+            expect(isoScope.jobData.TimePassedLabel).toBe('');
+        });
+
+        it('should display Today', function()
+        {
+            //setup
+            var now = new Date();
+            $scope.job.DateApplied = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            var isoScope = create();
+
+            //No days passed
+            expect(isoScope.jobData.TimePassed).toBe('Today');
+            expect(isoScope.jobData.TimePassedLabel).toBe('');
+        });
+
         it('should display DAYS passed', function()
         {
+            //setup
+            var now = new Date();
+            $scope.job.DateApplied = new Date(now.getFullYear(), now.getMonth(), now.getDate()-3);
+            var isoScope = create();
+
             //three days passed
+            expect(isoScope.jobData.TimePassed).toBe(3);
+            expect(isoScope.jobData.TimePassedLabel.toLowerCase()).toMatch('days');
         });
 
         it('should display MONTHS passed', function()
         {
+            //setup
+            var now = new Date();
+            $scope.job.DateApplied = new Date(now.getFullYear(), now.getMonth()-3, now.getDate());
+            var isoScope = create();
+
+            //three days passed
+            expect(isoScope.jobData.TimePassed).toBe(3);
+            expect(isoScope.jobData.TimePassedLabel.toLowerCase()).toMatch('months');
 
         });
 
         it('should display YEARS passed', function()
         {
+            //setup
+            var now = new Date();
+            $scope.job.DateApplied = new Date(now.getFullYear()-3, now.getMonth(), now.getDate());
+            var isoScope = create();
+
+            //three days passed
+            expect(isoScope.jobData.TimePassed).toBe(3);
+            expect(isoScope.jobData.TimePassedLabel.toLowerCase()).toMatch('years');
 
         });
 
     });
 
 
+    /*====================================*\
+        #Switching modes
+    \*====================================*/
 
-    xdescribe('Switch Modes', function()
+    describe('Switch Modes', function()
     {
         it('should siwtch to job--view', function()
         {
-            //three days passed
+            var isoScope = create();
+            isoScope.switchMode('job--view')
 
-            // Test the scrolling effect??
+            expect(isoScope.mode).toBe('job--view');
+            expect(isoScope.ngClass).toContain('job--view');
+            expect(isoScope.template).toBe('directives/Job/partials/view.html');
         });
 
         it('should siwtch to job--view-expand', function()
         {
+            var isoScope = create();
+            isoScope.switchMode('job--view-expand')
 
+            expect(isoScope.mode).toBe('job--view-expand');
+            expect(isoScope.ngClass).toContain('job--view-expand');
+            expect(isoScope.template).toBe('directives/Job/partials/view.html');
         });
 
         it('should siwtch to job--view-edit', function()
         {
+            var isoScope = create();
+            isoScope.switchMode('job--edit')
 
+            expect(isoScope.mode).toBe('job--edit');
+            expect(isoScope.ngClass).toContain('job--edit');
+            expect(isoScope.template).toBe('directives/Job/partials/edit.html');
         });
 
     });
 
 
+    /*====================================*\
+        #DataBase events
+    \*====================================*/
 
-    xdescribe('DataBase events', function()
+    describe('DataBase events', function()
     {
-        it('should call save', function()
+        it('should get newId from DB and switch mode on Save', function()
         {
+            var isoScope = create();
+            isoScope.save();
 
+            expect(isoScope.jobData.JobInfo_Id).toBe(22);// from mockRepo
+            expect(isoScope.mode).toBe('job--view-expand');
         });
-        it('should call cancel', function()
+
+        it('should delete or switch mode on Cancel', function()
         {
+            // Should delete
+            $scope.job = { JobInfo_Id: -1};
+            var isoScope = create();
 
+            spyOn(isoScope, '$emit');
+            isoScope.cancel();
+            expect(isoScope.$emit).toHaveBeenCalled();
+
+
+            // Should switch
+            $scope.job = { JobInfo_Id: 22};
+            var isoScope = create();
+
+            spyOn(isoScope, 'switchMode');
+            isoScope.cancel();
+            expect(isoScope.switchMode).toHaveBeenCalled();
         });
+
         it('should call delete', function()
         {
+            var isoScope = create();
 
+            spyOn(isoScope, '$emit');
+            spyOn(window, 'confirm').and.callFake(function() { return true; });
+            isoScope.delete();
+
+            expect(isoScope.$emit).toHaveBeenCalled();
         });
     });
 

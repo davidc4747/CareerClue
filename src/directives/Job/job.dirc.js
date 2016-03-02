@@ -26,8 +26,6 @@ angular.module('CareerClue.Job', ['Repository'])
                 scope.ngClass = [];
                 scope.template = '';
 
-                scope.isExpanded = false;
-
 
 
                 // Get the Status types from DB
@@ -133,9 +131,6 @@ angular.module('CareerClue.Job', ['Repository'])
 
                 scope.save = function()
                 {
-
-                    console.log(scope.jobData.JobDescrip_Notes);
-
                     // Save job to DB
                     Repository.saveJob(scope.jobData, function(jobId)
                     {
