@@ -12,6 +12,7 @@ describe('SideBar Directive', function()
         $compile;
 
     // mock vars
+    var mockRoute = {};
     var mockRepo = {
         getjobStatusCount: function(callback)
         {
@@ -41,6 +42,7 @@ describe('SideBar Directive', function()
         module(function($provide)
         {
             $provide.value('Repository', mockRepo);
+            $provide.value('$routeParams', mockRoute);
         })
 
         // inject angular vars
@@ -87,8 +89,6 @@ describe('SideBar Directive', function()
         expect(navItems.length).toBeGreaterThan(0);
     });
 
-
-
     it('should display a counter for the num of job in each statusType', function()
     {
         // init
@@ -108,6 +108,16 @@ describe('SideBar Directive', function()
 
     it('should expand and collapse a list of company names in its statusType', function()
     {
+        // init
+        var isoScope = create();
+        var navItems = isoScope.navItems;
+
+        expect(navItems.length).toBeGreaterThan(0);
+        for (var i = 0; i < navItems.length; i++)// skils the first navItem
+        {
+            if(navItems[i].Id > 0)
+                expect(navItems[i].companyNames).toBeDefined();
+        }
 
     });
 

@@ -8,8 +8,28 @@
     </div>
 
     <nav class="sidebar__nav">
-        <a class="sidebar-link" ng-class="{ 'sidebar-link--selected': path == item.href }"
-            ng-repeat="item in navItems | orderBy: 'Id'" href="#{{item.href}}">{{ item.text}} <span ng-show="item.count">({{ item.count }})</span></a>
+
+
+        <div class="nav-group"
+            ng-repeat="item in navItems | orderBy: 'Id'" ng-init="item.isExpanded = item.selected"
+            ng-class="{ 'nav-group--selected': item.selected, 'nav-group--expanded': item.isExpanded }">
+
+            <a class="main-link" href="#{{item.href}}">
+                <span>{{ item.text }}</span>
+                <span ng-show="item.count">({{ item.count }})</span>
+                <i class="fa"
+                    ng-show="item.isExpanded != null"
+                    ng-class="{ 'fa-caret-down': !item.isExpanded, 'fa-angle-up': item.isExpanded }"
+                    ng-click="toggleExpand(item); $event.preventDefault();"></i>
+            </a>
+
+            <nav class="subnav" ng-show="item.isExpanded">
+                <a class="sub-link"  href="#{{ item.href + name }}" ng-repeat="name in item.companyNames">{{name.substring(1)}}</a>
+            </nav>
+
+        </div>
+
+
     </nav>
 
 </aside>

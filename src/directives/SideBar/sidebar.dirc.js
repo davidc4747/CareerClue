@@ -6,7 +6,7 @@
 */
 
 angular.module('CareerClue.SideBar', ['Repository'])
-    .directive('sideBar', [ 'Repository', '$location', function(Repository, $location)
+    .directive('sideBar', [ 'Repository', '$routeParams', function(Repository, $routeParams)
     {
 
         return {
@@ -18,7 +18,6 @@ angular.module('CareerClue.SideBar', ['Repository'])
             {
                 // init vars
                 scope.date = new Date();
-                scope.path = $location.path();
                 scope.navItems = [
                     { Id: -2, href: '/Dash', text: 'Dashboard'},
                     { Id: -1, href: '/MultiJob/all', text: 'View All'},
@@ -33,9 +32,14 @@ angular.module('CareerClue.SideBar', ['Repository'])
                     {
                         scope.navItems.push({
                             Id: types[i].JobStatus_Id,
+                            isExpanded: false,
+                            selected: types[i].JobStatus_Name == $routeParams.statusType,
+
                             href: '/MultiJob/' + types[i].JobStatus_Name,
                             text: types[i].JobStatus_Name,
-                            count: types[i].JobStatus_Count
+
+                            count: types[i].JobStatus_Count,
+                            companyNames: ['/sd','/sds', '/asd'],
                         });
                     }
                 });
@@ -48,6 +52,12 @@ angular.module('CareerClue.SideBar', ['Repository'])
                     if(data.length > 0)
                         scope.userInfo = data[0];
                 });
+
+
+                scope.toggleExpand = function(navItem)
+                {
+                    navItem.isExpanded = !navItem.isExpanded;
+                };
             },
         };
     }]);
