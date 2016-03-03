@@ -6,7 +6,7 @@
 */
 
 angular.module('CareerClue.Job', ['Repository'])
-    .directive('job', ['Repository', function(Repository)
+    .directive('job', ['Repository', '$routeParams', function(Repository, $routeParams)
     {
 
 
@@ -22,7 +22,7 @@ angular.module('CareerClue.Job', ['Repository'])
             {
 
                 // init vars
-                scope.mode = 'job--view';
+                scope.mode = '';
                 scope.ngClass = [];
                 scope.template = '';
 
@@ -172,7 +172,10 @@ angular.module('CareerClue.Job', ['Repository'])
 
                 /******** Set Initial mode **********/
                 if(scope.jobData.JobInfo_Id > 0)
-                    scope.switchMode('job--view');
+                    if($routeParams.companyName)
+                        scope.switchMode('job--view-expand');
+                    else
+                        scope.switchMode('job--view');
                 else
                     scope.switchMode('job--edit');
 

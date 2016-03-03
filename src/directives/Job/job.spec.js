@@ -12,6 +12,7 @@ describe('Job Directive', function()
         $compile;
 
     // mock vars
+    var mockRoute = {};
     var mockStatusTypes = [{ Id:-11, Name: 'mock type'}];
     var mockRepo = {
         getStatusTypes: function(callback)
@@ -40,6 +41,7 @@ describe('Job Directive', function()
     beforeEach(module(function($provide)
     {
         $provide.value('Repository', mockRepo);
+        $provide.value('$routeParams', mockRoute);
     }));
 
     // Compile the directive using a mock scope

@@ -41,6 +41,7 @@
 
         .job__notes
         {
+            visibility: visible;
             margin-top: 2em;
             max-height: 100vh;
         }
@@ -131,6 +132,7 @@
 
     &__notes
     {
+        visibility: hidden;
         overflow: hidden;
         margin-top: 0;
         max-height: 0;
