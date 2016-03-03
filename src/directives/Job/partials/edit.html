@@ -1,4 +1,5 @@
-<form name="editForm" ng-submit="save(); $event.stopPropagation();" novalidate>
+
+    <form name="editForm" ng-submit="save(); $event.stopPropagation();" novalidate>
 
 
 
@@ -89,6 +90,7 @@
             <div class="field clearfix">
                 <label class="lbl lbl--descrip-notes" for="descrip-notes">Job Description Notes</label>
                 <textarea id="descrip-notes" class="txt--edit-job txt--descrip-notes"
+                    ng-click="snap('#descrip-notes')"
                     ng-model="jobData.JobDescrip_Notes" ng-max-length="1024"></textarea>
             </div>
         </div>
@@ -97,6 +99,7 @@
             <div class="field clearfix">
                 <label class="lbl lbl--company-notes" for="company-notes">Company Notes</label>
                 <textarea id="company-notes" class="txt--edit-job txt--company-notes"
+                    ng-click="snap('#company-notes')"
                     ng-model="jobData.Company_Notes" ng-max-length="1024"></textarea>
             </div>
         </div>

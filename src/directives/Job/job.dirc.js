@@ -6,11 +6,21 @@
 */
 
 angular.module('CareerClue.Job', ['Repository'])
+    .directive('snap', ['', function()
+    {
+        // Runs during compile
+        return {
+            restrict: 'A',
+            template: '',
+            link: function(scope, element, attrs)
+            {
+                console.log('running');
+                // element.height(element.scrollTop);
+            }
+        };
+    }])
     .directive('job', ['Repository', '$routeParams', function(Repository, $routeParams)
     {
-
-
-
         return {
             restrict: 'E',
             replace: true,
@@ -123,6 +133,11 @@ angular.module('CareerClue.Job', ['Repository'])
                     return nums;
                 };
 
+                scope.snap = function(id)
+                {
+                    $(id).height($(id)[0].scrollHeight);
+                };
+
 
 
                 /*====================================*\
@@ -173,7 +188,7 @@ angular.module('CareerClue.Job', ['Repository'])
                 /******** Set Initial mode **********/
                 if(scope.jobData.JobInfo_Id > 0)
                     if($routeParams.companyName)
-                        scope.switchMode('job--view-expand');
+                        scope.switchMode('job--edit');
                     else
                         scope.switchMode('job--view');
                 else
