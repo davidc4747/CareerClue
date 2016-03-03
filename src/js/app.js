@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 15:15:34
+* @Last Modified time: 2016-03-03 13:49:18
 */
 
 
@@ -17,7 +17,6 @@ angular.module('CareerClue', ['ngRoute',
                                 'CareerClue.SignUp',
 
                                 'CareerClue.MultiJob',
-                                'CareerClue.EditJob',
                             ]);
 
 angular.module('CareerClue')

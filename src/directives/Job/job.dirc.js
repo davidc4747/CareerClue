@@ -188,7 +188,7 @@ angular.module('CareerClue.Job', ['Repository'])
                 /******** Set Initial mode **********/
                 if(scope.jobData.JobInfo_Id > 0)
                     if($routeParams.companyName)
-                        scope.switchMode('job--edit');
+                        scope.switchMode('job--view-expand');
                     else
                         scope.switchMode('job--view');
                 else

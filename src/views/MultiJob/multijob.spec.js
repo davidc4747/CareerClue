@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-27 08:54:42
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-27 09:36:42
+* @Last Modified time: 2016-03-03 13:51:53
 */
 
 describe('MultiJob Module', function()
@@ -62,22 +62,6 @@ describe('MultiJob Module', function()
     {
         expect($scope.jobs.length).toBeGreaterThan(0);
     });
-
-
-
-    xit('should display all jobs when all tab is selected', function()
-    {
-    });
-
-
-
-    // xit('should add a second search bar to bottom if more than X jobs are in the list', function()
-    // {
-    //     // :p idk how to test this, or if i should
-    //     var x = 8;
-    //     // expect($scope.jobs.length).toBeGreaterThan(x);
-    //     // expect($scope.bottomSearch).toBe(true);
-    // });
 
 
 

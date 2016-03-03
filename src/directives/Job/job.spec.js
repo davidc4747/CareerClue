@@ -2,10 +2,10 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:09
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-28 07:41:55
+* @Last Modified time: 2016-03-03 13:51:09
 */
 
-xdescribe('Job Directive', function()
+describe('Job Directive', function()
 {
     // angular vars
     var $scope,

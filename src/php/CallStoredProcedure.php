@@ -3,7 +3,7 @@
  * @Author: David G Chung
  * @Date:   2015-06-26 09:42:04
  * @Last Modified by:   David
- * @Last Modified time: 2016-02-29 07:25:48
+ * @Last Modified time: 2016-03-03 14:04:52
  */
 
 require_once 'MySqlDataBase.php';
@@ -19,6 +19,10 @@ require_once 'Session.php';
 //get post data from site
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
+
+//default values
+$request->loginRequired = (!isset($request->loginRequired) || is_null($request->loginRequired)) ? true : $request->loginRequired;
+$request->actionType = (!isset($request->actionType) || is_null($request->actionType)) ? 'update' : $request->actionType;
 
 //Send Error if the user needs to login
 if($request->loginRequired && !$session->is_logged_in())

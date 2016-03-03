@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-24 14:02:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-02 12:27:34
+* @Last Modified time: 2016-03-03 13:48:02
 */
 
 module.exports = function(grunt)
@@ -33,7 +33,7 @@ module.exports = function(grunt)
 					'src/js/Repository.min.js': ['src/modules/Repository.js'],
 
 					//Minify contrlers and app.js into 1 file
-					'src/js/jobTracker.min.js': [
+					'src/js/CareerClue.min.js': [
 							'src/js/app.js',
 							'src/views/**/*.ctrl.js',
 							'src/directives/**/*.dirc.js'
