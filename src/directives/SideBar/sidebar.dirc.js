@@ -18,10 +18,19 @@ angular.module('CareerClue.SideBar', ['Repository'])
             {
                 // init vars
                 scope.date = new Date();
+                scope.jobs = [];
                 scope.navItems = [
                     { Id: -2, href: '/Dash', text: 'Dashboard'},
-                    { Id: -1, href: '/MultiJob/all', text: 'View All'},
+                    { Id: -1, href: '/MultiJob', text: 'View All'},
                 ];
+
+
+
+                // Get all of the user's jobs from DB
+                Repository.getUserJobs(function(jobs)
+                {
+                    scope.jobs = jobs;
+                });
 
 
 
@@ -32,14 +41,15 @@ angular.module('CareerClue.SideBar', ['Repository'])
                     {
                         scope.navItems.push({
                             Id: types[i].JobStatus_Id,
+
                             isExpanded: false,
                             selected: types[i].JobStatus_Name == $routeParams.statusType,
+                            statusFilter: types[i].JobStatus_Name,
 
                             href: '/MultiJob/' + types[i].JobStatus_Name,
                             text: types[i].JobStatus_Name,
 
                             count: types[i].JobStatus_Count,
-                            companyNames: ['/sd','/sds', '/asd'],
                         });
                     }
                 });

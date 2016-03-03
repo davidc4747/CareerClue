@@ -6,7 +6,7 @@
 */
 
 angular.module('CareerClue.Job', ['Repository'])
-    .directive('job', ['Repository', '$window', function(Repository, $window)
+    .directive('job', ['Repository', function(Repository)
     {
 
 

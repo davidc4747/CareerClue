@@ -41,7 +41,7 @@ angular.module('CareerClue')
             #Job Views
         \*====================================*/
 
-        .when('/MultiJob/:statusType/:companyName?',
+        .when('/MultiJob/:statusType?/:companyName?',
         {
             templateUrl: 'views/MultiJob/multijob.html',
             controller: 'MultiJobCtrl'

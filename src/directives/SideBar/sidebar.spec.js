@@ -28,6 +28,10 @@ describe('SideBar Directive', function()
         {
             cb([{Username: 'test user'}]);
         },
+        getUserJobs: function(cb)
+        {
+            cb([{},{},{}]);
+        },
     }
 
 
@@ -96,7 +100,7 @@ describe('SideBar Directive', function()
         var navItems = isoScope.navItems;
 
         expect(navItems.length).toBeGreaterThan(0);
-        for (var i = 0; i < navItems.length; i++)// skils the first navItem
+        for (var i = 0; i < navItems.length; i++)
         {
             if(navItems[i].Id > 0)
                 expect(navItems[i].count).toBeDefined();
@@ -106,17 +110,17 @@ describe('SideBar Directive', function()
 
 
 
-    it('should expand and collapse a list of company names in its statusType', function()
+    it('should display list of company names in its statusType', function()
     {
         // init
         var isoScope = create();
         var navItems = isoScope.navItems;
 
-        expect(navItems.length).toBeGreaterThan(0);
-        for (var i = 0; i < navItems.length; i++)// skils the first navItem
+        expect(isoScope.jobs.length).toBeGreaterThan(0);
+        for (var i = 0; i < navItems.length; i++)
         {
             if(navItems[i].Id > 0)
-                expect(navItems[i].companyNames).toBeDefined();
+                expect(navItems[i].statusFilter).toBeDefined();
         }
 
     });

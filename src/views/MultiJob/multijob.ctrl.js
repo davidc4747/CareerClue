@@ -10,6 +10,7 @@ angular.module('CareerClue.MultiJob', ['Repository'])
     {
         // Ask DB for jobs based on status
         $scope.statusFilter = $routeParams.statusType;
+        $scope.search = $routeParams.companyName;
         $scope.jobs = [];
 
 
