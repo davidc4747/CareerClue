@@ -2,23 +2,10 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 14:47:39
+* @Last Modified time: 2016-03-03 15:42:17
 */
 
 angular.module('CareerClue.Job', ['Repository'])
-    .directive('snap', ['', function()
-    {
-        // Runs during compile
-        return {
-            restrict: 'A',
-            template: '',
-            link: function(scope, element, attrs)
-            {
-                console.log('running');
-                // element.height(element.scrollTop);
-            }
-        };
-    }])
     .directive('job', ['Repository', '$routeParams', function(Repository, $routeParams)
     {
         return {
@@ -87,9 +74,9 @@ angular.module('CareerClue.Job', ['Repository'])
 
 
 
-                /*====================================*\
-                    #Functions
-                \*====================================*/
+                /*==================================================*\
+                    #Handles the Directive's current state
+                \*==================================================*/
 
                 scope.switchMode = function(className)
                 {
@@ -116,6 +103,14 @@ angular.module('CareerClue.Job', ['Repository'])
                     }
                 };
 
+
+
+
+
+                /*-----------------------------------*\
+                    #Utilities
+                \*-----------------------------------*/
+
                 scope.toggleExpand = function()
                 {
                     if(scope.mode == 'job--edit')
@@ -128,7 +123,7 @@ angular.module('CareerClue.Job', ['Repository'])
                 {
                     var nums = [];
                     for (var i = 0; i < num; i++)
-                        nums.push(num);
+                        nums.push(i);
 
                     return nums;
                 };
@@ -137,6 +132,31 @@ angular.module('CareerClue.Job', ['Repository'])
                 {
                     $(id).height($(id)[0].scrollHeight);
                 };
+
+
+
+                /*-----------------------------------*\
+                    #Quick Edit Job Rating
+                \*-----------------------------------*/
+
+                scope.editRating = 0;
+                scope.starhover = function(index)
+                {
+                    scope.editRating = index+1;
+                };
+
+                scope.resetStars = function()
+                {
+                    scope.editRating = 0;
+                };
+
+                scope.saveStars = function(rating)
+                {
+                    scope.jobData.Job_Rating = rating;
+                    scope.save();
+                };
+
+
 
 
 

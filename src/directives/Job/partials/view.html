@@ -17,9 +17,13 @@
 </header>
 
 <aside class="col-sm-3">
-    <div class="job__rating {{ratingClass}}">
-        <i class="fa fa-star" ng-repeat="num in numArray(jobData.Job_Rating) track by $index"></i>
-        <i class="fa fa-star-o" ng-repeat="num in numArray(10 - jobData.Job_Rating) track by $index"></i>
+    <div class="job__rating {{ratingClass}}" ng-mouseleave="resetStars()" ng-click="$event.stopPropagation()">
+        <i class="fa"
+            ng-mouseenter="starhover($index)"
+            ng-click="saveStars($index+1)"
+            ng-class="[ (editRating) ? ($index < editRating ? 'fa-star' : 'fa-star-o') : ($index <= jobData.Job_Rating-1 ? 'fa-star' : 'fa-star-o'),
+                        { '': $index < editRating }]"
+            ng-repeat="num in numArray(5) track by $index"></i>
     </div>
 </aside>
 
