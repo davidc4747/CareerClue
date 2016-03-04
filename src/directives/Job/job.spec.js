@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:09
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-03 13:51:09
+* @Last Modified time: 2016-03-03 16:04:21
 */
 
 describe('Job Directive', function()
@@ -229,13 +229,13 @@ describe('Job Directive', function()
 
     describe('DataBase events', function()
     {
-        it('should get newId from DB and switch mode on Save', function()
+        it('should get newId from DB on Save', function()
         {
             var isoScope = create();
             isoScope.save();
 
             expect(isoScope.jobData.JobInfo_Id).toBe(22);// from mockRepo
-            expect(isoScope.mode).toBe('job--view-expand');
+            // expect(isoScope.mode).toBe('job--view-expand');
         });
 
         it('should delete or switch mode on Cancel', function()

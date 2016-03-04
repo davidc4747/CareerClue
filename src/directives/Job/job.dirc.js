@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-03 15:42:17
+* @Last Modified time: 2016-03-03 16:03:52
 */
 
 angular.module('CareerClue.Job', ['Repository'])
@@ -153,6 +153,7 @@ angular.module('CareerClue.Job', ['Repository'])
                 scope.saveStars = function(rating)
                 {
                     scope.jobData.Job_Rating = rating;
+                    console.log(scope.jobData);
                     scope.save();
                 };
 
@@ -172,6 +173,8 @@ angular.module('CareerClue.Job', ['Repository'])
                         if(jobId != null)
                         {
                             scope.jobData.JobInfo_Id = jobId;
+                            if(scope.mode == 'job--view')
+                                return;
                             scope.switchMode('job--view-expand');
                         }
                     });

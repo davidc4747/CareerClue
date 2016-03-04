@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-03-01 09:07:48
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-01 09:07:48
+* @Last Modified time: 2016-03-04 10:12:16
 */
 
 describe('SideBar Directive', function()
@@ -120,7 +120,7 @@ describe('SideBar Directive', function()
         for (var i = 0; i < navItems.length; i++)
         {
             if(navItems[i].Id > 0)
-                expect(navItems[i].statusFilter).toBeDefined();
+                expect(navItems[i].statusName).toBeDefined();
         }
 
     });

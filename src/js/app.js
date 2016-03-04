@@ -2,13 +2,14 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-03 13:49:18
+* @Last Modified time: 2016-03-04 08:11:20
 */
 
 
 angular.module('CareerClue', ['ngRoute',
                                 'ngAnimate',
 
+                                'CareerClue.DragDrop',
                                 'CareerClue.SideBar',
                                 'CareerClue.Job',
 

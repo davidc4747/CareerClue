@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-28 08:07:43
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-29 12:55:04
+* @Last Modified time: 2016-03-04 10:51:24
 */
 
 angular.module('BusinessRules')
@@ -44,7 +44,8 @@ angular.module('BusinessRules')
                     jobs[i].DateApplied = new Date(jobs[i].DateApplied);
                 }
 
-                callback(jobs);
+                if(callback)
+                    callback(jobs);
             });
         };
 
@@ -80,7 +81,8 @@ angular.module('BusinessRules')
 
                 var jobId = data[0]["JobId"] || null;
 
-                callback(jobId);
+                if(callback)
+                    callback(jobId);
             });
         };
 

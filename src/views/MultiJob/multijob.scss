@@ -23,13 +23,11 @@
     position: relative;
 
     vertical-align: bottom;
+}
 
 
-    .field:after
+    .field .fa
     {
-        font-family: "fontAwesome";
-        content: "\f002";
-
         opacity: 0.7;
 
         position: absolute;
@@ -37,8 +35,13 @@
         top: 50%;
 
         @include translate(0, -50%);
+
+
+        &-times
+        {
+            cursor: pointer;
+        }
     }
-}
 
     /*-----------------------------------*\
         #Add button
