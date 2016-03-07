@@ -5,8 +5,30 @@
     #MultiJob
 \*====================================*/
 
-.multi-job
-{}
+.multi-job__body
+{
+    margin-top: 1.2em;
+}
+
+
+
+
+
+/*====================================*\
+    #Controls
+\*====================================*/
+
+.controls
+{
+    margin-top: 4em;
+    opacity: 0.8;
+    color: $secondary;
+}
+
+    .control
+    {
+        cursor: pointer;
+    }
 
 
 

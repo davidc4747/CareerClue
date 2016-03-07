@@ -2,11 +2,12 @@
 * @Author: David
 * @Date:   2016-02-04 09:03:26
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-04 13:17:26
+* @Last Modified time: 2016-03-07 07:19:06
 */
 
 angular.module('CareerClue.MultiJob', ['Repository'])
-    .directive('search', [ function(){
+    .directive('search', [ '$routeParams', function($routeParams)
+    {
         // Runs during compile
         return {
             restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
@@ -16,11 +17,19 @@ angular.module('CareerClue.MultiJob', ['Repository'])
                                 '<input class="txt txt--search" type="search" ng-model="search">'+
                                 '<label class="lbl lbl--search" for="">Search</label>'+
                                 '<i class="fa"'+
-                                    'ng-click="search = \'\'"'+
+                                    'ng-click="clearSearch()"'+
                                     'ng-class="[(!search || search == \'\') ? \'fa-search\' : \'fa-times\']"></i>'+
                             '</div>'+
                         '</form>',
             replace: true,
+            link: function(scope, elm, attrs)
+            {
+                scope.clearSearch = function()
+                {
+                    scope.search = '';
+                    $routeParams.companyName = '';
+                };
+            }
         };
     }])
     .controller('MultiJobCtrl', ['$scope', 'Repository', '$routeParams', 'Session' , function($scope, Repository, $routeParams, Session)

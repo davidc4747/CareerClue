@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-07 07:54:32
+* @Last Modified time: 2016-03-07 07:55:24
 */
 
 angular.module('CareerClue.Job', ['Repository'])
@@ -205,17 +205,13 @@ angular.module('CareerClue.Job', ['Repository'])
 
 
 
-
-
-
                 /******** Set Initial mode **********/
-                if(scope.jobData.JobInfo_Id > 0)
-                    if($routeParams.companyName)
-                        scope.switchMode('job--view-expand');
-                    else
-                        scope.switchMode('job--view');
-                else
+                if(scope.jobData.JobInfo_Id < 0)
                     scope.switchMode('job--edit');
+                else if($routeParams.companyName == scope.jobData.CompanyName)
+                    scope.switchMode('job--view-expand');
+                else
+                    scope.switchMode('job--view');
 
             }
         }

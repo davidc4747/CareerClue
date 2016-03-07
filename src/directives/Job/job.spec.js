@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:09
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-03 16:04:21
+* @Last Modified time: 2016-03-04 19:11:12
 */
 
 describe('Job Directive', function()
@@ -12,7 +12,7 @@ describe('Job Directive', function()
         $compile;
 
     // mock vars
-    var mockRoute = {};
+    var mockRoute = {companyName: ''};
     var mockStatusTypes = [{ Id:-11, Name: 'mock type'}];
     var mockRepo = {
         getStatusTypes: function(callback)

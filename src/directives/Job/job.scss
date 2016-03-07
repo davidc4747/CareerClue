@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:38:50
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-03 15:01:18
+* @Last Modified time: 2016-03-07 07:45:57
 */
 
 /*====================================*\
@@ -90,7 +90,6 @@
 
     &__head
     {
-        a { color: $primary; }
         margin: 0;
     }
 
@@ -98,6 +97,23 @@
     {
         float: left;
         margin: 0 0;
+    }
+
+    &__name
+    {
+        a { color: $primary; }
+    }
+
+    &__site
+    {
+        float: left;
+        display: block;
+
+        margin: 0.11em 0.3em;
+
+        font-size: 1.6em;
+        color: $secondary;
+        vertical-align: bottom;
     }
 
     &__title
