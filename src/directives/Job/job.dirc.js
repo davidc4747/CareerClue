@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-03 16:03:52
+* @Last Modified time: 2016-03-07 07:50:18
 */
 
 angular.module('CareerClue.Job', ['Repository'])
