@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-04 08:11:20
+* @Last Modified time: 2016-03-07 08:09:08
 */
 
 
@@ -10,6 +10,7 @@ angular.module('CareerClue', ['ngRoute',
                                 'ngAnimate',
 
                                 'CareerClue.DragDrop',
+                                'CareerClue.Controls',
                                 'CareerClue.SideBar',
                                 'CareerClue.Job',
 

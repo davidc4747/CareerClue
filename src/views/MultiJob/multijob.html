@@ -1,11 +1,8 @@
 <section class="multi-job">
 
-    <side-bar></side-bar>
+    <side-bar ng-class="(showMenu) ? 'sidebar--show' : 'sidebar--hide'"></side-bar>
 
-    <div class="controls col-sm-offset-1 col-sm-7">
-        <div class="control fa fa-2x fa-bars pull-left"></div>
-        <div class="control fa fa-2x fa-cog pull-right "></div>
-    </div>
+    <controls></controls>
 
     <div class="multi-job__body body col-sm-offset-1 col-sm-7">
 
