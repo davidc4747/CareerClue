@@ -118,55 +118,23 @@ textarea
 
 
 /*====================================*\
-    #Number buttons
-\*====================================*/
-
-// input[type="number"]::-webkit-inner-spin-button
-// {
-//     -webkit-appearance: none;
-//     cursor: pointer;
-
-//     width: 20px;
-//     position: relative;
-
-
-
-//     &:before,
-//     &:after
-//     {
-//         font-family: "fontAwesome";
-//         position: absolute;
-//         right: 4px;
-//         line-height: 10px;
-
-//         font-size: 19px;
-//     }
-
-//     &:before
-//     {
-//         content: "\f0d7";
-//         top: 50%;
-//     }
-
-//     &:after
-//     {
-//         content: "\f0d8";
-//         bottom: 50%;
-//     }
-
-// }
-
-
-
-
-
-/*====================================*\
     #Error List
 \*====================================*/
 
 .error-list
 {
+    padding-left: 25px;
     border: 2px solid $error;
     color: $error;
     background-color: rgba(255, 0, 0, 0.2);
+}
+
+
+.success-mess
+{
+    padding-left: 25px;
+    border: 2px solid $success;
+    color: $success;
+    background-color: rgba(0, 255, 0, 0.2);
+    text-align: center;
 }

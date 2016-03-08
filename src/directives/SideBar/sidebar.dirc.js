@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-04 08:58:14
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-04 12:58:17
+* @Last Modified time: 2016-03-07 12:08:44
 */
 
 angular.module('CareerClue.SideBar', ['Repository'])

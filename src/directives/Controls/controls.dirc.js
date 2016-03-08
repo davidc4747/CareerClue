@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-03-07 08:03:31
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-07 09:23:58
+* @Last Modified time: 2016-03-07 12:23:50
 */
 
 angular.module('CareerClue.Controls', [])
@@ -32,7 +32,6 @@ angular.module('CareerClue.Controls', [])
 
                 $document.on('click', function()
                 {
-                        console.log('?');
                     scope.$apply(function()
                     {
                         scope.showMenu = false;
