@@ -2,20 +2,39 @@
 * @Author: David
 * @Date:   2016-01-29 13:04:37
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-23 10:31:33
+* @Last Modified time: 2016-03-10 15:19:25
 */
 
 angular.module('CareerClue.SignIn', ['Repository'])
-    .controller('SignInCtrl', ['$scope', '$location', 'Repository', function($scope, $location, Repository)
+    .controller('SignInCtrl', ['$scope', '$location', '$rootScope', 'Repository', function($scope, $location, $rootScope, Repository)
     {
 
         $scope.user = { name: '', password: '', remember: false };
         $scope.errors = [];
 
-        Repository.getId(function(userId)
+        // Prevent access to certain screens if not logged in
+        $rootScope.$on('$routeChangeStart', function (event, next)
         {
-            if(userId > 0)
-                $location.path('/MultiJob/applied');
+            if ($location.path() != '/SignIn')
+            {
+                Repository.getLoginStatus(function(isLoggedIn)
+                {
+                    var loginRequired = typeof next.loginRequired !== 'undefined' ? next.loginRequired : true;
+
+                    if (loginRequired == true && isLoggedIn == false)
+                    {
+                        $location.path('/SignIn');
+                    }
+                });
+            }
+        });
+
+
+
+        Repository.getLoginStatus(function(isLoggedIn)
+        {
+            if(isLoggedIn == true)
+                $location.path('/MultiJob');
         });
 
 
@@ -40,7 +59,9 @@ angular.module('CareerClue.SignIn', ['Repository'])
 
                 //If no errors, Go to CareerClue.MultiJob
                 if(errors.length == 0)
-                    $location.path('/MultiJob/applied');
+                {
+                    $location.path('/MultiJob');
+                }
 
             });
 

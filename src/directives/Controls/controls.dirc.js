@@ -2,11 +2,11 @@
 * @Author: David
 * @Date:   2016-03-07 08:03:31
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-07 12:23:50
+* @Last Modified time: 2016-03-09 10:42:02
 */
 
-angular.module('CareerClue.Controls', [])
-    .directive('controls', [ '$document', function($document){
+angular.module('CareerClue.Controls', ['Repository'])
+    .directive('controls', [ '$document', '$location' , 'Repository', function($document, $location, Repository){
         // Runs during compile
         return {
             restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
@@ -27,6 +27,16 @@ angular.module('CareerClue.Controls', [])
                     scope.showSettings = !scope.showSettings;
                 };
 
+
+
+                scope.signOut = function()
+                {
+                    Repository.signOut(function()
+                    {
+                        $location.path('/SignIn');
+                    });
+
+                };
 
 
 

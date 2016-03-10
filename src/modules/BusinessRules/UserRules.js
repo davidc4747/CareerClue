@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 10:37:33
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-08 09:05:18
+* @Last Modified time: 2016-03-08 11:19:33
 */
 
 angular.module('BusinessRules')
@@ -22,7 +22,7 @@ angular.module('BusinessRules')
             sp(postData, callback);
         };
 
-        this.signOut = function(user, callback)
+        this.signOut = function(callback)
         {
             var postData =
             {
@@ -32,7 +32,12 @@ angular.module('BusinessRules')
                 loginRequired: true
             };
 
-            sp(postData, callback);
+            callback = callback || function(){};
+            sp(postData, function(data)
+            {
+                console.log("UserRules.signOut(): ", data);
+                callback(data);
+            });
         };
 
         this.signUp = function(user, callback)
@@ -62,7 +67,11 @@ angular.module('BusinessRules')
                 loginRequired: true
             };
 
-            sp(postData, callback);
+            sp(postData, function(data)
+            {
+                console.log("UserInfo:", data);
+                callback(data);
+            });
         };
 
 

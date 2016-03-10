@@ -2,11 +2,11 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-08 10:13:08
+* @Last Modified time: 2016-03-10 14:18:56
 */
 
 angular.module('Repository', ['BusinessRules', 'Session'])
-    .service('Repository', ['UserRules', 'JobRules', 'Session', function(UserRules, JobRules, Session)
+    .service('Repository', ['UserRules', 'JobRules', 'Session', '$interval', '$location', function(UserRules, JobRules, Session, $interval, $location)
     {
 
 
@@ -40,13 +40,19 @@ angular.module('Repository', ['BusinessRules', 'Session'])
             });
         };
 
-        this.signOut = function(user, callback)
+        this.signOut = function(callback)
         {
             // Sign out of DB
-            UserRules.signOut(user, callback);
+            UserRules.signOut(function(data)
+            {
+                // Sign out of session
+                Session.logout(function()
+                {
+                    callback();
+                });
 
-            // Sign out of session
-            Session.logout();
+            });
+
         };
 
 
@@ -111,11 +117,26 @@ angular.module('Repository', ['BusinessRules', 'Session'])
             #Session Methods
         \*====================================*/
 
-        this.getId = function(callback)
+        this.getLoginStatus = function(callback)
         {
-            Session.getId(callback);
+            Session.getLoginStatus(callback);
         };
 
+
+        // $interval(function()
+        // {
+        //     // Call Session.isActive();
+        //     Session.getLoginStatus(function(isloggedIn)
+        //     {
+        //         if(isloggedIn == false)
+        //         {
+        //             // send to SignIn screen
+        //             $location.path('/SignIn');
+        //         }
+
+        //     });
+
+        // }, 60000);// repeat every 5 mins
 
 
     }]);

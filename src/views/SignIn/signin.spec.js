@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-02 11:18:11
 * @Last Modified by:   David
-* @Last Modified time: 2016-02-23 10:34:34
+* @Last Modified time: 2016-03-08 11:54:19
 */
 
 describe('SignIn Module', function()
@@ -23,7 +23,7 @@ describe('SignIn Module', function()
                 errors.push({ mess: 'Invalid user'});
             callback(errors);
         },
-        getId: function(callback)
+        getLoginStatus: function(callback)
         {
             callback(1);
         }

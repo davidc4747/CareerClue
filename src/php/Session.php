@@ -5,21 +5,23 @@
 class Session
 {
     private $logged_in = false;
-    public $user_id;
-
-    function __construct()
-    {
-        session_start();
-        $this->check_login();
-    }
+    private $user_id;
 
     public function is_logged_in()
     {
         return $this->logged_in;
     }
 
-    private function check_login()
+    public function get_user_id()
     {
+        return $this->user_id;
+    }
+
+
+
+    function __construct()
+    {
+        session_start();
         if(isset($_SESSION['user_id']))
         {
             $this->user_id = $_SESSION['user_id'];
@@ -32,34 +34,53 @@ class Session
         }
     }
 
-    public function login($userData)
+    public function login($user)
     {
+        // SEt session data
+        $this->user_id = $_SESSION['user_id'] = $user["User_Id"];
+        $this->logged_in = true;
 
-        // Get User Id from DB
-        $result = $db->function_call("cc_sp_User_ByLogin", [$userData->name, $userData->password], "select");
-
-        if(sizeof($result) > 0)
-        {
-            $user = $result[0];
-
-            // SEt session data
-            $this->user_id = $user["User_Id"];
-            $this->logged_in = true;
-
-            // if they want to stay logged in
-            if($userData->remember)
-            {
-                $_SESSION['user_id'] = $user["User_Id"];
-            }
-        }
+        session_regenerate_id();
+        $this->update_active();
     }
 
     public function logout()
     {
-        unset($_SESSION['user_id']);
+        // unset($_SESSION['user_id']);
         unset($this->user_id);
         $this->logged_in = false;
+
+        session_unset();
+        session_destroy();
     }
+
+
+
+
+    public function update_active()
+    {
+        // Regenerate new session id every 10 mins
+        if(!isset($_SESSION['last_created']))
+        {
+            $_SESSION['last_created'] = time();
+        }
+        else if(time() - $_SESSION['last_created'] > 600)
+        {
+            $_SESSION['last_created'] = time();
+            session_regenerate_id();
+        }
+
+
+        // Logout after 30 mins of inactivity
+        if(isset($_SESSION['last_active']) && time() - $_SESSION['last_active'] > 1800)
+        {
+            $this->logout();
+        }
+        $_SESSION['last_active'] = time();
+    }
+
+
+
 }
 
 $session = new Session();

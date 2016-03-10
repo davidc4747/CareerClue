@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-08 08:07:18
+* @Last Modified time: 2016-03-10 14:20:41
 */
 
 
@@ -25,7 +25,6 @@ angular.module('CareerClue', ['ngRoute',
 angular.module('CareerClue')
     .config(['$routeProvider', function($routeProvider)
     {
-
         /*====================================*\
             #Main Screens
         \*====================================*/
@@ -34,17 +33,20 @@ angular.module('CareerClue')
         .when('/Dash',
         {
             templateUrl: 'views/Dash/dash.html',
-            controller: 'DashCtrl'
+            controller: 'DashCtrl',
+            loginRequired: true
         })
         .when('/MultiJob/:statusType?/:companyName?',
         {
             templateUrl: 'views/MultiJob/multijob.html',
-            controller: 'MultiJobCtrl'
+            controller: 'MultiJobCtrl',
+            loginRequired: true
         })
         .when('/Profile',
         {
             templateUrl: 'views/Profile/profile.html',
-            controller: 'ProfileCtrl'
+            controller: 'ProfileCtrl',
+            loginRequired: true
         })
 
 
@@ -56,22 +58,26 @@ angular.module('CareerClue')
         .when('/SignIn',
         {
             templateUrl: 'views/SignIn/signin.html',
-            controller: 'SignInCtrl'
+            controller: 'SignInCtrl',
+            loginRequired: false
         })
         .when('/SignUp',
         {
             templateUrl: 'views/SignUp/signup.html',
-            controller: 'SignUpCtrl'
+            controller: 'SignUpCtrl',
+            loginRequired: false
         })
         .when('/ForgotPassword',
         {
             templateUrl: 'views/ForgotPass/forgotPass.html',
-            controller: 'ForgotPassCtrl'
+            controller: 'ForgotPassCtrl',
+            loginRequired: false
         })
         .when('/ForgotUsername',
         {
             templateUrl: 'views/ForgotUsername/forgotUsername.html',
-            controller: 'ForgotUserCtrl'
+            controller: 'ForgotUserCtrl',
+            loginRequired: false
         })
 
 

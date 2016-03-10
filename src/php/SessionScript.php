@@ -3,7 +3,7 @@
  * @Author: David
  * @Date:   2016-02-12 08:55:41
  * @Last Modified by:   David
- * @Last Modified time: 2016-02-23 11:25:33
+ * @Last Modified time: 2016-03-10 11:55:55
  */
 
 require_once 'MySqlDataBase.php';
@@ -17,7 +17,14 @@ $request = json_decode($postdata);
 // Call the Session method that was requested
 if(strtolower($request->method) == 'login')
 {
-    $session->login($request->user);
+    // Get User Id from DB
+    $result = $db->function_call("cc_sp_User_ByLogin", [$request->user->name, $request->user->password], "select");
+
+    if(sizeof($result) > 0)
+    {
+        $user = $result[0];
+        $session->login($user);
+    }
 }
 else if(strtolower($request->method) == 'logout')
 {
@@ -25,9 +32,6 @@ else if(strtolower($request->method) == 'logout')
 }
 else if(strtolower($request->method) == 'isloggedin')
 {
-    $session->is_logged_in();
-}
-else if(strtolower($request->method) == 'getid')
-{
-    echo $session->user_id;
+    $loggedIn = $session->is_logged_in();
+    echo json_encode($loggedIn);
 }

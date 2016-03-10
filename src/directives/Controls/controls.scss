@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-03-07 08:03:40
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-07 09:48:13
+* @Last Modified time: 2016-03-08 10:31:34
 */
 
 /*====================================*\
@@ -73,7 +73,13 @@
         margin: 0.1em 0;
 
         color: $secondary;
-        a { color: $secondary; }
+        a
+        {
+            display: inline-block;
+            color: $secondary;
+            width: 100%;
+            white-space: no-wrap;
+        }
 
         &:hover
         {
