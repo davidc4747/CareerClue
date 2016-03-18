@@ -3,11 +3,11 @@
  * @Author: David G Chung
  * @Date:   2015-06-26 09:42:04
  * @Last Modified by:   David
- * @Last Modified time: 2016-03-10 13:17:28
+ * @Last Modified time: 2016-03-16 08:48:28
  */
 
 require_once 'MySqlDataBase.php';
-require_once 'Session.php';
+require_once 'Authenticator.php';
 
 //================= PARAMETERS ======================================================================
 //      fName: the name of the stored procedure
@@ -25,8 +25,8 @@ $request->loginRequired = (!isset($request->loginRequired) || is_null($request->
 $request->actionType = (!isset($request->actionType) || is_null($request->actionType)) ? 'update' : $request->actionType;
 
 //Send Error if the user needs to login
-$session->update_active();
-if($request->loginRequired && !$session->is_logged_in())
+$auth->update_active();
+if($request->loginRequired && !$auth->is_logged_in())
 {
     die('ERROR: User not logged in --  ' . $request->fName);
 }
@@ -36,7 +36,7 @@ $max = sizeof($request->params);
 for($i = 0; $i < $max; $i++)
 {
     if($request->params[$i] === "User_Id")
-        $request->params[$i] = $session->get_user_id();
+        $request->params[$i] = $auth->get_user_id();
 }
 
 //Call the store procedure

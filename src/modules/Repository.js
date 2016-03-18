@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-10 14:18:56
+* @Last Modified time: 2016-03-11 12:17:01
 */
 
 angular.module('Repository', ['BusinessRules', 'Session'])
@@ -13,49 +13,6 @@ angular.module('Repository', ['BusinessRules', 'Session'])
         /*====================================*\
             #User Rules
         \*====================================*/
-
-        this.signIn = function (user, callback)
-        {
-            UserRules.signIn(user, function(errors)
-            {
-                //If no errors, signIn to session
-                if(errors.length == 0)
-                    Session.login(user);
-
-                //send results to callback
-                callback(errors);
-            });
-        };
-
-        this.signUp = function (user, callback)
-        {
-            UserRules.signUp(user, function(errors)
-            {
-                //If no errors, signIn to session
-                if(errors.length == 0)
-                    Session.login(user);
-
-                //send results to callback
-                callback(errors);
-            });
-        };
-
-        this.signOut = function(callback)
-        {
-            // Sign out of DB
-            UserRules.signOut(function(data)
-            {
-                // Sign out of session
-                Session.logout(function()
-                {
-                    callback();
-                });
-
-            });
-
-        };
-
-
 
         this.userInfo = function(callback)
         {
@@ -117,16 +74,31 @@ angular.module('Repository', ['BusinessRules', 'Session'])
             #Session Methods
         \*====================================*/
 
-        this.getLoginStatus = function(callback)
+        this.signIn = function (user, callback)
         {
-            Session.getLoginStatus(callback);
+            Session.signIn(user, callback);
+        };
+
+        this.signUp = function (user, callback)
+        {
+            Session.signUp(user, callback);
+        };
+
+        this.signOut = function(callback)
+        {
+            Session.signOut(callback);
+        };
+
+        this.getSignInStatus = function(callback)
+        {
+            Session.getSignInStatus(callback);
         };
 
 
         // $interval(function()
         // {
         //     // Call Session.isActive();
-        //     Session.getLoginStatus(function(isloggedIn)
+        //     Session.getSignInStatus(function(isloggedIn)
         //     {
         //         if(isloggedIn == false)
         //         {

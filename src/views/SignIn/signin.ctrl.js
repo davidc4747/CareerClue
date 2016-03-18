@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-29 13:04:37
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-10 15:19:25
+* @Last Modified time: 2016-03-11 12:15:29
 */
 
 angular.module('CareerClue.SignIn', ['Repository'])
@@ -17,7 +17,7 @@ angular.module('CareerClue.SignIn', ['Repository'])
         {
             if ($location.path() != '/SignIn')
             {
-                Repository.getLoginStatus(function(isLoggedIn)
+                Repository.getSignInStatus(function(isLoggedIn)
                 {
                     var loginRequired = typeof next.loginRequired !== 'undefined' ? next.loginRequired : true;
 
@@ -31,7 +31,7 @@ angular.module('CareerClue.SignIn', ['Repository'])
 
 
 
-        Repository.getLoginStatus(function(isLoggedIn)
+        Repository.getSignInStatus(function(isLoggedIn)
         {
             if(isLoggedIn == true)
                 $location.path('/MultiJob');
