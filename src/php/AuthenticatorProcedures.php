@@ -3,7 +3,7 @@
  * @Author: David
  * @Date:   2016-03-15 13:59:45
  * @Last Modified by:   David
- * @Last Modified time: 2016-03-18 16:53:06
+ * @Last Modified time: 2016-03-22 09:46:34
  */
 
 // Dictonary of all Authenticator Specific Stored Procedures
@@ -20,9 +20,3 @@ $authProcedures = [
 
     "StartSession" => "cc_sp_Session_Start",
 ];
-
-// class AuthenticatorProcedures
-// {
-//     const SP_SOME = 'somthing';
-//     const SP_SOME = 'somthing';
-// }

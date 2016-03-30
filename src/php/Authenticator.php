@@ -40,6 +40,7 @@ class Authenticator
 
     public function is_signed_in()
     {
+        $this->update_active();
         return $this->signed_in;
     }
 
@@ -55,6 +56,10 @@ class Authenticator
         $this->db = $database;
         $this->proc = $procedures;
         session_start();
+
+        // init failed login attempts
+        if(!isset($_SESSION['failed_attempts']))
+            $_SESSION['failed_attempts'] = 0;
 
         // if the user has a authentication token, signin
         if(!empty($_COOKIE['token']) && !empty($_COOKIE['selector']))
@@ -124,12 +129,12 @@ class Authenticator
     {
         // Call DB for User_Id, Token
         $result = $this->db->function_call($this->proc['SignIn_ByToken'], [$selector], "select");
-            echo print_r($selector);
-            echo "<br>";
-            echo print_r($result[0]['Token']);
-            echo "<br>";
-            echo print_r(hash('sha256', $token));
-            echo "<br>";
+            // echo print_r($selector);
+            // echo "<br>";
+            // echo print_r($result[0]['Token']);
+            // echo "<br>";
+            // echo print_r(hash('sha256', $token));
+            // echo "<br>";
 
         // If token is valid  --> Start session
         if(!empty($result[0]['Token']) && hash_equals($result[0]['Token'], hash('sha256', $token)))
@@ -144,7 +149,14 @@ class Authenticator
     // Sets up the Sessiion based on the DB result provided
     private function signin($result)
     {
-        $this->signed_in = false;
+        $timePassed = (isset($_SESSION['failed_time'])) ? time() - $_SESSION['failed_time'] : time()-1;
+
+        // Trottle failed loggin attempts
+        if ($timePassed <= $_SESSION['failed_attempts'])
+        {
+            sleep($_SESSION['failed_attempts'] - $timePassed);
+        }
+
         if(!empty($result[0]['User_Id']))
         {
             $user = $result[0];
@@ -156,6 +168,12 @@ class Authenticator
             // Recreate sessionId to prevent session fixation
             session_regenerate_id();
             $this->update_active();
+        }
+        else // if loggin failed
+        {
+            $this->signed_in = false;
+            $_SESSION['failed_attempts'] += 1;
+            $_SESSION['failed_time'] = time();
         }
     }
 
@@ -220,8 +238,8 @@ class Authenticator
         }
 
 
-        // Logout after 30 mins of inactivity
-        if(isset($_SESSION['last_active']) && time() - $_SESSION['last_active'] > 1800)
+        // Logout after 60 mins of inactivity
+        if(isset($_SESSION['last_active']) && time() - $_SESSION['last_active'] > 3600)
         {
             $this->signout();
         }
@@ -234,7 +252,7 @@ class Authenticator
 
     public function signin_test()
     {
-        return $this->signin_by_user_info('newuserw', 'wasd', false);
+        return $this->signin_by_user_info('newuserw', 'wasd', true);
     }
 
     public function signup_test()

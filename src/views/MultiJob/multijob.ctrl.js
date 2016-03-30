@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-04 09:03:26
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-07 19:33:33
+* @Last Modified time: 2016-03-22 12:31:52
 */
 
 angular.module('CareerClue.MultiJob', ['Repository'])
@@ -32,7 +32,7 @@ angular.module('CareerClue.MultiJob', ['Repository'])
             }
         };
     }])
-    .controller('MultiJobCtrl', ['$scope', 'Repository', '$routeParams', 'Session' , function($scope, Repository, $routeParams, Session)
+    .controller('MultiJobCtrl', ['$scope', 'Repository', '$routeParams', function($scope, Repository, $routeParams)
     {
         // Ask DB for jobs based on status
         $scope.statusFilter = $routeParams.statusType;

@@ -3,11 +3,12 @@
  * @Author: David G Chung
  * @Date:   2015-06-26 09:42:04
  * @Last Modified by:   David
- * @Last Modified time: 2016-03-16 08:48:28
+ * @Last Modified time: 2016-03-22 13:15:15
  */
 
 require_once 'MySqlDataBase.php';
 require_once 'Authenticator.php';
+require_once 'AuthenticatorProcedures.php';
 
 //================= PARAMETERS ======================================================================
 //      fName: the name of the stored procedure
@@ -26,14 +27,20 @@ $request->actionType = (!isset($request->actionType) || is_null($request->action
 
 //Send Error if the user needs to login
 $auth->update_active();
-if($request->loginRequired && !$auth->is_logged_in())
+if($request->loginRequired && !$auth->is_signed_in())
 {
     die('ERROR: User not logged in --  ' . $request->fName);
 }
 
+// Send Error if fName is on the blacklist
+foreach($authProcedures as $proc)
+{
+    if($proc === $request->fName)
+        die('ERROR: Invalid Procdure');
+}
+
 //Inject User_Id
-$max = sizeof($request->params);
-for($i = 0; $i < $max; $i++)
+for ($i=0; $i < count($request->params); $i++)
 {
     if($request->params[$i] === "User_Id")
         $request->params[$i] = $auth->get_user_id();

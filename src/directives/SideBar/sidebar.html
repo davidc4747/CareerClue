@@ -10,28 +10,7 @@
     <nav class="sidebar__nav">
 
 
-        <div class="nav-group"
-            ng-init="item.isExpanded = item.selected"
-            ng-repeat="item in navItems | orderBy: 'Id'"
-            ng-class="{ 'nav-group--selected': item.selected, 'nav-group--expanded': item.isExpanded }"
-            cc-drop ondrop="changeStatus(ccDrop.transfer, item.Id, item.statusName)">
-
-            <a class="main-link" href="#{{item.href}}">
-                <span>{{ item.text }}</span>
-                <span ng-show="item.count">({{ item.count }})</span>
-                <i class="fa"
-                    ng-show="item.isExpanded != null"
-                    ng-class="{ 'fa-caret-down': !item.isExpanded, 'fa-angle-up': item.isExpanded }"
-                    ng-click="toggleExpand(item); $event.preventDefault();"></i>
-            </a>
-
-            <nav class="subnav" ng-show="item.isExpanded">
-                <a class="sub-link"  href="#/MultiJob/{{item.statusName}}/{{job.CompanyName}}"
-                    cc-drag cc-drag-data="job"
-                    ng-repeat="job in jobs | filter: { JobStatus_Name: item.statusName }">{{job.CompanyName}}</a>
-            </nav>
-
-        </div>
+        <nav-group ng-repeat="item in navItems | orderBy: 'Id'"></nav-group>
 
 
     </nav>

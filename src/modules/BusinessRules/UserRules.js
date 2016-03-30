@@ -2,61 +2,12 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 10:37:33
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-08 11:19:33
+* @Last Modified time: 2016-03-23 18:13:00
 */
 
 angular.module('BusinessRules')
     .service('UserRules', ['CallStoredProcedure', 'DBConstants', function(sp, dbConst)
     {
-        this.signIn = function(user, callback)
-        {
-            //call the signIng stored procedure
-            var postData =
-            {
-                fName: dbConst.SP_USER_SIGNIN,
-                params: [user.name, user.password],
-                actionType: 'select',
-                loginRequired: false
-            };
-
-            sp(postData, callback);
-        };
-
-        this.signOut = function(callback)
-        {
-            var postData =
-            {
-                fName: dbConst.SP_USER_SIGNOUT,
-                params: ["User_Id"],
-                actionType: 'update',
-                loginRequired: true
-            };
-
-            callback = callback || function(){};
-            sp(postData, function(data)
-            {
-                console.log("UserRules.signOut(): ", data);
-                callback(data);
-            });
-        };
-
-        this.signUp = function(user, callback)
-        {
-            var postData =
-            {
-                fName: dbConst.SP_USER_SIGNUP,
-                params: [user.name, user.email, user.password, user.repass],
-                actionType: 'select',
-                loginRequired: false
-            };
-
-            sp(postData, callback);
-        };
-
-
-
-
-
         this.userInfo = function(callback)
         {
             var postData =
@@ -69,8 +20,12 @@ angular.module('BusinessRules')
 
             sp(postData, function(data)
             {
-                console.log("UserInfo:", data);
-                callback(data);
+                var user = null;
+                if(data.length > 0)
+                    user = data[0];
+
+                console.log("UserInfo:", user);
+                callback(user);
             });
         };
 

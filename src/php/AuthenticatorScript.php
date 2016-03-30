@@ -3,7 +3,7 @@
  * @Author: David
  * @Date:   2016-02-12 08:55:41
  * @Last Modified by:   David
- * @Last Modified time: 2016-03-16 09:02:22
+ * @Last Modified time: 2016-03-22 12:45:47
  */
 
 require_once 'Authenticator.php';
@@ -17,7 +17,7 @@ $request = json_decode($postdata);
 if(strtolower($request->method) == 'signin')
 {
     // Pass POST data to Authenticator
-    $isvalid = $auth->signin($request->user->name, $request->user->password, $request->user->remember);
+    $isvalid = $auth->signin_by_user_info($request->user->name, $request->user->password, $request->user->remember);
     echo json_encode($isvalid);
 }
 else if(strtolower($request->method) == 'signup')

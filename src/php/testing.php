@@ -3,7 +3,7 @@
  * @Author: David
  * @Date:   2016-03-16 09:33:32
  * @Last Modified by:   David
- * @Last Modified time: 2016-03-18 17:09:56
+ * @Last Modified time: 2016-03-22 11:43:34
  */
 require_once 'Authenticator.php';
 
@@ -12,9 +12,9 @@ require_once 'Authenticator.php';
 // echo (empty($_COOKIE['orange']));
 // echo (empty($_COOKIE['selector']));
 
-$auth->signin_test();
-// $auth->signup_test();
 // $auth->signout();
+// $auth->signin_test();
+// $auth->signup_test();
 
 
 

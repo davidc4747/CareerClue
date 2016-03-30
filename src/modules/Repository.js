@@ -2,11 +2,11 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-11 12:17:01
+* @Last Modified time: 2016-03-22 12:29:00
 */
 
-angular.module('Repository', ['BusinessRules', 'Session'])
-    .service('Repository', ['UserRules', 'JobRules', 'Session', '$interval', '$location', function(UserRules, JobRules, Session, $interval, $location)
+angular.module('Repository', ['BusinessRules', 'Authenticator'])
+    .service('Repository', ['UserRules', 'JobRules', 'Authenticator', '$interval', '$location', function(UserRules, JobRules, Authenticator, $interval, $location)
     {
 
 
@@ -71,34 +71,34 @@ angular.module('Repository', ['BusinessRules', 'Session'])
 
 
         /*====================================*\
-            #Session Methods
+            #Authenticator Methods
         \*====================================*/
 
         this.signIn = function (user, callback)
         {
-            Session.signIn(user, callback);
+            Authenticator.signIn(user, callback);
         };
 
         this.signUp = function (user, callback)
         {
-            Session.signUp(user, callback);
+            Authenticator.signUp(user, callback);
         };
 
         this.signOut = function(callback)
         {
-            Session.signOut(callback);
+            Authenticator.signOut(callback);
         };
 
         this.getSignInStatus = function(callback)
         {
-            Session.getSignInStatus(callback);
+            Authenticator.getSignInStatus(callback);
         };
 
 
         // $interval(function()
         // {
-        //     // Call Session.isActive();
-        //     Session.getSignInStatus(function(isloggedIn)
+        //     // Call Authenticator.isActive();
+        //     Authenticator.getSignInStatus(function(isloggedIn)
         //     {
         //         if(isloggedIn == false)
         //         {

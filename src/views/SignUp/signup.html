@@ -6,25 +6,25 @@
 
         <div class="field col-sm-12 clearfix">
             <input id="username" class="txt txt--username" type="text"
-                ng-model="user.name" ng-model-options="{allowInvalid: true}" ng-required="true">
+                ng-model="user.name" ng-model-options="{allowInvalid: true}" ng-required="true" ng-minlength="3">
             <label class="lbl lbl--username" for="username">Username</label>
         </div>
 
         <div class="field col-sm-12 clearfix">
             <input id="email" class="txt txt--email" type="email"
-                ng-model="user.email" ng-model-options="{allowInvalid: true}" ng-required="true">
+                ng-model="user.email" ng-model-options="{allowInvalid: true}" ng-required="true" ng-minlength="3">
             <label class="lbl lbl--email" for="email">Email</label>
         </div>
 
         <div class="field col-sm-12 clearfix">
             <input id="password" class="txt txt--password" type="password"
-                ng-model="user.password" ng-model-options="{allowInvalid: true}" ng-required="true">
+                ng-model="user.password" ng-model-options="{allowInvalid: true}" ng-required="true" ng-minlength="3">
             <label class="lbl lbl--password" for="password">Password</label>
         </div>
 
         <div class="field col-sm-12 clearfix">
             <input id="repass" class="txt txt--repass" type="password"
-                ng-model="user.repass" ng-model-options="{allowInvalid: true}" ng-required="true">
+                ng-model="user.repass" ng-model-options="{allowInvalid: true}" ng-required="true" ng-minlength="3">
             <label class="lbl lbl--repass" for="repass">Confirm Password</label>
         </div>
 

@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-29 13:04:37
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-11 12:15:29
+* @Last Modified time: 2016-03-22 13:25:19
 */
 
 angular.module('CareerClue.SignIn', ['Repository'])
@@ -30,7 +30,7 @@ angular.module('CareerClue.SignIn', ['Repository'])
         });
 
 
-
+        // If The user is already logged, forward to main screen
         Repository.getSignInStatus(function(isLoggedIn)
         {
             if(isLoggedIn == true)
@@ -52,19 +52,15 @@ angular.module('CareerClue.SignIn', ['Repository'])
 
 
             //if Required fields are filled, attemp to signIn to the DB
-            Repository.signIn($scope.user, function (errors)
+            Repository.signIn($scope.user, function (isValid)
             {
-                //Display errors to user
-                $scope.errors = $scope.errors.concat(errors);
-
-                //If no errors, Go to CareerClue.MultiJob
-                if(errors.length == 0)
-                {
+                // if the user info was valid
+                if(isValid == true)
                     $location.path('/MultiJob');
-                }
+                else
+                    $scope.errors.push({ mess: 'Invalid username or password'});
 
             });
-
 
         };
 

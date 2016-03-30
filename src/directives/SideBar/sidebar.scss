@@ -25,7 +25,7 @@
 
 
     /*-------------------------------------*\
-        #User Info
+        #User Info:
     \*-------------------------------------*/
 
     .user-info
@@ -79,7 +79,7 @@
         }
 
 
-        .nav-group--selected &
+        .nav-group--active &
         {
             border-left: 5px solid $secondary;
 
