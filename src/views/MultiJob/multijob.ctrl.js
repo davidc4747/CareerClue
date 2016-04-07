@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-04 09:03:26
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-22 12:31:52
+* @Last Modified time: 2016-03-31 11:18:25
 */
 
 angular.module('CareerClue.MultiJob', ['Repository'])
@@ -86,7 +86,10 @@ angular.module('CareerClue.MultiJob', ['Repository'])
 
             // Add to array if not exists
             if($scope.jobs.length == 0 || $scope.jobs[0].JobInfo_Id >  0)
+            {
+                // add to jobs
                 $scope.jobs.unshift(defaultJob);
+            }
         };
 
 

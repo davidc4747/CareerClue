@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-29 13:04:37
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-22 13:25:19
+* @Last Modified time: 2016-03-31 11:56:39
 */
 
 angular.module('CareerClue.SignIn', ['Repository'])
@@ -10,6 +10,7 @@ angular.module('CareerClue.SignIn', ['Repository'])
     {
 
         $scope.user = { name: '', password: '', remember: false };
+        $scope.loading = false;
         $scope.errors = [];
 
         // Prevent access to certain screens if not logged in
@@ -50,6 +51,7 @@ angular.module('CareerClue.SignIn', ['Repository'])
                 $scope.errors.push({ mess: 'Password is required'});
 
 
+            $scope.loading = true;
 
             //if Required fields are filled, attemp to signIn to the DB
             Repository.signIn($scope.user, function (isValid)
@@ -60,6 +62,7 @@ angular.module('CareerClue.SignIn', ['Repository'])
                 else
                     $scope.errors.push({ mess: 'Invalid username or password'});
 
+                $scope.loading = false;
             });
 
         };

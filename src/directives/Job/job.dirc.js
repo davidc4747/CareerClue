@@ -2,11 +2,11 @@
 * @Author: David
 * @Date:   2016-02-26 13:39:01
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-07 09:57:52
+* @Last Modified time: 2016-03-31 11:38:52
 */
 
 angular.module('CareerClue.Job', ['Repository'])
-    .directive('job', ['Repository', '$routeParams', function(Repository, $routeParams)
+    .directive('job', ['Repository', '$routeParams', 'nav', function(Repository, $routeParams, nav)
     {
         return {
             restrict: 'E',
@@ -176,6 +176,17 @@ angular.module('CareerClue.Job', ['Repository'])
                             if(scope.mode == 'job--view')
                                 return;
                             scope.switchMode('job--view-expand');
+
+                            // add to nav items
+                            for (var i = nav.items.length - 1; i >= 0; i--)
+                            {
+                                if(nav.items[i].statusName == scope.jobData.JobStatus_Name)
+                                {
+                                    nav.items[i].jobs.push(scope.jobData);
+                                    nav.items[i].count = parseInt(nav.items[i].count) + 1;
+                                }
+                            }
+
                         }
                     });
                 };

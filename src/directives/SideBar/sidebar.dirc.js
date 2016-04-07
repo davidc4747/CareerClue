@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-04 08:58:14
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-30 15:39:31
+* @Last Modified time: 2016-03-31 11:23:32
 */
 
 angular.module('CareerClue.SideBar', ['Repository'])
@@ -50,7 +50,6 @@ angular.module('CareerClue.SideBar', ['Repository'])
     }])
     .directive('sideBar', [ 'Repository', 'nav', '$routeParams', function(Repository, nav, $routeParams)
     {
-
         return {
             restrict: 'E',
             scope: {},
@@ -71,9 +70,8 @@ angular.module('CareerClue.SideBar', ['Repository'])
             },
         };
     }])
-    .directive('navGroup', [ 'nav', '$routeParams', function(nav, $routeParams)
+    .directive('navGroup', [ 'nav', '$routeParams', 'Repository', function(nav, $routeParams, Repository)
     {
-        // Runs during compile
         return {
             restrict: 'E', // E = Element, A = Attribute, C = Class, M = Comment
             replace: true,
@@ -87,6 +85,51 @@ angular.module('CareerClue.SideBar', ['Repository'])
                 {
                     // update nav.item when user updates this item
                     scope.item.isExpanded = !scope.item.isExpanded;
+                };
+
+                scope.changeStatus = function(jobData, statusId, statusName)
+                {
+                    // if jobData isn't a newJob && status isn't the current status
+                    if(jobData.JobInfo_Id > 0 && jobData.JobStatus_Id != statusId)
+                    {
+                        // Change the Job's status
+                        jobData.JobStatus_Id = statusId;
+                        jobData.JobStatus_Name = statusName;
+
+
+                        // Save Changes to DataBase
+                        Repository.saveJob(jobData, function()
+                        {
+                            // Update nav object
+                            for (var i = nav.items.length - 1; i >= 0; i--)
+                            {
+                                if(nav.items[i].jobs)
+                                {
+                                    // Find the out dated jobData and remove it
+                                    for (var j = nav.items[i].jobs.length - 1; j >= 0; j--)
+                                    {
+                                        if(nav.items[i].jobs[j].JobInfo_Id == jobData.JobInfo_Id)
+                                        {
+                                            nav.items[i].jobs.splice(j, 1);
+                                            nav.items[i].count = parseInt(nav.items[i].count) - 1;
+                                        }
+                                    }
+
+                                    // Add the updated Job to it's proper position
+                                    if(nav.items[i].statusName == jobData.JobStatus_Name)
+                                    {
+                                        nav.items[i].jobs.push(jobData);
+                                        nav.items[i].count = parseInt(nav.items[i].count) + 1;
+                                    }
+                                }
+
+                            }
+
+
+                            // Tell MultiJob to update it's job list
+                            scope.$emit('editJobs', { Id: jobData.JobInfo_Id, job: jobData });
+                        });
+                    }
                 };
 
 

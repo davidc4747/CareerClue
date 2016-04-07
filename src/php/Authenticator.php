@@ -152,9 +152,9 @@ class Authenticator
         $timePassed = (isset($_SESSION['failed_time'])) ? time() - $_SESSION['failed_time'] : time()-1;
 
         // Trottle failed loggin attempts
-        if ($timePassed <= $_SESSION['failed_attempts'])
+        if ($timePassed <= $_SESSION['failed_attempts'] - 15)// first 15 attempts wont throttle
         {
-            sleep($_SESSION['failed_attempts'] - $timePassed);
+            sleep($_SESSION['failed_attempts'] - 15 - $timePassed);
         }
 
         if(!empty($result[0]['User_Id']))
