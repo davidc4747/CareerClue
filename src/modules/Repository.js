@@ -2,11 +2,12 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-22 12:29:00
+* @Last Modified time: 2016-04-07 13:33:00
 */
 
-angular.module('Repository', ['BusinessRules', 'Authenticator'])
-    .service('Repository', ['UserRules', 'JobRules', 'Authenticator', '$interval', '$location', function(UserRules, JobRules, Authenticator, $interval, $location)
+angular.module('Repository', ['BusinessRules', 'Authenticator', 'Recovery'])
+    .service('Repository', ['UserRules', 'JobRules', 'Authenticator', 'Recovery', '$interval', '$location',
+                function(UserRules, JobRules, Authenticator, Recovery, $interval, $location)
     {
 
 
@@ -93,6 +94,21 @@ angular.module('Repository', ['BusinessRules', 'Authenticator'])
         {
             Authenticator.getSignInStatus(callback);
         };
+
+
+
+        /*====================================*\
+            #Account Recovery
+        \*====================================*/
+
+        this.sendEmail = function(email, callback)
+        {
+            Recovery.sendEmail(email,callback);
+        };
+
+
+
+
 
 
         // $interval(function()

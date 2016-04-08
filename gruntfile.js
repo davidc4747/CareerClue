@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-24 14:02:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-22 12:01:39
+* @Last Modified time: 2016-04-07 13:29:06
 */
 
 module.exports = function(grunt)
@@ -30,6 +30,7 @@ module.exports = function(grunt)
 
 					//Minify other modules
 					'src/js/Authenticator.min.js': ['src/modules/Authenticator.js'],
+					'src/js/Recovery.min.js': ['src/modules/Recovery.js'],
 					'src/js/Repository.min.js': ['src/modules/Repository.js'],
 
 					//Minify contrlers and app.js into 1 file
