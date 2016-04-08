@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-04-07 13:19:40
+* @Last Modified time: 2016-04-08 14:19:59
 */
 
 
@@ -16,7 +16,9 @@ angular.module('CareerClue', ['ngRoute',
 
                                 'CareerClue.SignIn',
                                 'CareerClue.SignUp',
+
                                 'CareerClue.Forgot',
+                                'CareerClue.Reset',
 
                                 'CareerClue.Dash',
                                 'CareerClue.Profile',
@@ -68,6 +70,8 @@ angular.module('CareerClue')
             controller: 'SignUpCtrl',
             loginRequired: false
         })
+
+
         .when('/ForgotPassword',
         {
             templateUrl: 'views/Forgot/forgotPass.html',
@@ -78,6 +82,12 @@ angular.module('CareerClue')
         {
             templateUrl: 'views/Forgot/forgotUsername.html',
             controller: 'ForgotCtrl',
+            loginRequired: false
+        })
+        .when('/Reset/:token',
+        {
+            templateUrl: 'views/Reset/reset.html',
+            controller: 'ResetCtrl',
             loginRequired: false
         })
 

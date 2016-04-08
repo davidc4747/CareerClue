@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-04-07 13:33:00
+* @Last Modified time: 2016-04-08 14:10:49
 */
 
 angular.module('Repository', ['BusinessRules', 'Authenticator', 'Recovery'])
@@ -104,6 +104,11 @@ angular.module('Repository', ['BusinessRules', 'Authenticator', 'Recovery'])
         this.sendEmail = function(email, callback)
         {
             Recovery.sendEmail(email,callback);
+        };
+
+        this.resetPassword = function(token, password, repass, callback)
+        {
+            Recovery.resetPassword(token, password, repass, callback);
         };
 
 
