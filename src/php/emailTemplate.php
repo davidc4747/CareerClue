@@ -3,7 +3,7 @@
  * @Author: David
  * @Date:   2016-04-07 12:27:38
  * @Last Modified by:   David
- * @Last Modified time: 2016-04-08 08:26:09
+ * @Last Modified time: 2016-04-08 09:57:52
  */
 ?>
 
@@ -53,12 +53,12 @@
 
         <section class="info">
 
-            <h3>Hello <span class="name">{{Orange pickle}}</span>,</h3>
+            <h3>Hello <span class="name"><?php echo $username ?></span>,</h3>
 
             <h4>There was a request to reset your password</h4>
 
             <!-- style it like a button -->
-            <a class="button" href="http://">{{}} Change Password</a>
+            <a class="button" href="http://localhost/CareerClue/src/#Recovery/<?php echo $token ?>">Change Password</a>
 
             <p>
                 If you did not make this request, just ignore this email.

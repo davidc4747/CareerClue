@@ -3,7 +3,7 @@
  * @Author: David
  * @Date:   2016-04-07 11:21:50
  * @Last Modified by:   David
- * @Last Modified time: 2016-04-08 08:40:54
+ * @Last Modified time: 2016-04-08 10:03:05
  */
 
 require_once 'MySqlDataBase.php';
@@ -14,21 +14,33 @@ $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 
 // Sanitize user input
-$email = 'bobo@bobo';//$request->email;
+$email = $request->email;
 $email = clean_input($email);
 
+
+
 // Get userName for email
-$result = $db->function_call("ccp_sp_UserByEmail", [$eamil], "Select");
+$result = $db->function_call("cc_sp_User_ByEmail", [$email], "Select");
+if(empty($result[0]["User_Id"]))
+    die();
+
+$userId = $result[0]["User_Id"];
+$username = $result[0]["Username"];
 
 // Create password reset token
+$token = $cls_token->create(128);
+
 // save token to DB
+$result = $db->function_call("cc_sp_ResetToken_Create", [$userId, $token], "update");
+
+
 
 // Create the mail using the emailTemplate.php
-$msg = get_msg();
-echo $msg;
-// mail($email, "CareerClue -- password reset", $msg);
+$msg = get_msg($username, $token);
+// echo $msg;
+mail($email, "CareerClue -- password reset", $msg);
 
-function get_msg()
+function get_msg($username, $token)
 {
     return include 'emailTemplate.php';
 }
