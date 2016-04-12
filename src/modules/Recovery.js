@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-04-07 11:12:35
 * @Last Modified by:   David
-* @Last Modified time: 2016-04-08 14:12:35
+* @Last Modified time: 2016-04-12 08:56:23
 */
 
 
@@ -23,7 +23,7 @@ angular.module('Recovery', [])
             request.success(callback);
         };
 
-        this.resetPassword = function(token, password, repass)
+        this.resetPassword = function(token, password, repass, callback)
         {
             // call php script
             var request = $http({
