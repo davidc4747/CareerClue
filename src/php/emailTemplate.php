@@ -3,7 +3,7 @@
  * @Author: David
  * @Date:   2016-04-07 12:27:38
  * @Last Modified by:   David
- * @Last Modified time: 2016-04-08 10:06:28
+ * @Last Modified time: 2016-04-08 15:12:43
  */
 ?>
 
@@ -58,7 +58,7 @@
             <h4>There was a request to reset your password</h4>
 
             <!-- style it like a button -->
-            <a class="button" href="http://localhost/CareerClue/src/#Recovery/<?php echo $token >" style="display: block;padding: 0.8em 1.4em;margin: 1.3em 2.5em;color: #fbfbfb;background-color: #F49814;width: 300px;text-align: center;text-decoration: none;">Change Password</a>
+            <a class="button" href="http://localhost/CareerClue/src/#/Reset/<?php echo $token->raw() ?>" style="display: block;padding: 0.8em 1.4em;margin: 1.3em 2.5em;color: #fbfbfb;background-color: #F49814;width: 300px;text-align: center;text-decoration: none;">Change Password</a>
 
             <p>
                 If you did not make this request, just ignore this email.

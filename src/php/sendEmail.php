@@ -3,7 +3,7 @@
  * @Author: David
  * @Date:   2016-04-07 11:21:50
  * @Last Modified by:   David
- * @Last Modified time: 2016-04-08 10:03:05
+ * @Last Modified time: 2016-04-12 09:16:24
  */
 
 require_once 'MySqlDataBase.php';
@@ -14,6 +14,7 @@ $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
 
 // Sanitize user input
+// $email = 'davidc4747@yahoo.com';
 $email = $request->email;
 $email = clean_input($email);
 
@@ -28,10 +29,10 @@ $userId = $result[0]["User_Id"];
 $username = $result[0]["Username"];
 
 // Create password reset token
-$token = $cls_token->create(128);
+$token = new Token(20);
 
 // save token to DB
-$result = $db->function_call("cc_sp_ResetToken_Create", [$userId, $token], "update");
+$result = $db->function_call("cc_sp_ResetToken_Create", [$userId, $token->hash()], "update");
 
 
 
