@@ -182,7 +182,7 @@ class Authenticator
     public function signup($username, $email, $password, $repass)
     {
         // Hash password
-        $salt = "$2a$10$" . substr(bin2hex(openssl_random_pseudo_bytes(22)), 0, 21) . "$";
+        $salt = $this->salt();
         $crypt_pass = crypt($password, $salt);
         $crypt_repass = crypt($repass, $salt);
 
@@ -219,6 +219,34 @@ class Authenticator
         // Clear Session
         session_unset();
         session_destroy();
+    }
+
+
+    private function salt()
+    {
+        return "$2a$10$" . substr(bin2hex(openssl_random_pseudo_bytes(22)), 0, 21) . "$";
+    }
+
+
+    public function change_pass_by_reset_token($hash_token, $newpass, $repass)
+    {
+        // Hash password
+        $salt = $this->salt();
+        $crypt_pass = crypt($newpass, $salt);
+        $crypt_repass = crypt($repass, $salt);
+
+        // update DB
+        // DB will delete rest token
+        $this->db->function_call("cc_sp_ResetToken_Use", [$hash_token, $crypt_pass, $crypt_repass], "Update");
+    }
+
+    public function change_pass_by_info($userId, $pass, $newpass, $repass)
+    {
+        // Hash password
+        $salt = $this->salt();
+        $crypt_pass = crypt($newpass, $salt);
+        $crypt_repass = crypt($repass, $salt);
+
     }
 
 

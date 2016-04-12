@@ -3,38 +3,44 @@
  * @Author: David
  * @Date:   2016-03-31 14:24:11
  * @Last Modified by:   David
- * @Last Modified time: 2016-03-31 15:00:06
+ * @Last Modified time: 2016-04-12 09:13:23
  */
 
 require_once 'MySqlDataBase.php';
 require_once 'Authenticator.php';
+require_once 'Token.php';
 
-//  :: generate reset Token, validate Token,
 
-function generate_token()
-{
-    $token = hash('sha256', openssl_random_pseudo_bytes(128), false);
-    // DB->save token
-    return $token;
-}
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
 
-function validate_token($token)
-{
-    // DB->get user with token
-        // if not exits, return false
-
-    return !empty($result[0]['Token']) && hash_equals($result[0]['Token'], hash('sha256', $token));
-}
+// Sanitize user input
+$token = clean_input($request->token);
+$password = clean_input($request->password);
+$repass = clean_input($request->repass);
+$hash_token = Token::hash_token($token);
 
 // validate reset Token -or- die()
+$result = $db->function_call("cc_sp_ResetToken_Validate", [$hash_token], "Select");
 
-// if valid
-    // hash password
-    // update DB
-    // delete rest token
+// if token exists and hasn't expired
+$is_valid = false;
+if(!empty($result[0]["Expires"]) && time() < strtotime($result[0]["Expires"]))
+{
+    $is_valid = true;
 
+    // Hash password, save to DB
+    $auth->change_pass_by_reset_token($hash_token, $password, $repass);
+}
 
 // return is_valid
-// go to SignIn -or- Log user in
+echo $is_valid;
 
 
+function clean_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
