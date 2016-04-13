@@ -3,7 +3,7 @@
  * @Author: David
  * @Date:   2016-02-12 08:55:41
  * @Last Modified by:   David
- * @Last Modified time: 2016-03-22 12:45:47
+ * @Last Modified time: 2016-04-13 11:23:46
  */
 
 require_once 'Authenticator.php';
@@ -33,4 +33,8 @@ else if(strtolower($request->method) == 'signout')
 else if(strtolower($request->method) == 'issignedin')
 {
     echo json_encode($auth->is_signed_in());
+}
+else if(strtolower($request->method) == 'updateuserpass')
+{
+    echo json_encode($auth->change_pass_by_info($request->username, $request->curpass, $request->newpass, $request->repass));
 }

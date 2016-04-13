@@ -240,13 +240,39 @@ class Authenticator
         $this->db->function_call("cc_sp_ResetToken_Use", [$hash_token, $crypt_pass, $crypt_repass], "Update");
     }
 
-    public function change_pass_by_info($userId, $pass, $newpass, $repass)
+    public function change_pass_by_info($username, $curpass, $newpass, $repass)
     {
-        // Hash password
-        $salt = $this->salt();
-        $crypt_pass = crypt($newpass, $salt);
-        $crypt_repass = crypt($repass, $salt);
+        // get the current password salt
+        $result = $this->db->function_call($this->proc['User_ByName'], [$username], "select");
 
+         // If a Password was returned
+        if(!empty($result[0]['Password']))
+        {
+            // use the current salt to hash the user's input
+            $salt = substr($result[0]['Password'], 0, 28) . "$";
+            $crypt_curpass = crypt($curpass, $salt);
+        }
+
+        // Check if user is_valid
+        $result = $this->db->function_call("cc_sp_User_ByInfo", [$username, $crypt_curpass], "select");
+
+
+        // if user is_valid
+        $is_valid = false;
+        if(!empty($result[0]['User_Id']))
+        {
+            $is_valid = true;
+
+            //  hash new password
+            $salt = $this->salt();
+            $crypt_newpass = crypt($newpass, $salt);
+            $crypt_repass = crypt($repass, $salt);
+
+            //  update the password on the DB
+            $this->db->function_call("cc_sp_User_UpdatePassword", [$result[0]['User_Id'], $crypt_curpass, $crypt_newpass, $crypt_repass], "Update");
+        }
+
+        return $is_valid;
     }
 
 
