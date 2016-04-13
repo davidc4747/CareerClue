@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-02-03 11:26:46
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-22 14:05:54
+* @Last Modified time: 2016-04-13 17:07:49
 */
 
 angular.module('CareerClue.SignUp', ['Repository'])
@@ -31,7 +31,7 @@ angular.module('CareerClue.SignUp', ['Repository'])
                 $scope.errors.push({mess: 'Passwords do not match'});
 
             if($scope.user.password.length < 3)
-                $scope.errors.push({mess: 'Password need to be longer'});
+                $scope.errors.push({mess: 'Password need to be longer than 3 characters'});
 
 
 

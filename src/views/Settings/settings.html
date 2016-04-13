@@ -6,6 +6,8 @@
 
     <div class="profile__body body col-sm-offset-1 col-sm-7">
 
+        <h2 style="text-align: center">Settings</h2>
+
         <form name="updateInfo" class="form-group row" ng-submit="updateUserInfo()">
 
             <div class="field col-sm-offset-3 col-sm-6">
@@ -68,7 +70,7 @@
 
 
 
-            <div class="col-sm-offset-3 col-sm-6" ng-show="userPassErrors.length == 0">
+            <div class="col-sm-offset-3 col-sm-6" ng-show="savedPass">
                 <div class="success-mess col-sm-12">Changes Saved!</div>
             </div>
 

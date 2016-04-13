@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-04-08 14:19:59
+* @Last Modified time: 2016-04-13 10:57:32
 */
 
 
@@ -21,7 +21,7 @@ angular.module('CareerClue', ['ngRoute',
                                 'CareerClue.Reset',
 
                                 'CareerClue.Dash',
-                                'CareerClue.Profile',
+                                'CareerClue.Settings',
                                 'CareerClue.MultiJob',
                             ]);
 
@@ -45,10 +45,10 @@ angular.module('CareerClue')
             controller: 'MultiJobCtrl',
             loginRequired: true
         })
-        .when('/Profile',
+        .when('/Settings',
         {
-            templateUrl: 'views/Profile/profile.html',
-            controller: 'ProfileCtrl',
+            templateUrl: 'views/Settings/settings.html',
+            controller: 'SettingsCtrl',
             loginRequired: true
         })
 
