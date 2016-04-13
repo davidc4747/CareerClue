@@ -2,7 +2,7 @@
 //    Created on : Mar 30, 2015, 7:55 PM
 //    Author     : David G Chung
 
-require_once 'MySqlDataBase.php';
+require_once 'DataAccess/MySqlDataBase.php';
 require_once 'AuthenticatorProcedures.php';
 
 // Replacement hash_equals function

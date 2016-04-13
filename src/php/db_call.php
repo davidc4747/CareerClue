@@ -3,12 +3,12 @@
  * @Author: David G Chung
  * @Date:   2015-06-26 09:42:04
  * @Last Modified by:   David
- * @Last Modified time: 2016-03-22 13:15:15
+ * @Last Modified time: 2016-04-13 17:24:18
  */
 
-require_once 'MySqlDataBase.php';
-require_once 'Authenticator.php';
-require_once 'AuthenticatorProcedures.php';
+require_once 'DataAccess/MySqlDataBase.php';
+require_once 'Authenticator/Authenticator.php';
+require_once 'Authenticator/AuthenticatorProcedures.php';
 
 //================= PARAMETERS ======================================================================
 //      fName: the name of the stored procedure

@@ -3,11 +3,11 @@
  * @Author: David
  * @Date:   2016-03-31 14:24:11
  * @Last Modified by:   David
- * @Last Modified time: 2016-04-12 09:13:23
+ * @Last Modified time: 2016-04-13 17:24:32
  */
 
-require_once 'MySqlDataBase.php';
-require_once 'Authenticator.php';
+require_once 'DataAccess/MySqlDataBase.php';
+require_once 'Authenticator/Authenticator.php';
 require_once 'Token.php';
 
 

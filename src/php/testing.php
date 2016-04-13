@@ -3,9 +3,9 @@
  * @Author: David
  * @Date:   2016-03-16 09:33:32
  * @Last Modified by:   David
- * @Last Modified time: 2016-03-22 11:43:34
+ * @Last Modified time: 2016-04-13 17:25:05
  */
-require_once 'Authenticator.php';
+require_once 'Authenticator/Authenticator.php';
 
 
 

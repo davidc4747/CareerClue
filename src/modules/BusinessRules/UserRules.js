@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 10:37:33
 * @Last Modified by:   David
-* @Last Modified time: 2016-04-13 11:33:07
+* @Last Modified time: 2016-04-13 17:29:26
 */
 
 angular.module('BusinessRules')
@@ -44,29 +44,6 @@ angular.module('BusinessRules')
             sp(postData, callback);
         };
 
-        this.updateUserPass = function(user, callback)
-        {
-            // call php script
-            var request = $http({
-                method: 'post',
-                url: 'php/AuthenticatorScript.php',
-                data: {
-                    'method': 'updateuserpass',
-                    'username': user.Username,
-                    'curpass': user.curPass,
-                    'newpass': user.newPass,
-                    'repass': user.rePass,
-                }
-            });
-
-            // execute the callback function
-            request.success(function(data)
-            {
-                console.log('UserRules.updateUserPass: ', data);
-                var val = data === 'true';
-                callback(val);
-            });
-        };
 
 
     }]);

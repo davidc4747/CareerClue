@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-04-07 11:12:35
 * @Last Modified by:   David
-* @Last Modified time: 2016-04-12 08:56:23
+* @Last Modified time: 2016-04-13 17:33:37
 */
 
 
@@ -15,7 +15,7 @@ angular.module('Recovery', [])
             // call php script
             var request = $http({
                 method: 'post',
-                url: 'php/sendEmail.php',
+                url: 'php/recovery_email.php',
                 data: { 'email': email}
             });
 
@@ -28,7 +28,7 @@ angular.module('Recovery', [])
             // call php script
             var request = $http({
                 method: 'post',
-                url: 'php/PasswordReset.php',
+                url: 'php/password_reset.php',
                 data: {
                     'token': token,
                     'password': password,

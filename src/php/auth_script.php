@@ -3,10 +3,10 @@
  * @Author: David
  * @Date:   2016-02-12 08:55:41
  * @Last Modified by:   David
- * @Last Modified time: 2016-04-13 11:23:46
+ * @Last Modified time: 2016-04-13 17:23:58
  */
 
-require_once 'Authenticator.php';
+require_once 'Authenticator/Authenticator.php';
 
 //get post data from site
 $postdata = file_get_contents("php://input");

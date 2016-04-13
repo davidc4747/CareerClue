@@ -2,7 +2,7 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-04-08 14:10:49
+* @Last Modified time: 2016-04-13 17:29:57
 */
 
 angular.module('Repository', ['BusinessRules', 'Authenticator', 'Recovery'])
@@ -24,12 +24,6 @@ angular.module('Repository', ['BusinessRules', 'Authenticator', 'Recovery'])
         this.updateUserInfo = function(user, callback)
         {
             UserRules.updateUserInfo(user, callback);
-        };
-
-
-        this.updateUserPass = function(user, callback)
-        {
-            UserRules.updateUserPass(user, callback);
         };
 
 
@@ -93,6 +87,12 @@ angular.module('Repository', ['BusinessRules', 'Authenticator', 'Recovery'])
         this.getSignInStatus = function(callback)
         {
             Authenticator.getSignInStatus(callback);
+        };
+
+
+        this.updateUserPass = function(user, callback)
+        {
+            Authenticator.updateUserPass(user, callback);
         };
 
 
