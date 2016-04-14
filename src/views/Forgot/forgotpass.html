@@ -1,4 +1,4 @@
-<section class="forgot-pass col-sm-4 col-sm-offset-4">
+<section class="forgot-pass body col-sm-4 col-sm-offset-4">
 
 
     <h1><span class="highlight">Career</span>Clue</h1>
@@ -6,9 +6,9 @@
 
     <form class="forgot-pass__form row" ng-submit="sendEmail()" novalidate>
         <div class="field col-sm-12 clearfix">
-            <input id="email" class="txt txt--email" type="email"
-                ng-model="email" ng-required="true">
             <label class="lbl lbl--email" for="email">Email address</label>
+            <input id="email" class="txt--edit-job txt--email" type="email"
+                ng-model="email" ng-required="true">
         </div>
 
         <div class="field col-sm-12 clearfix">
@@ -20,6 +20,7 @@
 
     <nav class="bottom-nav clearfix">
         <a href="#/SignIn">Already have and accout?</a>
+        <a href="#/ForgotUsername">Forgot your username?</a>
     </nav>
 
 </section>

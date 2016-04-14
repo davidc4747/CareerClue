@@ -1,4 +1,4 @@
-<section class="sign-in col-sm-4 col-sm-offset-4">
+<section class="sign-in body col-sm-4 col-sm-offset-4">
 
 
     <h1><span class="highlight">Career</span>Clue</h1>
@@ -6,14 +6,14 @@
 
     <form class="sign-in__form row" ng-submit="signIn()" novalidate>
         <div class="field col-sm-12 clearfix">
-            <input id="username" class="txt txt--username" type="text"
-                ng-model="user.name" ng-model-options="{allowInvalid: true}" ng-required="true">
             <label class="lbl lbl--username" for="username">Username</label>
+            <input id="username" class="txt--edit-job txt--username" type="text"
+                ng-model="user.name" ng-model-options="{allowInvalid: true}" ng-required="true">
         </div>
         <div class="field col-sm-12 clearfix">
-            <input id="password" class="txt txt--password" type="password"
-                ng-model="user.password" ng-model-options="{allowInvalid: true}" ng-required="true">
             <label class="lbl lbl--password" for="password">Password</label>
+            <input id="password" class="txt--edit-job txt--password" type="password"
+                ng-model="user.password" ng-model-options="{allowInvalid: true}" ng-required="true">
         </div>
         <div class="field col-sm-12 clearfix">
             <input id="remember" class="chk chk--remember" ng-model="user.remember" type="checkbox">
