@@ -73,21 +73,18 @@ class MySqlDataBase
                 $sql .= "$param,";
 
         //Call function
+        $funcName = $this->escale_value($funcName);
         $sql = "CALL `$funcName`(" . rtrim($sql, ",") . ");";
         $result = $this->query($sql);
 
         //Create array off ALL the rows
         $objs = array();
-        if($actionType == 'SELECT' && $result != null)
+        if($actionType == 'SELECT' && !empty($result))
             while($row = $this->fetch_assoc($result))
                 $objs[] = $row;
 
         $this->close();
         return $objs;
-        // if (count($objs) == 1)
-        //     return $objs[0];
-        // else
-        //     return $objs;
     }
 }
 

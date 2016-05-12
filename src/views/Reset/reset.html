@@ -1,0 +1,31 @@
+<section class="forgot-pass col-sm-4 col-sm-offset-4">
+
+
+    <h1><span class="highlight">Career</span>Clue</h1>
+
+
+    <form class="forgot-pass__form row" ng-submit="resetPassword()" novalidate>
+
+        <div class="field col-sm-12 clearfix">
+            <input id="password" class="txt txt--password" type="password"
+                ng-model="password" ng-required="true" ng-minlength="3">
+            <label class="lbl lbl--password" for="password">Password</label>
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+            <input id="repass" class="txt txt--repass" type="password"
+                ng-model="repass" ng-required="true" ng-minlength="3">
+            <label class="lbl lbl--repass" for="repass">Confirm Password</label>
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+            <input class="btn btn--send btn--submit col-sm-12" value="Change Password" type="submit">
+        </div>
+    </form>
+
+    <div ng-show="sent" class="success-mess">Your password has been changed. Please <a href="#SignIn">Sign In.</a></div>
+
+    <ul ng-show="error" class="error-list">
+        <li class="error">Passwords do not match</li>
+    </ul>
+</section>

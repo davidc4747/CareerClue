@@ -1,3 +1,51 @@
-<section class="col-sm-4 col-sm-offset-4">
-    asd
+<section class="sign-in body col-sm-4 col-sm-offset-4">
+
+
+    <h1><span class="highlight">Career</span>Clue</h1>
+
+
+    <form class="sign-in__form row" ng-submit="signIn()" novalidate>
+        <div class="field col-sm-12 clearfix">
+            <label class="lbl lbl--username" for="username">Username</label>
+            <input id="username" class="txt--edit-job txt--username" type="text"
+                ng-model="user.name" ng-model-options="{allowInvalid: true}" ng-required="true">
+        </div>
+        <div class="field col-sm-12 clearfix">
+            <label class="lbl lbl--password" for="password">Password</label>
+            <input id="password" class="txt--edit-job txt--password" type="password"
+                ng-model="user.password" ng-model-options="{allowInvalid: true}" ng-required="true">
+        </div>
+        <div class="field col-sm-12 clearfix">
+            <input id="remember" class="chk chk--remember" ng-model="user.remember" type="checkbox">
+            <label class="lbl lbl--remember" for="remember">Remember me</label>
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+            <a  class="btn btn--signup" href="#/SignUp">SignUp</a>
+            <input class="btn btn--signin btn--submit" value="SignIn" type="submit">
+        </div>
+    </form>
+
+
+    <ul class="error-list" ng-show="errors.length > 0">
+       <li class="error" ng-repeat="error in errors">{{ error.mess }}</li>
+    </ul>
+
+    <div class="row">
+        <img ng-show="" class="loader col-sm-offset-4 col-sm-4" src="imgs/01-progress.gif" alt="">
+    </div>
+
+    <nav class="bottom-nav clearfix">
+        <a href="#/ForgotPassword">Forgot your password?</a>
+        <a href="#/ForgotUsername">Forgot your username?</a>
+    </nav>
+
+
+    <div class="social-media-signin">
+        <div class="btn btn--facebook">Sign in with Facebook</div>
+        <div class="btn btn--twitter">Sign in with Twitter</div>
+        <div class="btn btn--google">Sign in with G+</div>
+    </div>
+
+
 </section>

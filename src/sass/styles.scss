@@ -10,12 +10,12 @@
 @import 'base';
 @import 'form';
 
-// @import '../directives/PageHeader/pageHeader';
+@import '../directives/SideBar/sidebar';
+@import '../directives/Job/job';
+@import '../directives/Controls/controls';
 
-// @import '../views/Login/login';
-// @import '../views/Home/home';
-// @import '../views/YourRequest/yourRequest';
-// @import '../views/ViewRequest/viewRequest';
-// @import '../views/TechView/techView';
-// @import '../views/AdminView/adminView';
-// @import '../views/UserSettings/userSetting';
+// @import '../views/Dash/dash';
+@import '../views/SignIn/signin';
+@import '../views/SignUp/signup';
+@import '../views/Forgot/forgot';
+@import '../views/MultiJob/multijob';

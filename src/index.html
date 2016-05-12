@@ -5,19 +5,23 @@
 
     <head>
 
-        <title>Job Tracker</title>
+        <title>CareerClue</title>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <!-- Styles -->
+        <link rel="stylesheet" type="text/css" href="css/font-awesome-4.2.0/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="css/styles.css">
 
         <!-- Lib Scripts -->
         <script src="libs/d3.js"></script>
+        <script src="libs/jquery-1.11.3.min.js"></script>
+
         <script src="libs/angular.js"></script>
         <script src="libs/angular-route.js"></script>
+        <script src="libs/angular-animate.js"></script>
 
         <!-- Scripts -->
         <script src="js/CallStoredProcedure.min.js"></script>
@@ -25,10 +29,11 @@
 
         <script src="js/BusinessRules.min.js"></script>
 
-        <script src="js/Session.min.js"></script>
+        <script src="js/Authenticator.min.js"></script>
+        <script src="js/Recovery.min.js"></script>
         <script src="js/Repository.min.js"></script>
 
-        <script src="js/jobTracker.min.js"></script>
+        <script src="js/CareerClue.min.js"></script>
 
         <!-- Live reload script : To be removed -->
         <script src="http://localhost:35729/livereload.js"></script>
@@ -40,7 +45,7 @@
 
 
 
-    <body ng-app="jobTracker">
+    <body ng-app="CareerClue">
 
         <div class="container-fluid" ng-view></div>
 

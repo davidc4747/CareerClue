@@ -1,0 +1,18 @@
+<aside class="sidebar col-sm-offset-1 col-sm-2 row">
+
+    <h1 class="sidebar__head"><span class="highlight">Career</span>Clue</h1>
+
+    <div class="user-info">
+        <span>{{userInfo.Username}}</span> |
+        <span>{{date | date: 'MM/dd/yy' }}</span>
+    </div>
+
+    <nav class="sidebar__nav">
+
+
+        <nav-group ng-repeat="item in navItems | orderBy: 'Id'"></nav-group>
+
+
+    </nav>
+
+</aside>

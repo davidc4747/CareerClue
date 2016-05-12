@@ -2,25 +2,134 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 11:20:02
 * @Last Modified by:   David
-* @Last Modified time: 2016-01-29 13:52:42
+* @Last Modified time: 2016-04-13 17:29:57
 */
 
-angular.module('Repository', ['BusinessRules', 'Session'])
-    .service('Repository', ['UserRules', 'Session', function(UserRules, Session)
+angular.module('Repository', ['BusinessRules', 'Authenticator', 'Recovery'])
+    .service('Repository', ['UserRules', 'JobRules', 'Authenticator', 'Recovery', '$interval', '$location',
+                function(UserRules, JobRules, Authenticator, Recovery, $interval, $location)
     {
-        //UserRules
+
+
+        /*====================================*\
+            #User Rules
+        \*====================================*/
+
+        this.userInfo = function(callback)
+        {
+            UserRules.userInfo(callback);
+        };
+
+
+        this.updateUserInfo = function(user, callback)
+        {
+            UserRules.updateUserInfo(user, callback);
+        };
+
+
+
+
+
+
+        /*====================================*\
+            #Job Rules
+        \*====================================*/
+
+        this.getStatusTypes = function(callback)
+        {
+            JobRules.getStatusTypes(callback);
+        };
+
+        this.getUserJobs = function(callback)
+        {
+            JobRules.getUserJobs(callback);
+        };
+
+        this.saveJob = function(job, callback)
+        {
+            JobRules.saveJob(job, callback);
+        };
+
+        this.deleteJob = function(job)
+        {
+            JobRules.deleteJob(job);
+        };
+
+
+        this.getjobStatusCount = function(callback)
+        {
+            JobRules.getjobStatusCount(callback);
+        };
+
+
+
+
+
+        /*====================================*\
+            #Authenticator Methods
+        \*====================================*/
+
         this.signIn = function (user, callback)
         {
-            UserRules.signIn(user, function(errors)
-            {
-                //If no errors, signIn to session
-                if(errors.length == 0)
-                    Session.signIn(user);
-
-                //send results to callback
-                callback(errors);
-            });
+            Authenticator.signIn(user, callback);
         };
-        this.signUp = function (user, callback) { UserRules.signUp(user, callback); };
+
+        this.signUp = function (user, callback)
+        {
+            Authenticator.signUp(user, callback);
+        };
+
+        this.signOut = function(callback)
+        {
+            Authenticator.signOut(callback);
+        };
+
+        this.getSignInStatus = function(callback)
+        {
+            Authenticator.getSignInStatus(callback);
+        };
+
+
+        this.updateUserPass = function(user, callback)
+        {
+            Authenticator.updateUserPass(user, callback);
+        };
+
+
+
+        /*====================================*\
+            #Account Recovery
+        \*====================================*/
+
+        this.sendEmail = function(email, callback)
+        {
+            Recovery.sendEmail(email,callback);
+        };
+
+        this.resetPassword = function(token, password, repass, callback)
+        {
+            Recovery.resetPassword(token, password, repass, callback);
+        };
+
+
+
+
+
+
+        // $interval(function()
+        // {
+        //     // Call Authenticator.isActive();
+        //     Authenticator.getSignInStatus(function(isloggedIn)
+        //     {
+        //         if(isloggedIn == false)
+        //         {
+        //             // send to SignIn screen
+        //             $location.path('/SignIn');
+        //         }
+
+        //     });
+
+        // }, 60000);// repeat every 5 mins
+
 
     }]);

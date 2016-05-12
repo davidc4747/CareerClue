@@ -1,0 +1,132 @@
+// @Author: David G Chung
+// @Date:   2016-02-04 9:04
+
+/*====================================*\
+    #Sidebar
+\*====================================*/
+
+.sidebar
+{
+    margin-top: 6em;
+
+
+    &__head
+    {
+        border-bottom: 1px solid $secondary;
+        margin-bottom: 0;
+    }
+
+    &__nav
+    {
+        margin-top: 0.6em;
+    }
+
+}
+
+
+    /*-------------------------------------*\
+        #User Info:
+    \*-------------------------------------*/
+
+    .user-info
+    {
+        text-align: center;
+    }
+
+
+
+
+
+/*====================================*\
+    #Nav Group
+\*====================================*/
+
+.nav-group
+{}
+
+
+
+    /*-------------------------------------*\
+        #Main Link
+    \*-------------------------------------*/
+
+    .main-link
+    {
+        display: block;
+        padding: 0.5em 0.6em;
+        margin: 0.2em 0 0.3em;
+        border-left: 5px solid transparent;
+
+        opacity: 0.8;
+        font-size: 1.1em;
+
+        position: relative;
+
+        color: $secondary;
+        @include transition(all, 0.35s, ease-in);
+        @include user-select(none);
+
+
+
+        &:hover, &:focus, .nav-group--expanded &
+        {
+            border-left: 5px solid $secondary;
+
+            text-decoration: none;
+
+            color: $secondary;
+            background-color: lighten($background, 10%);
+        }
+
+
+        .nav-group--active &
+        {
+            border-left: 5px solid $secondary;
+
+            opacity: 1;
+            font-weight: bold;
+
+            color: $secondary;
+            background-color: lighten($background, 10%);
+        }
+
+        .fa
+        {
+            padding: 8px;
+
+            position: absolute;
+            top: 50%;
+            right: 4px;
+
+            @include translate(0, -50%);
+        }
+    }
+
+    /*-------------------------------------*\
+        #Sub Link
+    \*-------------------------------------*/
+
+    .sub-link
+    {
+        display: block;
+        padding: 0 0.5em;
+        margin: 0 0 0 1.2em;
+        border-left: 2px solid transparent;
+
+        opacity: 0.8;
+
+        color: $white;
+        @include transition(all, 0.3s, linear);
+
+        &:hover, &:focus
+        {
+            text-decoration: none;
+            color: $secondary;
+            font-weight: bold;
+            opacity: 1;
+        }
+    }
+
+
+
+

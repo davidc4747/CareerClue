@@ -1,0 +1,105 @@
+// @Author: David G Chung
+// @Date:   2016-02-01 11:58
+
+@import url('http://fonts.googleapis.com/css?family=Roboto');
+
+/*====================================*\
+    #General
+\*====================================*/
+
+body
+{
+    color: $secondary;
+    background-color: $background;
+    font-family: 'Roboto', sans-serif;
+}
+
+pre
+{
+    @include border-radius(0);
+}
+
+
+
+/*-----------------------------------*\
+    #General Classes
+\*-----------------------------------*/
+
+.highlight { color: $primary; }
+
+
+.body
+{
+    margin-top: 1em;
+    margin-bottom: 5em;
+
+    background-color: $white;
+    border-left: 5px solid $primary;
+    border-right: 5px solid $primary;
+}
+
+
+.bottom-nav
+{
+    margin: 0.5em 0;
+
+    a
+    {
+        display: block;
+        margin: 0;
+
+        clear: right;
+        float: right;
+    }
+}
+
+
+
+
+
+/*====================================*\
+    #Headings
+\*====================================*/
+
+#{headings()}
+{
+}
+
+h4
+{
+    font-weight: bold;
+}
+
+
+
+
+
+/*====================================*\
+    #Scrollbar
+\*====================================*/
+
+::-webkit-scrollbar
+{
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: $primary;
+    @include border-radius(1px);
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-corner
+{
+    // border: 1px solid $secondary;
+    // background-color: darken($primary, 15%);
+}
+
+
+

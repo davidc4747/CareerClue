@@ -1,0 +1,24 @@
+<section class="multi-job">
+
+    <side-bar ng-class="(showMenu) ? 'sidebar--show' : 'sidebar--hide'"></side-bar>
+
+    <controls></controls>
+
+    <div class="multi-job__body body col-sm-offset-1 col-sm-7">
+
+
+        <search></search>
+
+
+        <ul class="job-list row">
+            <job job-data="job" ng-repeat="job in jobs | filter: { CompanyName: search, JobStatus_Name: statusFilter }"></job>
+        </ul>
+
+
+        <search  ng-show="jobs.length > 8"></search>
+
+
+
+    </div>
+
+</section>

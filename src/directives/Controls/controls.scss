@@ -1,0 +1,88 @@
+/*
+* @Author: David
+* @Date:   2016-03-07 08:03:40
+* @Last Modified by:   David
+* @Last Modified time: 2016-03-08 10:31:34
+*/
+
+/*====================================*\
+    #Controls
+\*====================================*/
+
+.controls
+{
+    margin-top: 4em;
+}
+
+    .control
+    {
+        cursor: pointer;
+        color: rgba($secondary, 0.7);
+        position: relative;
+        z-index: 10;
+
+
+        &:hover .fa
+        {
+            color: rgba($primary, 0.7);
+        }
+
+    }
+
+
+
+/*-------------------------------------*\
+    #Settings
+\*-------------------------------------*/
+
+.setting-list
+{
+    overflow: hidden;
+    padding: 0em 0.6em;
+    border-left: 4px solid $primary;
+    border-right: 4px solid $primary;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 170px;
+    background-color: $white;
+
+    z-index: 5;
+    opacity: 1;
+    font-size: 1em;
+    list-style-type: none;
+
+    @include box-shadow(0 0 15px 0px rgba($secondary, 0.6));
+    @include transition(all 0.2s ease-in);
+
+
+    &--hide
+    {
+        width: 0;
+        padding: 0;
+        border: none;
+        @include box-shadow(none);
+    }
+}
+
+    .setting
+    {
+        padding: 0.4em 0;
+        margin: 0.1em 0;
+
+        color: $secondary;
+        a
+        {
+            display: inline-block;
+            color: $secondary;
+            width: 100%;
+            white-space: no-wrap;
+        }
+
+        &:hover
+        {
+            text-decoration: underline;
+        }
+    }

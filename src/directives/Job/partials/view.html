@@ -1,0 +1,50 @@
+<header class="col-sm-9" draggable="false">
+
+    <div class="job__head clearfix">
+        <h2 class="job__name">
+            <a href="#/MultiJob/{{jobData.JobStatus_Name}}/{{jobData.CompanyName}}">{{jobData.CompanyName}}</a>
+        </h2>
+        <a class="job__site" target="_blank" href="{{jobData.CompanySite}}" ng-show="jobData.CompanySite"><i class="fa fa-external-link"></i></a>
+        <h3 class="job__title">{{jobData.Job_Title}}</h3>
+    </div>
+
+    <div class="job__links">
+        <a target="_blank" href="{{jobData.Source_Link}}">{{jobData.Source}}</a>
+    </div>
+
+    <div class="job__info">
+        <div class="job__address">{{jobData.Company_Address}} <span class="travel-time">({{jobData.TravelTime}} minute drive)</span></div>
+        <div class="date-applied">{{jobData.DateApplied | date: 'MM/dd/yyyy'}} <span class="time-passed">({{jobData.TimePassed + '' + jobData.TimePassedLabel}})</span></div>
+    </div>
+</header>
+
+<aside class="col-sm-3">
+    <div class="job__rating {{ratingClass}}" ng-mouseleave="resetStars()" ng-click="$event.stopPropagation()">
+        <i class="fa"
+            ng-mouseenter="starhover($index)"
+            ng-click="saveStars($index+1)"
+            ng-class="[ (editRating) ? ($index < editRating ? 'fa-star' : 'fa-star-o') : ($index <= jobData.Job_Rating-1 ? 'fa-star' : 'fa-star-o'),
+                        { '': $index < editRating }]"
+            ng-repeat="num in numArray(5) track by $index"></i>
+    </div>
+</aside>
+
+<div class="job__notes col-sm-12">
+
+    <div class="notes">
+        <h4>Job Description Notes</h4>
+        <pre ng-click="$event.stopPropagation()">{{jobData.JobDescrip_Notes}}</pre>
+    </div>
+
+    <div class="notes">
+        <h4>Company Notes</h4>
+        <pre ng-click="$event.stopPropagation()">{{jobData.Company_Notes}}</pre>
+    </div>
+
+    <input class="btn btn--delete [ pull-left col-sm-2 ]" type="button" value="Delete"
+        ng-click="delete(); $event.stopPropagation();">
+
+    <input class="btn btn--edit [ pull-right col-sm-2 ]" type="button" value="Edit"
+        ng-click="switchMode('job--edit'); $event.stopPropagation();">
+
+</div>

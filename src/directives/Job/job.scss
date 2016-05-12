@@ -1,0 +1,229 @@
+/*
+* @Author: David
+* @Date:   2016-02-26 13:38:50
+* @Last Modified by:   David
+* @Last Modified time: 2016-03-07 07:45:57
+*/
+
+/*====================================*\
+    #Job Directive
+\*====================================*/
+
+.job
+{
+    margin: 0;
+    padding: 1.5em 0;
+
+    list-style-type: none;
+    border-top: 1px solid darken($white, 15%);
+
+    @include transition(opacity 0.2s ease-in);
+
+
+
+    /*-------------------------------------*\
+        #Job Modes
+    \*-------------------------------------*/
+
+    &--view
+    {
+        cursor: pointer;
+
+        &:hover
+        {
+            background-color: darken($white, 6%)
+        }
+    }
+
+    &--view-expand
+    {
+        @extend .job--view;
+
+        .job__notes
+        {
+            visibility: visible;
+            margin-top: 2em;
+            max-height: 100vh;
+        }
+    }
+
+    &--edit
+    {}
+
+
+
+    /*-------------------------------------*\
+        #Enter/Exit Animations
+    \*-------------------------------------*/
+
+    &.ng-enter,
+    &.ng-leave.ng-leave-active
+    {
+        opacity: 0.3;
+    }
+
+    &.ng-leave,
+    &.ng-enter.ng-enter-active
+    {
+        opacity: 1;
+    }
+
+
+
+
+
+    /*-------------------------------------*\
+        #Edit Field spacing
+    \*-------------------------------------*/
+
+    .field
+    {
+        padding-top:    0.6em;
+        padding-bottom: 0.6em;
+    }
+
+
+
+    /*-------------------------------------*\
+        #Job Header
+    \*-------------------------------------*/
+
+    &__head
+    {
+        margin: 0;
+    }
+
+    &__name, &__title
+    {
+        float: left;
+        margin: 0 0;
+    }
+
+    &__name
+    {
+        a { color: $primary; }
+    }
+
+    &__site
+    {
+        float: left;
+        display: block;
+
+        margin: 0.11em 0.3em;
+
+        font-size: 1.6em;
+        color: $secondary;
+        vertical-align: bottom;
+    }
+
+    &__title
+    {
+        margin: 0.22em 0 0 0.5em;
+        color: $secondary;
+        font-style: italic;
+    }
+
+    /*-------------------------------------*\
+        #Job Rating
+    \*-------------------------------------*/
+
+    &__rating
+    {
+        padding: 0.3em 0 0.2em;
+
+        color: $secondary;
+
+        font-size: 2em;
+        font-weight: bold;
+
+        text-align: center;
+        background-color: darken($white, 6%);
+
+        border: 1px solid $white;
+    }
+
+    /*-------------------------------------*\
+        #Job Notes
+    \*-------------------------------------*/
+
+    &__notes
+    {
+        visibility: hidden;
+        overflow: hidden;
+        margin-top: 0;
+        max-height: 0;
+        @include transition(max-height, 0.6s, ease-in);
+    }
+
+}
+
+
+
+    /*========================================*\
+        #Edit Form
+    \*========================================*/
+
+    .form-group
+    {
+        margin-bottom: 1.4em;
+        padding-top:   1.4em;
+
+
+        & + &
+        {
+            border-top: 1px dashed darken($white, 10%);
+        }
+    }
+
+    .txt--edit-job
+    {
+        display: block;
+        outline: none;
+
+        padding: 0 0.4em;
+        border: none;
+        border-bottom: 1px solid $primary;
+
+        width: 100%;
+        min-height: 26px;
+
+        background-color: darken($white, 5%);
+
+        &.ng-dirty.ng-invalid
+        {
+            background-color: rgba($error, 0.3);
+            border-bottom: 2px solid $error;
+        }
+
+    }
+
+        textarea.txt--edit-job
+        {
+            height: auto;
+        }
+
+
+
+
+
+/*========================================*\
+    #NgInclude Container
+\*========================================*/
+
+.template
+{
+    @include transition(opacity 0.3s ease-in);
+
+
+    &.ng-enter,
+    &.ng-leave.ng-leave-active
+    {
+        opacity: 0.3;
+    }
+
+    &.ng-leave,
+    &.ng-enter.ng-enter-active
+    {
+        opacity: 1;
+    }
+}

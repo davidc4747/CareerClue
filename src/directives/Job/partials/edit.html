@@ -1,0 +1,123 @@
+
+    <form name="editForm" ng-submit="save(); $event.stopPropagation();" novalidate>
+
+
+
+    <section class="form-group clearfix">
+
+        <div class="field col-sm-6 clearfix">
+            <label class="lbl lbl--company-name" for="company-name">Company Name*</label>
+            <input id="company-name" class="txt--edit-job txt--company-name" type="text"
+                ng-model="jobData.CompanyName" ng-required="true" ng-max-length="45">
+        </div>
+
+        <div class="field col-sm-6 clearfix">
+            <label class="lbl lbl--job-title" for="job-title">Job Title*</label>
+            <input id="job-title" class="txt--edit-job txt--job-title" type="text"
+                ng-model="jobData.Job_Title" ng-required="true" ng-max-length="45">
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+            <label class="lbl lbl--company-site" for="company-site">Company Website</label>
+            <input id="company-site" class="txt--edit-job txt--company-site" type="text"
+                ng-model="jobData.CompanySite" ng-max-length="45">
+        </div>
+
+
+
+        <div class="field col-sm-4 clearfix">
+            <label class="lbl lbl--source" for="source">Source Name</label>
+            <input id="source" class="txt--edit-job txt--source" type="text"
+                ng-model="jobData.Source" ng-max-length="45">
+        </div>
+
+        <div class="field col-sm-8 clearfix">
+            <label class="lbl lbl--source-link" for="source-link">Source Link</label>
+            <input id="source-link" class="txt--edit-job txt--source-link" type="text"
+                ng-model="jobData.Source_Link" ng-max-length="256">
+        </div>
+
+    </section>
+
+
+
+    <section class="form-group clearfix">
+
+        <div class="field col-sm-6 clearfix">
+            <label class="lbl lbl--company-address" for="company-address">Company address</label>
+            <input id="company-address" class="txt--edit-job txt--company-address" type="text"
+                ng-model="jobData.Company_Address" ng-max-length="45">
+        </div>
+
+        <div class="field col-sm-6 clearfix">
+            <label class="lbl lbl--travel-time" for="travel-time">Travel time</label>
+            <input id="travel-time" class="txt--edit-job txt--travel-time" type="number" min="0" max="180"
+                ng-model="jobData.TravelTime">
+        </div>
+
+
+
+        <div class="field col-sm-4 clearfix">
+            <label class="lbl lbl--status" for="status">Job Status</label>
+            <select id="status" class="txt--edit-job txt--status" type="text"
+                ng-model="jobData.JobStatus_Id">
+
+                <option value="{{type.JobStatus_Id}}" ng-selected="(type.JobStatus_Id == jobData.JobStatus_Id)"
+                    ng-repeat="type in statusTypes">{{type.JobStatus_Name}}</option>
+
+            </select>
+        </div>
+
+        <div class="field col-sm-4 clearfix">
+            <label class="lbl lbl--date-applied" for="date-applied">Date applied</label>
+            <input id="date-applied" class="txt--edit-job txt--date-applied" type="date"
+                ng-model="jobData.DateApplied">
+        </div>
+
+        <div class="field col-sm-4 clearfix">
+            <label class="lbl lbl--job-rating" for="job-rating">Job rating</label>
+            <input id="job-rating" class="txt--edit-job txt--job-rating" type="number" min="0" max="5"
+                ng-model="jobData.Job_Rating">
+        </div>
+
+    </section>
+
+
+
+    <section class="form-group clearfix">
+
+        <div class="col-sm-12">
+            <div class="field clearfix">
+                <label class="lbl lbl--descrip-notes" for="descrip-notes">Job Description Notes</label>
+                <textarea id="descrip-notes" class="txt--edit-job txt--descrip-notes"
+                    ng-click="snap('#descrip-notes')"
+                    ng-model="jobData.JobDescrip_Notes" ng-max-length="1024"></textarea>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="field clearfix">
+                <label class="lbl lbl--company-notes" for="company-notes">Company Notes</label>
+                <textarea id="company-notes" class="txt--edit-job txt--company-notes"
+                    ng-click="snap('#company-notes')"
+                    ng-model="jobData.Company_Notes" ng-max-length="1024"></textarea>
+            </div>
+        </div>
+
+        <div class="field col-sm-12 clearfix">
+
+            <input class="btn btn--delete [ pull-left col-sm-2 ]" type="button" value="Delete"
+                ng-show="jobData.JobInfo_Id > 0" ng-click="delete(); $event.stopPropagation();">
+
+            <input class="[ btn btn--cancel ]   [ pull-right col-sm-offset-1 col-sm-2 ]" type="button" value="Cancel"
+                ng-click="cancel(); $event.stopPropagation();">
+
+            <input class="[ btn btn--submit btn--save ]   [ pull-right col-sm-2 ]" type="submit" value="Save"
+                ng-click="" ng-disabled="editForm.$invalid">
+        </div>
+
+    </section>
+
+
+
+</form>

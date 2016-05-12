@@ -1,0 +1,20 @@
+<div class="controls col-sm-offset-1 col-sm-7">
+
+
+    <div class="control pull-left" ng-click="toggleMenu(); $event.stopPropagation()">
+        <i class="fa fa-2x fa-bars"></i>
+    </div>
+
+
+    <div class="control control--settings pull-right" ng-click="toggleSettings(); $event.stopPropagation()">
+        <i class="btn-settings fa fa-2x fa-ellipsis-h"></i>
+
+        <ul class="setting-list setting-list--hide" ng-class="(showSettings) ? 'setting-list--show' : 'setting-list--hide'">
+           <li class="setting"><a href="#/Settings">Settings</a></li>
+           <li class="setting" ng-click="signOut()"><a href="#/SignIn">Sign Out</a></li>
+        </ul>
+
+    </div>
+
+
+</div>

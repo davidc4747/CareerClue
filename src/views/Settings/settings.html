@@ -1,0 +1,89 @@
+<section class="profile">
+
+    <side-bar ng-class="(showMenu) ? 'sidebar--show' : 'sidebar--hide'"></side-bar>
+
+    <controls></controls>
+
+    <div class="profile__body body col-sm-offset-1 col-sm-7">
+
+        <h2 style="text-align: center">Settings</h2>
+
+        <form name="updateInfo" class="form-group row" ng-submit="updateUserInfo()">
+
+            <div class="field col-sm-offset-3 col-sm-6">
+                <label class="lbl lbl--username" for="username">Username</label>
+                <input id="username" class="txt--edit-job txt--username" type="text"
+                    ng-model="user.Username" ng-required="true" ng-max-length="45">
+            </div>
+
+            <div class="field col-sm-offset-3 col-sm-6">
+                <label class="lbl lbl--email" for="email">Email</label>
+                <input id="email" class="txt--edit-job txt--email" type="text"
+                    ng-model="user.User_Email" ng-required="true" ng-max-length="45">
+            </div>
+
+            <div class="field col-sm-offset-3 col-sm-6">
+                <input class="btn btn--submit btn--save col-sm-12" type="submit" value="Save Changes"
+                    ng-disabled="updateInfo.$invalid">
+            </div>
+
+
+
+            <div class="col-sm-offset-3 col-sm-6" ng-show="userInfoErrors.length == 0">
+                <div class="success-mess col-sm-12">Changes Saved!</div>
+            </div>
+
+            <div class="col-sm-offset-3 col-sm-6">
+                <ul class="error-list col-sm-12" ng-show="userInfoErrors.length > 0">
+                    <li class="error" ng-repeat="error in userInfoErrors">{{ error.mess }}</li>
+                </ul>
+            </div>
+
+        </form>
+
+
+
+        <form name="updatePass" class="form-group row" ng-submit="updateUserPass(updatePass)">
+
+            <div class="field col-sm-offset-3 col-sm-6">
+                <label class="lbl lbl--curPass" for="curPass">Current Password</label>
+                <input id="curPass" class="txt--edit-job txt--curPass" type="password"
+                    ng-model="user.curPass" ng-required="true" ng-max-length="266">
+            </div>
+
+            <div class="field col-sm-offset-3 col-sm-6">
+                <label class="lbl lbl--newPass" for="newPass">New Password</label>
+                <input id="newPass" class="txt--edit-job txt--newPass" type="password"
+                    ng-model="user.newPass" ng-required="true" ng-max-length="266">
+            </div>
+
+            <div class="field col-sm-offset-3 col-sm-6">
+                <label class="lbl lbl--rePass" for="rePass">Confirm Password</label>
+                <input id="rePass" class="txt--edit-job txt--rePass" type="password"
+                    ng-model="user.rePass" ng-required="true" ng-max-length="266">
+            </div>
+
+            <div class="field col-sm-offset-3 col-sm-6">
+                <input class="btn btn--submit btn--save col-sm-12" type="submit" value="Update Password"
+                    ng-disabled="updatePass.$invalid">
+            </div>
+
+
+
+            <div class="col-sm-offset-3 col-sm-6" ng-show="savedPass">
+                <div class="success-mess col-sm-12">Changes Saved!</div>
+            </div>
+
+            <div class="col-sm-offset-3 col-sm-6">
+                <ul class="error-list col-sm-12" ng-show="userPassErrors.length > 0">
+                    <li class="error" ng-repeat="error in userPassErrors">{{ error.mess }}</li>
+                </ul>
+            </div>
+
+        </form>
+
+
+
+    </div>
+
+</section>

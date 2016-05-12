@@ -2,41 +2,48 @@
 * @Author: David G Chung
 * @Date:   2015-06-26 10:37:33
 * @Last Modified by:   David
-* @Last Modified time: 2016-01-29 13:53:57
+* @Last Modified time: 2016-04-13 17:29:26
 */
 
-busRules.service('UserRules', ['CallStoredProcedure', 'DBConstants', function(sp, dbConst)
-{
-    this.signIng = function(user, callback)
+angular.module('BusinessRules')
+    .service('UserRules', ['CallStoredProcedure', 'DBConstants', '$http', function(sp, dbConst, $http)
     {
-        //call the signIng stored procedure
-        var postData =
+        this.userInfo = function(callback)
         {
-            fName: dbConst.SP_USER_SIGNIN,
-            params: [user.email, user.pass],
-            actionType: 'select',
-            loginRequired: false
+            var postData =
+            {
+                fName: dbConst.SP_USER_BY_ID,
+                params: ["User_Id"],
+                actionType: 'select',
+                loginRequired: true
+            };
+
+            sp(postData, function(data)
+            {
+                var user = null;
+                if(data.length > 0)
+                    user = data[0];
+
+                console.log("UserInfo:", user);
+                callback(user);
+            });
         };
 
-        sp(postData, callback);
-    };
 
-    this.signOut = function(user, callback)
-    {
-        //call the signOut stored procedure
-    };
 
-    this.signUp = function(user, callback)
-    {
-        var postData =
+        this.updateUserInfo = function(user, callback)
         {
-            fName: dbConst.SP_USER_SIGNUP,
-            params: [user.firstName, user.lastName, user.email, user.pass, user.repass],
-            actionType: 'select',
-            loginRequired: false
+            var postData =
+            {
+                fName: dbConst.SP_USER_UPDATE_INFO,
+                params: ["User_Id", user.Username, user.User_Email],
+                actionType: 'select',
+                loginRequired: true
+            };
+
+            sp(postData, callback);
         };
 
-        sp(postData, callback);
-    };
 
-}]);
+
+    }]);

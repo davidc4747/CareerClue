@@ -2,85 +2,102 @@
 * @Author: David
 * @Date:   2016-01-18 22:48:57
 * @Last Modified by:   David
-* @Last Modified time: 2016-01-29 13:48:12
+* @Last Modified time: 2016-04-13 10:57:32
 */
 
 
-var jobTrack = angular.module('jobTrack', ['ngRoute',
-                                            'SignIn',
-                                            'jobTrack.Dash'
-                                        ]);
+angular.module('CareerClue', ['ngRoute',
+                                'ngAnimate',
 
-jobTrack.config(['$routeProvider', function($routeProvider)
-{
+                                'CareerClue.DragDrop',
+                                'CareerClue.Controls',
+                                'CareerClue.SideBar',
+                                'CareerClue.Job',
 
-    /*====================================*\
-        #Main Screens
-    \*====================================*/
+                                'CareerClue.SignIn',
+                                'CareerClue.SignUp',
 
-    $routeProvider
-    .when('/Dash',
+                                'CareerClue.Forgot',
+                                'CareerClue.Reset',
+
+                                'CareerClue.Dash',
+                                'CareerClue.Settings',
+                                'CareerClue.MultiJob',
+                            ]);
+
+angular.module('CareerClue')
+    .config(['$routeProvider', function($routeProvider)
     {
-        templateUrl: 'views/Dash/dash.html',
-        controller: 'DashCtrl'
-    })
+        /*====================================*\
+            #Main Screens
+        \*====================================*/
+
+        $routeProvider
+        .when('/Dash',
+        {
+            templateUrl: 'views/Dash/dash.html',
+            controller: 'DashCtrl',
+            loginRequired: true
+        })
+        .when('/MultiJob/:statusType?/:companyName?',
+        {
+            templateUrl: 'views/MultiJob/multijob.html',
+            controller: 'MultiJobCtrl',
+            loginRequired: true
+        })
+        .when('/Settings',
+        {
+            templateUrl: 'views/Settings/settings.html',
+            controller: 'SettingsCtrl',
+            loginRequired: true
+        })
 
 
 
-    /*====================================*\
-        #Job Views
-    \*====================================*/
+        /*====================================*\
+            #Pre-SignIn Forms
+        \*====================================*/
 
-    .when('/MultiJob',
-    {
-        templateUrl: 'views/MultiJob/multijob.html',
-        controller: 'MultiJobCtrl'
-    })
-    .when('/SingleJob',
-    {
-        templateUrl: 'views/SingleJob/singlejob.html',
-        controller: 'SingleJobCtrl'
-    })
-    .when('/EditJob',
-    {
-        templateUrl: 'views/EditJob/editjob.html',
-        controller: 'EditJobCtrl'
-    })
+        .when('/SignIn',
+        {
+            templateUrl: 'views/SignIn/signin.html',
+            controller: 'SignInCtrl',
+            loginRequired: false
+        })
+        .when('/SignUp',
+        {
+            templateUrl: 'views/SignUp/signup.html',
+            controller: 'SignUpCtrl',
+            loginRequired: false
+        })
 
 
-
-    /*====================================*\
-        #SignIn Forms
-    \*====================================*/
-
-    .when('/SignIn',
-    {
-        templateUrl: 'views/SignIn/signin.html',
-        controller: 'SignInCtrl'
-    })
-    .when('/SignUp',
-    {
-        templateUrl: 'views/SignUp/signup.html',
-        controller: 'RegisterCtrl'
-    })
-    .when('/ForgotPassword',
-    {
-        templateUrl: 'views/ForgotPass/forgotPass.html',
-        controller: 'ForgotPassCtrl'
-    })
-    .when('/ForgotUsername',
-    {
-        templateUrl: 'views/ForgotUsername/forgotUsername.html',
-        controller: 'ForgotUserCtrl'
-    })
+        .when('/ForgotPassword',
+        {
+            templateUrl: 'views/Forgot/forgotPass.html',
+            controller: 'ForgotCtrl',
+            loginRequired: false
+        })
+        .when('/ForgotUsername',
+        {
+            templateUrl: 'views/Forgot/forgotUsername.html',
+            controller: 'ForgotCtrl',
+            loginRequired: false
+        })
+        .when('/Reset/:token',
+        {
+            templateUrl: 'views/Reset/reset.html',
+            controller: 'ResetCtrl',
+            loginRequired: false
+        })
 
 
 
 
-    //fall back
-    .otherwise({
-        redirectTo: '/SignIn'
-    });
+        //fall back
+        .otherwise({
+            redirectTo: '/SignIn'
+        });
 
 
-}]);
+    }]);
