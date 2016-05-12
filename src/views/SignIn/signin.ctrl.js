@@ -2,7 +2,7 @@
 * @Author: David
 * @Date:   2016-01-29 13:04:37
 * @Last Modified by:   David
-* @Last Modified time: 2016-03-31 11:56:39
+* @Last Modified time: 2016-04-14 08:35:14
 */
 
 angular.module('CareerClue.SignIn', ['Repository'])
@@ -50,20 +50,26 @@ angular.module('CareerClue.SignIn', ['Repository'])
             if($scope.user.password == '')
                 $scope.errors.push({ mess: 'Password is required'});
 
+            if($scope.user.password.length < 3)
+                $scope.errors.push({mess: 'Password need to be longer than 3 characters'});
 
-            $scope.loading = true;
 
-            //if Required fields are filled, attemp to signIn to the DB
-            Repository.signIn($scope.user, function (isValid)
+            if($scope.errors.length == 0)
             {
-                // if the user info was valid
-                if(isValid == true)
-                    $location.path('/MultiJob');
-                else
-                    $scope.errors.push({ mess: 'Invalid username or password'});
+                $scope.loading = true;
 
-                $scope.loading = false;
-            });
+                //if Required fields are filled, attemp to signIn to the DB
+                Repository.signIn($scope.user, function (isValid)
+                {
+                    // if the user info was valid
+                    if(isValid == true)
+                        $location.path('/MultiJob');
+                    else
+                        $scope.errors.push({ mess: 'Invalid username or password'});
+
+                    $scope.loading = false;
+                });
+            }
 
         };
 
